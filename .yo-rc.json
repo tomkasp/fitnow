@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "fitnow",
+    "packageName": "com.tomkasp",
+    "packageFolder": "com/tomkasp",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "gulp",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "4dc7ae090877cbdbbd86b0b03d61d775acaa2725",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}
