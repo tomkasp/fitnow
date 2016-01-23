@@ -31,7 +31,7 @@ task setProdProperties(dependsOn: bootRun) << {
 }
 
 
-gulp_build.dependsOn 'npmInstall'
+//gulp_build.dependsOn 'npmInstall'
 gulp_build.dependsOn 'bower'
 processResources.dependsOn gulp_build
 test.dependsOn gulp_test
