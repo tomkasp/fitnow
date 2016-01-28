@@ -20,17 +20,17 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="fitnowApp.product.mass" for="field_mass">Mass</label>
-            <input type="number" class="form-control" name="mass" id="field_mass"
-                    ng-model="product.mass"
+            <label class="control-label" translate="fitnowApp.product.calories" for="field_mass">Mass</label>
+            <input type="number" class="form-control" name="calories" id="field_mass"
+                    ng-model="product.calories"
                     min="0" />
-            <div ng-show="editForm.mass.$invalid">
+            <div ng-show="editForm.calories.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.mass.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    ng-show="editForm.calories.$error.min" translate="entity.validation.min" translate-value-min="0">
                     This field should be more than 0.
                 </p>
                 <p class="help-block"
-                    ng-show="editForm.mass.$error.number" translate="entity.validation.number">
+                    ng-show="editForm.calories.$error.number" translate="entity.validation.number">
                     This field should be a number.
                 </p>
             </div>

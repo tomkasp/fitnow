@@ -16,7 +16,7 @@ public class ProductDTO implements Serializable {
 
 
     @Min(value = 0)
-    private Float mass;
+    private Integer calories;
 
 
     public Long getId() {
@@ -33,12 +33,12 @@ public class ProductDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public Float getMass() {
-        return mass;
+    public Integer getCalories() {
+        return calories;
     }
 
-    public void setMass(Float mass) {
-        this.mass = mass;
+    public void setCalories(Integer calories) {
+        this.calories = calories;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ProductDTO implements Serializable {
         return "ProductDTO{" +
             "id=" + id +
             ", name='" + name + "'" +
-            ", mass='" + mass + "'" +
+            ", calories='" + calories + "'" +
             '}';
     }
 }

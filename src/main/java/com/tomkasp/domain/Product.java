@@ -22,11 +22,11 @@ public class Product implements Serializable {
 
     @Column(name = "name")
     private String name;
-    
+
     @Min(value = 0)
-    @Column(name = "mass")
-    private Float mass;
-    
+    @Column(name = "calories")
+    private Integer calories;
+
     public Long getId() {
         return id;
     }
@@ -38,17 +38,17 @@ public class Product implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public Float getMass() {
-        return mass;
+    public Integer getCalories() {
+        return calories;
     }
-    
-    public void setMass(Float mass) {
-        this.mass = mass;
+
+    public void setCalories(Integer calories) {
+        this.calories = calories;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Product implements Serializable {
         return "Product{" +
             "id=" + id +
             ", name='" + name + "'" +
-            ", mass='" + mass + "'" +
+            ", calories='" + calories + "'" +
             '}';
     }
 }

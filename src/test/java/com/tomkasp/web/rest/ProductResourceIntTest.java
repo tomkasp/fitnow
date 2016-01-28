@@ -47,8 +47,8 @@ public class ProductResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
 
-    private static final Float DEFAULT_MASS = 0F;
-    private static final Float UPDATED_MASS = 1F;
+    private static final Integer DEFAULT_MASS = 0;
+    private static final Integer UPDATED_MASS = 1;
 
     @Inject
     private ProductRepository productRepository;
@@ -84,7 +84,7 @@ public class ProductResourceIntTest {
     public void initTest() {
         product = new Product();
         product.setName(DEFAULT_NAME);
-        product.setMass(DEFAULT_MASS);
+        product.setCalories(DEFAULT_MASS);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class ProductResourceIntTest {
         assertThat(products).hasSize(databaseSizeBeforeCreate + 1);
         Product testProduct = products.get(products.size() - 1);
         assertThat(testProduct.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testProduct.getMass()).isEqualTo(DEFAULT_MASS);
+        assertThat(testProduct.getCalories()).isEqualTo(DEFAULT_MASS);
     }
 
     @Test
@@ -156,7 +156,7 @@ public class ProductResourceIntTest {
 
         // Update the product
         product.setName(UPDATED_NAME);
-        product.setMass(UPDATED_MASS);
+        product.setCalories(UPDATED_MASS);
         ProductDTO productDTO = productMapper.productToProductDTO(product);
 
         restProductMockMvc.perform(put("/api/products")
@@ -169,7 +169,7 @@ public class ProductResourceIntTest {
         assertThat(products).hasSize(databaseSizeBeforeUpdate);
         Product testProduct = products.get(products.size() - 1);
         assertThat(testProduct.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testProduct.getMass()).isEqualTo(UPDATED_MASS);
+        assertThat(testProduct.getCalories()).isEqualTo(UPDATED_MASS);
     }
 
     @Test
