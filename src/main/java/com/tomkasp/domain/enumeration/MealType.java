@@ -4,5 +4,5 @@ package com.tomkasp.domain.enumeration;
  * The MealType enumeration.
  */
 public enum MealType {
-    Breakfast,Lunch
+    Breakfast,Lunch,Supper,Diner
 }
