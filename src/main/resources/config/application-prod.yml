@@ -20,10 +20,10 @@ spring:
             enabled: false
     datasource:
         driver-class-name: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-        url: jdbc:mysql://localhost:3306/fitnow?useUnicode=true&characterEncoding=utf8
-        name:
-        username: root
-        password:
+        url: jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/ad_e69d15bdf0a38a0?user=b1f897531870ae&password=0c6bf2f3
+        name: ad_e69d15bdf0a38a0
+        username: b1f897531870ae
+        password: 0c6bf2f3
     jpa:
         database-platform: org.hibernate.dialect.MySQLInnoDBDialect
         database: MYSQL
