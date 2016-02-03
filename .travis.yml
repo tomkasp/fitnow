@@ -2,8 +2,7 @@ language: node_js
 node_js:
   - "0.12"
 sudo: false
-before_install: npm install -g gulp
-before_install: npm install -g bower
+before_install: npm install -g gulp bower
 #install: npm install
 install: bower install
 before_script: gulp build
