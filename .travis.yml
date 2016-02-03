@@ -4,6 +4,7 @@ node_js:
 sudo: false
 before_install: npm install -g gulp
 install: npm install
+before_script: gulp wiredep
 before_script: gulp build
 notifications:
   webhooks:
