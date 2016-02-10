@@ -24,6 +24,10 @@ spring:
             enabled: false
     thymeleaf:
         mode: XHTML
+    social:
+        facebook:
+            appId: 1560105444302334
+            appSecret: b3df275686dd840fe27400e239506b22
 
 security:
     basic:
