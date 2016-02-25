@@ -6,6 +6,8 @@ import com.tomkasp.domain.User;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 /**
@@ -42,6 +44,8 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private Set<ExternalAccountDTO> externalAccounts = new HashSet<>();
+
     public UserDTO() {
     }
 
@@ -50,6 +54,35 @@ public class UserDTO {
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
+    }
+
+    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey,
+                   Set<String> roles, Set<ExternalAccountDTO> externalAccounts) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.langKey = langKey;
+        this.authorities = roles;
+        if (externalAccounts != null) {
+            this.externalAccounts.addAll(externalAccounts);
+        }
+    }
+
+    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey,
+                   Set<String> roles) {
+        this(login, password, firstName, lastName, email, langKey, roles, null);
+    }
+
+    public UserDTO(String login, String firstName, String lastName, String email, ExternalAccountDTO externalAccount) {
+        this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        if (externalAccount != null) {
+            this.externalAccounts.add(externalAccount);
+        }
     }
 
     public UserDTO(String login, String password, String firstName, String lastName,
@@ -95,6 +128,10 @@ public class UserDTO {
 
     public Set<String> getAuthorities() {
         return authorities;
+    }
+
+    public Set<ExternalAccountDTO> getExternalAccounts() {
+        return externalAccounts;
     }
 
     @Override

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fitnowApp')
-    .controller('LoginController', function ($rootScope, $scope, $state, $timeout, Auth) {
+    .controller('LoginController', function ($rootScope, $scope, $state, $timeout, Auth, $resource) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -24,4 +24,16 @@ angular.module('fitnowApp')
                 $scope.authenticationError = true;
             });
         };
+
+        $scope.facebookLogin = function(){
+            var Facebook = $resource('/connect/facebook', {}, {
+                'save': { method:'POST' }
+            });
+
+            var user = Facebook.save({}, function() {
+                console.log("test");
+            });
+        }
     });
+
+//scope" value="user_posts

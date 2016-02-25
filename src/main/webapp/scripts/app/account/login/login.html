@@ -26,12 +26,27 @@
                 </div>
                 <button type="submit" class="btn btn-primary" translate="login.form.button">Sign in</button>
             </form>
+
+            <form action="/connect/facebook" method="POST">
+                <input type="hidden" name="scope" value="user_posts" />
+            <!--<form  role="form" ng-submit="facebookLogin($event)">-->
+                <!--<input type="hidden" name="scope" value="user_posts" />-->
+                <div class="formInfo">
+                    <p>You aren't connected to Facebook yet. Click the button to connect this application with your Facebook account.</p>
+                </div>
+                <p><button type="submit">Connect to Facebook</button></p>
+            </form>
+
+
             <p></p>
             <div class="alert alert-warning">
                 <a class="alert-link" href="#/reset/request" translate="login.password.forgot">Did you forget your password?</a>
             </div>
             <div class="alert alert-warning" translate="global.messages.info.register">
                 You don't have an account yet? <a class="alert-link" href="#/register">Register a new account</a>
+            </div>
+            <div class="col-md-4">
+                <jh-social type='block' external-account-provider="'facebook'">facebook</jh-social>
             </div>
         </div>
     </div>

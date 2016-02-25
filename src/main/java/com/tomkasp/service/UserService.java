@@ -15,6 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,6 +45,9 @@ public class UserService {
 
     @Inject
     private AuthorityRepository authorityRepository;
+
+    @Inject
+    private UsersConnectionRepository usersConnectionRepository;
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -85,8 +91,19 @@ public class UserService {
             });
     }
 
+    public void addConnection(String login, Connection<?> connection) {
+        ConnectionRepository connectionRepository = usersConnectionRepository.createConnectionRepository(login);
+        if (connectionRepository.findConnections(connection.getKey().getProviderId()).isEmpty()) {
+            connectionRepository.addConnection(connection);
+        } else {
+            connectionRepository.updateConnection(connection);
+        }
+    }
+
+
+
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
-        String langKey) {
+        String langKey, Connection<?> connection) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
@@ -100,14 +117,27 @@ public class UserService {
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
         // new user is not active
-        newUser.setActivated(false);
-        // new user gets registration key
-        newUser.setActivationKey(RandomUtil.generateActivationKey());
+        newUser.setActivated(connection != null);
+        if (!newUser.getActivated()) {
+            // new user gets registration key
+            newUser.setActivationKey(RandomUtil.generateActivationKey());
+        }
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+
+        if (connection != null) {
+            addConnection(login, connection);
+        }
+
         log.debug("Created Information for User: {}", newUser);
         return newUser;
+    }
+
+
+    public User createUserInformation(String login, String password, String firstName, String lastName, String email,
+                                      String langKey) {
+        return createUserInformation(login, password, firstName, lastName, email, langKey, null);
     }
 
     public User createUser(ManagedUserDTO managedUserDTO) {
@@ -165,6 +195,17 @@ public class UserService {
         });
     }
 
+    public Optional<User> getUserBySocialConnection(Connection<?> connection) {
+        if (connection != null) {
+            List<String> userIds = usersConnectionRepository.findUserIdsWithConnection(connection);
+            if (!userIds.isEmpty()) {
+                return userRepository.findOneByLogin(userIds.iterator().next());
+            }
+        }
+
+        return Optional.empty();
+    }
+
     @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthoritiesByLogin(String login) {
         return userRepository.findOneByLogin(login).map(u -> {
@@ -182,7 +223,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User getUserWithAuthorities() {
-        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUser().getUsername()).get();
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         user.getAuthorities().size(); // eagerly load the association
         return user;
     }

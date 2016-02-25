@@ -40,6 +40,17 @@ spring:
         host: localhost
     messages:
         cache-seconds: 1
+    social:
+        # see https://developers.google.com/+/web/signin/server-side-flow#step_1_create_a_client_id_and_client_secret
+        google:
+            clientId: 121157449451-4jinib4j0gkctvrq3dj6ob549ttrvrjv.apps.googleusercontent.com
+            clientSecret: uZmu5T9Z85opfETZFNrRC0Rv
+
+
+        # see https://developers.facebook.com/docs/facebook-login/v2.2
+        facebook:
+            appId: 1560105444302334
+            appSecret: b3df275686dd840fe27400e239506b22
     thymeleaf:
         cache: false
 
