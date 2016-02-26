@@ -19,17 +19,19 @@ spring:
         livereload:
             enabled: false
     datasource:
-        driver-class-name: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-        url: jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/ad_e69d15bdf0a38a0?user=b1f897531870ae&password=0c6bf2f3
-        name: ad_e69d15bdf0a38a0
-        username: b1f897531870ae
-        password: 0c6bf2f3
+        driver-class-name: org.postgresql.ds.PGSimpleDataSource
+        url: jdbc:postgresql://localhost/health
+        name: fitnow
+        username: fitnow
+        password: fitno
+        maxActive: 4
+        maxIdle: 3
     jpa:
-        database-platform: org.hibernate.dialect.MySQLInnoDBDialect
-        database: MYSQL
-        show_sql: false
+        database-platform: org.hibernate.dialect.PostgreSQL82Dialect
+        database: POSTGRESQL
+        show_sql: true
         properties:
-            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: false
             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
@@ -45,7 +47,7 @@ liquibase:
     contexts: prod
 
 server:
-    port: 8080
+    port: 80
     compression:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json

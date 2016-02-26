@@ -19,17 +19,17 @@ spring:
         livereload:
             enabled: false # we use Grunt + BrowserSync for livereload
     datasource:
-        driver-class-name: org.h2.jdbcx.JdbcDataSource
-        url: jdbc:h2:file:./target/h2db/db/fitnow;DB_CLOSE_DELAY=-1
-        name:
+        driver-class-name: org.postgresql.ds.PGSimpleDataSource #org.h2.jdbcx.JdbcDataSource
+        url: jdbc:postgresql://localhost/health
+        name: fitnow
         username: fitnow
         password:
     h2:
         console:
             enabled: false
     jpa:
-        database-platform: com.tomkasp.domain.util.FixedH2Dialect
-        database: H2
+        database-platform: org.hibernate.dialect.PostgreSQL82Dialect
+        database: POSTGRESQL
         show_sql: true
         properties:
             hibernate.cache.use_second_level_cache: true
