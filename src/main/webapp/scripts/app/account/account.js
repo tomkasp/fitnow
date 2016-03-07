@@ -6,5 +6,5 @@ angular.module('fitnowApp')
             .state('account', {
                 abstract: true,
                 parent: 'site'
-            });
+            })
     });

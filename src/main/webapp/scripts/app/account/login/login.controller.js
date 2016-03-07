@@ -16,7 +16,7 @@ angular.module('fitnowApp')
             }).then(function () {
                 $scope.authenticationError = false;
                 if ($rootScope.previousStateName === 'register') {
-                    $state.go('home');
+                    $state.go('app');
                 } else {
                     $rootScope.back();
                 }

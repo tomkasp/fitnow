@@ -17,32 +17,32 @@
         Added the entity Meal.
     -->
     <changeSet id="social" author="tkasp">
-        <createTable tableName="JHI_UserConnection">
-            <column name="userId" type="varchar(255)">
+        <createTable tableName="jhi_userconnection">
+            <column name="userid" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="providerId" type="varchar(255)">
+            <column name="providerid" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="providerUserId" type="varchar(255)">
+            <column name="provideruserid" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="rank" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="displayName" type="varchar(255)"/>
-            <column name="profileUrl" type="varchar(255)"/>
-            <column name="imageUrl" type="varchar(255)"/>
-            <column name="accessToken" type="varchar(255)">
+            <column name="displayname" type="varchar(255)"/>
+            <column name="profileurl" type="varchar(255)"/>
+            <column name="imageurl" type="varchar(255)"/>
+            <column name="accesstoken" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="secret" type="varchar(255)"/>
-            <column name="refreshToken" type="varchar(255)"/>
-            <column name="expireTime" type="bigint"/>
+            <column name="refreshtoken" type="varchar(255)"/>
+            <column name="expiretime" type="bigint"/>
         </createTable>
 
-        <addPrimaryKey tableName="JHI_UserConnection" columnNames="userId, providerId, providerUserId"/>
+        <addPrimaryKey tableName="jhi_userconnection" columnNames="userid, providerid, provideruserid"/>
 
-        <addUniqueConstraint tableName="JHI_UserConnection" columnNames="userId, providerId, rank"/>
+        <addUniqueConstraint tableName="jhi_userconnection" columnNames="userid, providerid, rank"/>
     </changeSet>
 </databaseChangeLog>

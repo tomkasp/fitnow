@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('fitnowApp')
-        .directive('jhSocial', function($cookies) {
+        .directive('jhSocialmy', function($cookies) {
             // these link to functionality provided by spring-social
             var scopes = {
                 'facebook': 'public_profile,email',
@@ -32,7 +32,7 @@
                                     element.find('input[name="_csrf"]').val($cookies.get('CSRF-TOKEN'));
 
                                     btn = element.find('button');
-                                    btn.addClass('btn-social');
+                                    btn.addClass('btn btn-lg btn-primary btn-block');
                                 }
                                 if (type === 'block') {
                                     btn.addClass('btn-block');
@@ -40,7 +40,7 @@
 
                                 // add classes common to both block and button styles.  for example, "btn-facebook" and "fa-facebook".
                                 btn.addClass('btn-' + clientSideProviderName);
-                                btn.find('i').addClass("fa-" + clientSideProviderName);
+                                btn.find('i').addClass("fa fa-fw fa-" + clientSideProviderName);
                             }
                         }
                     );

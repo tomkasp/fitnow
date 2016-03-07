@@ -1,23 +1,27 @@
 'use strict';
 
 angular.module('fitnowApp')
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider
+            .otherwise('/app');
         $stateProvider
-            .state('home', {
+            .state('app', {
                 parent: 'site',
-                url: '/',
+                //abstract: true,
+                url: '/app',
                 data: {
                     authorities: []
                 },
                 views: {
                     'content@': {
+                        controller: 'MainController',
                         templateUrl: 'scripts/app/main/main.html',
-                        controller: 'MainController'
                     }
                 },
                 resolve: {
-                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('main');
+                        $translatePartialLoader.addPart('nav');
                         return $translate.refresh();
                     }]
                 }

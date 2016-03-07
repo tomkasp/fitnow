@@ -22,5 +22,16 @@ angular.module('fitnowApp')
                         return $translate.refresh();
                     }]
                 }
+            })
+            .state('app.register-social', {
+                url: '/register-social',
+                templateUrl: 'scripts/app/account/login/social/register-social-new.html',
+                controller: 'RegisterSocialController',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('social');
+                        return $translate.refresh();
+                    }]
+                }
             });
     });

@@ -7,7 +7,7 @@ angular.module('fitnowApp')
                 parent: 'account',
                 url: '/login',
                 data: {
-                    authorities: [], 
+                    authorities: [],
                     pageTitle: 'login.title'
                 },
                 views: {
@@ -16,6 +16,17 @@ angular.module('fitnowApp')
                         controller: 'LoginController'
                     }
                 },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('login');
+                        return $translate.refresh();
+                    }]
+                }
+            })
+            .state('app.login', {
+                url: '/signin',
+                templateUrl: 'scripts/app/account/login/page_signin.html',
+                controller: 'SignInController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('login');

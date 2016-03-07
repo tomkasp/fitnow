@@ -32,10 +32,10 @@ task update(dependsOn: compileJava, type: JavaExec) {
     main = "liquibase.integration.commandline.Main"
 
     args "--changeLogFile=src/main/resources/config/liquibase/master.xml"
-    args "--username=b1f897531870ae"
-    args "--password=0c6bf2f3"
-    args "--url=jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/ad_e69d15bdf0a38a0?user=b1f897531870ae&password=0c6bf2f3"
-    args "--driver=com.mysql.jdbc.Driver"
+    args "--username=postgres"
+    args "--password=builder"
+    args "--url=jdbc:postgresql://localhost/"
+    args "--driver=org.postgresql.Driver"
     args "update"
 
 }

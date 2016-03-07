@@ -22,5 +22,16 @@ angular.module('fitnowApp')
                         return $translate.refresh();
                     }]
                 }
+            })
+            .state('app.register', {
+                url: '/register',
+                templateUrl: 'scripts/app/account/register/page_register.html',
+                controller: 'RegisterControllerFut',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('register');
+                        return $translate.refresh();
+                    }]
+                }
             });
     });

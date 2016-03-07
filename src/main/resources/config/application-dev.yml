@@ -20,10 +20,10 @@ spring:
             enabled: false # we use Grunt + BrowserSync for livereload
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource #org.h2.jdbcx.JdbcDataSource
-        url: jdbc:postgresql://localhost/health
+        url: jdbc:postgresql://localhost/
         name: fitnow
-        username: fitnow
-        password:
+        username: postgres
+        password: builder
     h2:
         console:
             enabled: false

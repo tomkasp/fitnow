@@ -80,7 +80,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('styles', [], function() {
-    return gulp.src(yeoman.app + 'assets/styles/**/*.css').
+    return gulp.src(yeoman.app + 'assets/css/**/*.css').
         pipe(gulp.dest(yeoman.tmp)).
         pipe(browserSync.reload({stream: true}));
 });
@@ -104,7 +104,8 @@ gulp.task('serve', function() {
             '/metrics',
             '/websocket/tracker',
             '/dump',
-            '/console/'
+            '/console/',
+            '/signin/facebook'
         ];
 
         var requireTrailingSlash = proxyRoutes.filter(function (r) {
