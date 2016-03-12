@@ -26,7 +26,7 @@
             "login": "Sign in with Google"
         },
         "facebook": {
-            "register": "Login with Facebook",
+            "register": "Register with Facebook",
             "login": "Sign in with Facebook"
         }
     }

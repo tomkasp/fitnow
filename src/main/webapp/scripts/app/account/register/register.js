@@ -27,9 +27,12 @@ angular.module('fitnowApp')
                 url: '/register',
                 templateUrl: 'scripts/app/account/register/page_register.html',
                 controller: 'RegisterControllerFut',
+                controllerAs: 'vm',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('register');
+                        $translatePartialLoader
+                            .addPart('register')
+                            .addPart('social');
                         return $translate.refresh();
                     }]
                 }

@@ -24,7 +24,7 @@ angular.module('fitnowApp')
                 }
             })
             .state('app.register-social', {
-                url: '/register-social',
+                url: '/register-social2',
                 templateUrl: 'scripts/app/account/login/social/register-social-new.html',
                 controller: 'RegisterSocialController',
                 resolve: {

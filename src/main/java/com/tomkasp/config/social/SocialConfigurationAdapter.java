@@ -79,8 +79,8 @@ public class SocialConfigurationAdapter implements SocialConfigurer {
     @Bean
     public ProviderSignInController providerSignInController(ConnectionFactoryLocator connectionFactoryLocator, UsersConnectionRepository usersConnectionRepository, SignInAdapter signInAdapter) {
         ProviderSignInController providerSigninController = new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, signInAdapter);
-        providerSigninController.setSignUpUrl("/#/register-social");
-        providerSigninController.setSignInUrl("/#/login");
+        providerSigninController.setSignUpUrl("/#/app/register-social");
+        providerSigninController.setSignInUrl("/#/app/signin");
         return providerSigninController;
     }
 

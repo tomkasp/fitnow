@@ -10,6 +10,18 @@
                 "EMAIL": "Email"
             },
             "NOTIFICATIONS": "Notifications"
+        },
+        "aside": {
+            "nav": {
+                "HEADER": "menu",
+                "DASHBOARD": "dashboard",
+                "CALENDAR": "calendar",
+                "EMAIL": "email",
+                "your_stuff": {
+                    "YOUR_STUFF": "Your stuff",
+                    "PROFILE": "Profile"
+                }
+            }
         }
     }
 }

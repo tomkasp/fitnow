@@ -23,10 +23,21 @@ angular.module('fitnowApp')
                     }]
                 }
             })
+            //todo add state logout and logout the user
             .state('app.login', {
                 url: '/signin',
                 templateUrl: 'scripts/app/account/login/page_signin.html',
                 controller: 'SignInController',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('login');
+                        return $translate.refresh();
+                    }]
+                }
+            })
+            .state('app.logout', {
+                url: '/logout',
+                controller: 'LogOutController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('login');

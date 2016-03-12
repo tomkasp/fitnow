@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fitnowApp')
-    .controller('MainController', function ($scope,$translate, Principal) {
+    .controller('MainController', function ($scope,$translate, Principal, AuthServerProvider) {
 
         // config
         $scope.app = {
@@ -62,6 +62,9 @@ angular.module('fitnowApp')
             $scope.lang.isopen = !$scope.lang.isopen;
         };
 
+        $scope.logout = function(){
+            AuthServerProvider.logout();
+        };
         function isSmartDevice( $window )
         {
             // Adapted from http://www.detectmobilebrowsers.com
