@@ -19,7 +19,8 @@
                 "EMAIL": "email",
                 "your_stuff": {
                     "YOUR_STUFF": "Your stuff",
-                    "PROFILE": "Profile"
+                    "PROFILE": "Profile",
+                    "SETTINGS" : "Settings"
                 }
             }
         }

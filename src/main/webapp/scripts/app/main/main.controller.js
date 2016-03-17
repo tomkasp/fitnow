@@ -23,11 +23,11 @@ angular.module('fitnowApp')
                 navbarHeaderColor: 'bg-black',
                 navbarCollapseColor: 'bg-white-only',
                 asideColor: 'bg-black',
-                //headerFixed: true,
-                //asideFixed: false,
-                //asideFolded: false,
-                //asideDock: false,
-                //container: false
+                headerFixed: true,
+                asideFixed: false,
+                asideFolded: false,
+                asideDock: false,
+                container: false
             }
         };
 

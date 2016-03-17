@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('fitnowApp')
-    .config(function (uibPagerConfig) {
-        uibPagerConfig.itemsPerPage = 20;
-        uibPagerConfig.previousText = '«';
-        uibPagerConfig.nextText = '»';
-    });
+    //.config(function (uibPagerConfig) {
+    //    uibPagerConfig.itemsPerPage = 20;
+    //    uibPagerConfig.previousText = '«';
+    //    uibPagerConfig.nextText = '»';
+    //});

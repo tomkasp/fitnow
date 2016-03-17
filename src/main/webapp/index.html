@@ -20,7 +20,7 @@
 </head>
 <body ng-app="fitnowApp">
 
-<div ui-view="navbar" ng-cloak=""></div>
+<!--<div ui-view="navbar" ng-cloak=""></div>-->
 <div class="app" id="app"
      ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}"
      ui-view="content">
@@ -150,12 +150,14 @@
 <script src="scripts/app/admin/user-management/user-management-delete-dialog.controller.js"></script>
 <script src="scripts/app/admin/user-management/user-management.controller.js"></script>
 <script src="scripts/app/admin/user-management/user-management.js"></script>
+<script src="scripts/app/directives/ui-nav.js"></script>
 <script src="scripts/app/entities/entity.js"></script>
 <script src="scripts/app/error/error.js"></script>
 <script src="scripts/app/main/main.route.js"></script>
 <script src="scripts/app/main/main.controller.js"></script>
 <script src="bower_components/messageformat/locale/en.js"></script>
 <script src="bower_components/messageformat/locale/fr.js"></script>
+<script src="scripts/app/profile/profile.route.js"></script>
 <script src="scripts/components/language/language.service.js"></script>
 <script src="scripts/components/language/language.controller.js"></script>
 <script src="scripts/components/auth/services/sessions.service.js"></script>

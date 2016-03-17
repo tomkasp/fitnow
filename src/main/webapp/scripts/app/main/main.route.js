@@ -25,5 +25,11 @@ angular.module('fitnowApp')
                         return $translate.refresh();
                     }]
                 }
-            });
+            })
+            .state('app.todo', {
+                url: '/todo',
+                templateUrl: 'tpl/apps_todo.html',
+                //resolve: load(['js/app/todo/todo.js', 'moment'])
+            })
+        ;
     });
