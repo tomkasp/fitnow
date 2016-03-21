@@ -10,11 +10,14 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),
+    inject = require('gulp-inject'),
     ngAnnotate = require('gulp-ng-annotate'),
     ngConstant = require('gulp-ng-constant-fork'),
+    ngFilesort = require('gulp-angular-filesort'),
     jshint = require('gulp-jshint'),
     rev = require('gulp-rev'),
     proxy = require('proxy-middleware'),
+    path = require('path'),
     es = require('event-stream'),
     flatten = require('gulp-flatten'),
     del = require('del'),
@@ -41,7 +44,7 @@ var endsWith = function (str, suffix) {
 };
 
 // Returns the second occurrence of the version number
-var parseVersionFromBuildGradle = function() {
+var parseVersionFromBuildGradle = function () {
     var versionRegex = /^version\s*=\s*[',"]([^',"]*)[',"]/gm; // Match and group the version number
     var buildGradle = fs.readFileSync('build.gradle', 'utf8');
     return versionRegex.exec(buildGradle)[1];
@@ -55,7 +58,28 @@ gulp.task('clean:tmp', function (cb) {
     del([yeoman.tmp], cb);
 });
 
-gulp.task('test', ['wiredep:test', 'ngconstant:dev'], function(done) {
+gulp.task('inject', function () {
+    var injectScripts = gulp.src([
+        path.join(yeoman.app, 'scripts/**/*.module.js'),
+        path.join(yeoman.app, 'scripts/**/*.js'),
+        path.join('!' + yeoman.app, 'scripts/**/*.spec.js'),
+        path.join('!' + yeoman.app, 'scripts/**/*.mock.js')
+    ])
+        .pipe(ngFilesort()).on('error', function () {
+            gutil.log('angular file sort error');
+        });
+
+    var injectOptions = {
+        ignorePath: [yeoman.app],
+        addRootSlash: false
+    };
+
+    return gulp.src(path.join(yeoman.app, 'index.html'))
+        .pipe(inject(injectScripts, injectOptions))
+        .pipe(gulp.dest(yeoman.app));
+});
+
+gulp.task('test', ['wiredep:test', 'ngconstant:dev'], function (done) {
     new karmaServer({
         configFile: __dirname + '/src/test/javascript/karma.conf.js',
         singleRun: true
@@ -63,30 +87,30 @@ gulp.task('test', ['wiredep:test', 'ngconstant:dev'], function(done) {
 });
 
 
-gulp.task('copy', function() {
+gulp.task('copy', function () {
     return es.merge(  // copy i18n folders only if translation is enabled
         gulp.src(yeoman.app + 'i18n/**').
-        pipe(gulp.dest(yeoman.dist + 'i18n/')),
+            pipe(gulp.dest(yeoman.dist + 'i18n/')),
         gulp.src(yeoman.app + 'assets/**/*.{woff,svg,ttf,eot}').
-        pipe(flatten()).
-        pipe(gulp.dest(yeoman.dist + 'assets/fonts/')));
+            pipe(flatten()).
+            pipe(gulp.dest(yeoman.dist + 'assets/fonts/')));
 });
 
-gulp.task('images', function() {
+gulp.task('images', function () {
     return gulp.src(yeoman.app + 'assets/images/**').
         pipe(imagemin({optimizationLevel: 5})).
         pipe(gulp.dest(yeoman.dist + 'assets/images')).
         pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('styles', [], function() {
+gulp.task('styles', [], function () {
     return gulp.src(yeoman.app + 'assets/css/**/*.css').
         pipe(gulp.dest(yeoman.tmp)).
         pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('serve', function() {
-    runSequence('wiredep:test', 'wiredep:app', 'ngconstant:dev', function () {
+gulp.task('serve', function () {
+    runSequence('wiredep:test', 'wiredep:app', 'ngconstant:dev', 'inject', function () {
         var baseUri = 'http://localhost:' + yeoman.apiPort;
         // Routes to proxy to the backend. Routes ending with a / will setup
         // a redirect so that if accessed without a trailing slash, will
@@ -119,7 +143,7 @@ gulp.task('serve', function() {
         var proxies = [
             // Ensure trailing slash in routes that require it
             function (req, res, next) {
-                requireTrailingSlash.forEach(function(route){
+                requireTrailingSlash.forEach(function (route) {
                     if (url.parse(req.url).path === route) {
                         res.statusCode = 301;
                         res.setHeader('Location', route + '/');
@@ -151,7 +175,7 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch('bower.json', ['wiredep:test', 'wiredep:app']);
     gulp.watch(['gulpfile.js', 'build.gradle'], ['ngconstant:dev']);
     gulp.watch(yeoman.app + 'assets/styles/**/*.css', ['styles']);
@@ -196,7 +220,7 @@ gulp.task('build', function () {
     runSequence('clean', 'copy', 'wiredep:app', 'ngconstant:prod', 'usemin');
 });
 
-gulp.task('usemin', function() {
+gulp.task('usemin', function () {
     runSequence('images', 'styles', function () {
         return gulp.src([yeoman.app + '**/*.html', '!' + yeoman.app + 'bower_components/**/*.html']).
             pipe(usemin({
@@ -220,11 +244,11 @@ gulp.task('usemin', function() {
     });
 });
 
-gulp.task('ngconstant:dev', function() {
+gulp.task('ngconstant:dev', function () {
     return ngConstant({
         dest: 'app.constants.js',
         name: 'fitnowApp',
-        deps:   false,
+        deps: false,
         noFile: true,
         interpolate: /\{%=(.+?)%\}/g,
         wrap: '/* jshint quotmark: false */\n"use strict";\n// DO NOT EDIT THIS FILE, EDIT THE GULP TASK NGCONSTANT SETTINGS INSTEAD WHICH GENERATES THIS FILE\n{%= __ngModule %}',
@@ -233,14 +257,14 @@ gulp.task('ngconstant:dev', function() {
             VERSION: parseVersionFromBuildGradle()
         }
     })
-    .pipe(gulp.dest(yeoman.app + 'scripts/app/'));
+        .pipe(gulp.dest(yeoman.app + 'scripts/app/'));
 });
 
-gulp.task('ngconstant:prod', function() {
+gulp.task('ngconstant:prod', function () {
     return ngConstant({
         dest: 'app.constants.js',
         name: 'fitnowApp',
-        deps:   false,
+        deps: false,
         noFile: true,
         interpolate: /\{%=(.+?)%\}/g,
         wrap: '/* jshint quotmark: false */\n"use strict";\n// DO NOT EDIT THIS FILE, EDIT THE GULP TASK NGCONSTANT SETTINGS INSTEAD WHICH GENERATES THIS FILE\n{%= __ngModule %}',
@@ -249,10 +273,10 @@ gulp.task('ngconstant:prod', function() {
             VERSION: parseVersionFromBuildGradle()
         }
     })
-    .pipe(gulp.dest(yeoman.tmp + 'scripts/app/'));
+        .pipe(gulp.dest(yeoman.tmp + 'scripts/app/'));
 });
 
-gulp.task('jshint', function() {
+gulp.task('jshint', function () {
     return gulp.src(['gulpfile.js', yeoman.app + 'scripts/**/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
@@ -262,6 +286,6 @@ gulp.task('server', ['serve'], function () {
     gutil.log('The `server` task has been deprecated. Use `gulp serve` to start a server');
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     runSequence('serve');
 });

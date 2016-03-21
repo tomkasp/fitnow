@@ -1,0 +1,33 @@
+<div ui-view="view2"></div>
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false;
+    app.settings.asideDock = false;
+  ">
+
+    <!-- main -->
+    <div class="col">
+        <!--MAIN HEADER-->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black" translate="dashboard.main.TITLE">Fitnow Dasboard</h1>
+                    <small class="text-muted" translate="dashboard.main.WELCOME">Welcome to fitnow application</small>
+                </div>
+
+            </div>
+        </div>
+        <!--END OFMAIN HEADER-->
+
+        <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+            <div class="row">
+                <div class="col-md-4">
+                    <div ui-view="nutrition"></div>
+                </div>
+                <div class="col-md-8">
+                    <div ui-view="nutritionGraph"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
