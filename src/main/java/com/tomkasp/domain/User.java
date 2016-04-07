@@ -34,7 +34,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     @Column(name = "password_hash",length = 60)
     private String password;
 
@@ -69,6 +69,18 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Column(name = "reset_date", nullable = true)
     private ZonedDateTime resetDate = null;
+
+    @Column(name = "calories")
+    private Integer calories;
+
+    @Column(name = "proteins")
+    private Integer proteins;
+
+    @Column(name = "fats")
+    private Integer fats ;
+
+    @Column(name = "carbohydrates")
+    private Integer carbohydrates;
 
     @JsonIgnore
     @ManyToMany
@@ -170,6 +182,38 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setLangKey(String langKey) {
         this.langKey = langKey;
+    }
+
+    public Integer getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Integer calories) {
+        this.calories = calories;
+    }
+
+    public Integer getFats() {
+        return fats;
+    }
+
+    public void setFats(Integer fats) {
+        this.fats = fats;
+    }
+
+    public Integer getProteins() {
+        return proteins;
+    }
+
+    public void setProteins(Integer proteins) {
+        this.proteins = proteins;
+    }
+
+    public Integer getCarbohydrates() {
+        return carbohydrates;
+    }
+
+    public void setCarbohydrates(Integer carbohydrates) {
+        this.carbohydrates = carbohydrates;
     }
 
     public Set<Authority> getAuthorities() {

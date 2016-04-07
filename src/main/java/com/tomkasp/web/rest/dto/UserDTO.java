@@ -5,6 +5,7 @@ import com.tomkasp.domain.User;
 
 import org.hibernate.validator.constraints.Email;
 
+import javax.persistence.Column;
 import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +18,7 @@ public class UserDTO {
 
     public static final int PASSWORD_MIN_LENGTH = 5;
     public static final int PASSWORD_MAX_LENGTH = 100;
+    public static final int PERCENTAGE_MAX = 100;
 
     @Pattern(regexp = "^[a-z0-9]*$")
     @NotNull
@@ -37,6 +39,17 @@ public class UserDTO {
     @Size(min = 5, max = 100)
     private String email;
 
+    private Integer calories;
+
+    @Max(PERCENTAGE_MAX)
+    private Integer proteins;
+
+    @Max(PERCENTAGE_MAX)
+    private Integer fats ;
+
+    @Max(PERCENTAGE_MAX)
+    private Integer carbohydrates;
+
     private boolean activated = false;
 
     @Size(min = 2, max = 5)
@@ -56,7 +69,7 @@ public class UserDTO {
                 .collect(Collectors.toSet()));
     }
 
-    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey,
+    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey, Integer calories, Integer proteins, Integer fats, Integer carbohydrates,
                    Set<String> roles, Set<ExternalAccountDTO> externalAccounts) {
         this.login = login;
         this.password = password;
@@ -65,14 +78,18 @@ public class UserDTO {
         this.email = email;
         this.langKey = langKey;
         this.authorities = roles;
+        this.calories = calories;
+        this.proteins = proteins;
+        this.fats = fats;
+        this.carbohydrates = carbohydrates;
         if (externalAccounts != null) {
             this.externalAccounts.addAll(externalAccounts);
         }
     }
 
-    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey,
+    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey, Integer calories, Integer proteins, Integer fats, Integer carbohydrates,
                    Set<String> roles) {
-        this(login, password, firstName, lastName, email, langKey, roles, null);
+        this(login, password, firstName, lastName, email, langKey, calories, proteins, fats, carbohydrates, roles, null);
     }
 
     public UserDTO(String login, String firstName, String lastName, String email, ExternalAccountDTO externalAccount) {
@@ -134,17 +151,37 @@ public class UserDTO {
         return externalAccounts;
     }
 
+    public Integer getCalories() {
+        return calories;
+    }
+
+    public Integer getCarbohydrates() {
+        return carbohydrates;
+    }
+
+    public Integer getFats() {
+        return fats;
+    }
+
+    public Integer getProteins() {
+        return proteins;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
-            "login='" + login + '\'' +
+            "activated=" + activated +
+            ", login='" + login + '\'' +
             ", password='" + password + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
-            ", activated=" + activated +
+            ", calories=" + calories +
+            ", proteins=" + proteins +
+            ", fats=" + fats +
+            ", carbohydrates=" + carbohydrates +
             ", langKey='" + langKey + '\'' +
             ", authorities=" + authorities +
-            "}";
+            '}';
     }
 }

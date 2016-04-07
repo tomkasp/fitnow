@@ -1,4 +1,4 @@
-/* 
+/*
 
 */
 
@@ -2559,7 +2559,7 @@ fieldset[disabled] .btn-black.active {
 }
 
 .i-checks input:checked + i {
-  border-color: #23b7e5;
+  border-color: #27c24c;
 }
 
 .i-checks input:checked + i:before {
@@ -2567,7 +2567,7 @@ fieldset[disabled] .btn-black.active {
   left: 4px;
   width: 10px;
   height: 10px;
-  background-color: #23b7e5;
+  background-color: #27c24c;
 }
 
 .i-checks input:checked + span .active {

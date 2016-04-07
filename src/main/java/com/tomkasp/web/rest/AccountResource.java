@@ -171,6 +171,10 @@ public class AccountResource {
                         user.getLastName(),
                         user.getEmail(),
                         user.getLangKey(),
+                        user.getCalories(),
+                        user.getProteins(),
+                        user.getFats(),
+                        user.getCarbohydrates(),
                         user.getAuthorities().stream().map(Authority::getName)
                             .collect(Collectors.toSet())),
                     HttpStatus.OK);
