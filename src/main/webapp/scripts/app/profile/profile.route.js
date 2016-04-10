@@ -9,7 +9,9 @@ angular.module('fitnowApp')
             })
             .state('app.profile.settings', {
                 url: '/settings',
-                templateUrl: 'scripts/app/profile/questions-form.html',
+                templateUrl: 'scripts/app/profile/user-profile.html',
+                controller: 'UserProfileController',
+                controllerAs: 'vm',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('login');

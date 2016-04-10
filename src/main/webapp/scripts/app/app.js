@@ -11,7 +11,8 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'angular-loading-bar',
     'oc.lazyLoad',
 
-    'fitnowApp.dashboard'
+    'fitnowApp.dashboard',
+    'fitnowApp.profile'
     ])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {
