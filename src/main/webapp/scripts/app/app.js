@@ -10,10 +10,14 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'infinite-scroll',
     'angular-loading-bar',
     'oc.lazyLoad',
-
+    'toaster',
     'fitnowApp.dashboard',
-    'fitnowApp.profile'
-    ])
+    'fitnowApp.profile',
+
+    'blocks.logger',
+    'blocks.exception'
+
+])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {
         // update the window title using params in the following

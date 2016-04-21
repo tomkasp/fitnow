@@ -7,41 +7,59 @@
 
 
     /* @ngInject */
-    function UserProfileController() {
+    function UserProfileController($scope, profileModel, logger, profileDataservice, caloriesCalculatorService) {
         var vm = this;
         vm.submit = submit;
         vm.getCssClasses = getCssClasses;
         vm.showError = showError;
 
-        vm.userProfile = {
-            sex: 0,
-            age: 0,
-            weight: 0,
-            height: 0,
-            goal: {
-                id: '0',
-                name: 'Loose weight'
-            },
-            caloriesDemand: 2500,
-            weightChangeQuantity: 0
-        };
+        vm.userProfile = profileModel;
 
         vm.goalOptions =  [
-            {id: '0', name: 'Loose weight'},
-            {id: '1', name: 'Gain muscles'}
+            {id: '0', name: 'Loose weight', enumValue: 'LOOSE'},
+            {id: '1', name: 'Gain muscles', enumValue: 'GAIN'}
         ];
+
+        vm.dailyActivityOptions =  [
+            {id: '0', name: 'Small'},
+            {id: '1', name: 'Medium'},
+            {id: '2', name: 'High'},
+            {id: '3', name: 'Very High'}
+        ];
+
+        $scope.$watch('vm.userProfile', function(newValue, oldValue){
+            var caloriesCalculations = caloriesCalculatorService.calculateCalories(vm.userProfile);
+            vm.userProfile.totalCaloriesDemand = caloriesCalculations.totalCaloriesDemand;
+            vm.userProfile.caloriesDemand = caloriesCalculations.caloriesDemand;
+            vm.userProfile.caloriesDeficit = caloriesCalculations.caloriesDeficit;
+        }, true);
+
+        angular.element("#slider").on('slideStop', function(data){
+            updateModel(data.value);
+        });
 
         activate();
 
         ////////////////
 
         function activate() {
+            vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
+        }
 
+        function updateModel(val){
+            $scope.$apply(function(){
+                vm.userProfile.weightChangeQuantity = val;
+            });
         }
 
         function submit() {
-            console.log(vm);
-            console.log('submit');
+            logger.info(vm);
+            vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
+            if(vm.userProfile.id == null){
+                profileDataservice.createProfile(vm.userProfile);
+            }else{
+                profileDataservice.updateProfile(vm.userProfile);
+            }
         }
 
          function getCssClasses (ngModelController) {

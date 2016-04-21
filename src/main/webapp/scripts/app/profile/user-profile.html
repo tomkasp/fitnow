@@ -106,7 +106,7 @@
                                     <label class="col-lg-5 control-label" style="font-size: 20px">Body weight</label>
 
                                     <div class="col-lg-7">
-                                        <div class="col-lg-5"><input ng-model="vm.userProfile.weight" name="weight" required type="number" class="form-control" placeholder="weight"></div>
+                                        <div class="col-lg-5"><input ng-model="vm.userProfile.weight" name="weight" required type="number" class="form-control"></div>
 
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
 
                                     <div class="col-lg-7">
                                         <div class="col-lg-5">
-                                            <input ng-model="vm.userProfile.age" name="age" type="number" required class="form-control" placeholder="age">
+                                            <input value="30" ng-model="vm.userProfile.age" name="age" type="number" required class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -124,11 +124,50 @@
 
                                     <div class="col-lg-7">
                                         <div class="col-lg-5">
-                                            <input type="number" ng-model="vm.userProfile.height" class="form-control" placeholder="height">
+                                            <input  type="number" ng-model="vm.userProfile.height" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-5 control-label" style="font-size: 20px">Daily activity</label>
+
+                                    <div class="col-lg-7">
+                                        <div class="col-lg-5">
+                                            <select name="dailyActivity" class="form-control"
+                                                    ng-options="option.name for option in vm.dailyActivityOptions track by option.id"
+                                                    ng-model="vm.userProfile.dailyActivity">
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
 
+
+                                <div class="wrapper-lg text-center">
+                                    <div class="form-group ">
+                                        <div class="col-lg-offset-2"><label class="col-lg-4 control-label">
+                                            <h3 class="text-center">I want to {{vm.userProfile.goal.name}}</h3>
+                                        </label>
+
+                                            <div class="col-lg-8 w-md" style="margin-top: 40px">
+                                                <input id="slider" ui-jq="slider"
+                                                       ui-options="
+                                                       {
+                                                        min: 0, max: 20,
+                                                        step: 1,
+                                                        value: {{vm.userProfile.weightChangeQuantity}}
+                                                       }"
+                                                       class="slider slider-horizontal form-control" type="text"> {{vm.userProfile.weightChangeQuantity}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h3 class="m-t-none"><p>Your total calories demand is: <a class="text-success font-bold"> {{vm.userProfile.totalCaloriesDemand}} kcal/per day</a></p></h3>
+                                    <div>
+                                        <h3><p>Your calories deficit is <a class="text-success font-bold">{{vm.userProfile.caloriesDeficit}} kcal/per day</a> kcal
+                                            <br><br>
+                                            Your daily calories demand<br>
+                                            before exercise is <a class="text-success font-bold"> {{vm.userProfile.caloriesDemand}} kcal/per day</a></p></h3>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-5 col-lg-10">
                                         <div class="col-lg-5">
@@ -138,29 +177,6 @@
                                 </div>
                             </form>
                         </div>
-                        <form class="bs-example form-horizontal">
-                            <div class="wrapper-lg text-center">
-                                <h3 class="m-t-none"><p>Your total calories demand is: <a class="text-success font-bold"> {{vm.userProfile.caloriesDemand}} kcal/per day</a></p></h3>
-                                <div class="form-group ">
-                                    <div class="col-lg-offset-2"><label class="col-lg-4 control-label">
-                                        <h3 class="text-center">I want to {{vm.userProfile.goal.name}}</h3>
-                                    </label>
-
-                                        <div class="col-lg-8 w-md" style="margin-top: 40px">
-                                            <input id="slider" ui-jq="slider" ui-options="{min: 0, max: 20, step: 1, value: {{vm.userProfile.weightChangeQuantity}} }"
-                                                   class="slider slider-horizontal form-control" type="text"> {{vm.userProfile.weightChangeQuantity}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3><p>Your calories deficit is <a class="text-success font-bold">500 kcal/per day</a> kcal
-                                        <br><br>
-                                        Your daily calories demand<br>
-                                        before exercise is <a class="text-success font-bold"> 2010 kcal/per day</a></p></h3>
-                                </div>
-                                <button type="submit" class="btn  btn-success btn-lg">Save</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
