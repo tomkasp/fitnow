@@ -16,27 +16,26 @@
     <!--
         Added the entity Meal.
     -->
-    <changeSet id="profile" author="tomkasp">
-        <createTable tableName="profile">
+    <changeSet id="body_size" author="tomkasp">
+        <createTable tableName="body_size">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints nullable="false"/>
             </column>
-            <column name="sex" type="varchar(255)"/>
-            <column name="goal" type="varchar(255)"/>
-            <column name="daily_activity" type="varchar(255)"/>
-            <column name="age" type="integer"/>
-            <column name="weight" type="integer"/>
-            <column name="height" type="integer"/>
-            <column name="weight_difference" type="integer"/>
+            <column name="waist" type="integer"/>
+            <column name="thigh" type="integer"/>
+            <column name="chest" type="integer"/>
+            <column name="hip" type="integer"/>
+            <column name="arm" type="integer"/>
+            <column name="neck" type="integer"/>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="profile"
-                                 constraintName="fk_profile_user_id"
+                                 baseTableName="body_size"
+                                 constraintName="fk_body_size_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
     </changeSet>

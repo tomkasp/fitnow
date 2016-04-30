@@ -1,0 +1,108 @@
+<div class="panel panel-default">
+    <div class="panel-heading font-bold">
+                        <span class="text-lt">Nutrition progress
+                        </span>
+    </div>
+    <div class="panel-body text-center">
+        <h3 class="m-t-none"><p>Your total calories demand is: <br>
+            <a class="text-success font-bold"> 121 kcal/per day</a></p></h3>
+        <!--<div>-->
+        <!--<h3><p>Your calories deficit is <a class="text-success font-bold">{{vm.userProfile.caloriesDeficit}} kcal/per day</a> kcal-->
+        <!--<br><br>-->
+        <!--Your daily calories demand<br>-->
+        <!--before exercise is <a class="text-success font-bold"> {{vm.userProfile.caloriesDemand}} kcal/per day</a></p></h3>-->
+        <!--</div>-->
+    </div>
+    <!--<div class="line b-b line-lg pull-in"></div>-->
+    <div class="list-group-item text-center">
+        <progressbar animate="false" value="25" type="success"><b>25%</b></progressbar>
+
+        <div>
+            <h3 class="m-t-none"><p>Today left: <a class="text-success font-bold"> 500 kcal</a></p></h3>
+        </div>
+        <div class="row b-t b-b">
+            <div class="col-sm-6 b-r">
+                <h3 class="m-t-none"><p>Burn: <a class="text-success font-bold"> 500 kcal</a></p></h3>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="m-t-none"><p>Eaten: <a class="text-success font-bold"> 500 kcal</a></p></h3>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--<div class="panel-body">-->
+    <!--<div class="embed-responsive embed-responsive-16by9">-->
+    <!--<iframe src="https://www.youtube.com/embed/_LUfA4Yo1Ws" frameborder="0" allowfullscreen></iframe>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="panel">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">
+                        Nutrition goals
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4>
+                            <small>last</small>
+                            24
+                            <small> hrs</small>
+                        </h4>
+                        <small class="text-muted block">yesterday: 20%</small>
+                        <div class="inline">
+                            <div ui-jq="easyPieChart" ui-options="{
+                      percent: 25,
+                      lineWidth: 10,
+                      trackColor: '#e8eff0',
+                      barColor: '#27c24c',
+                      scaleColor: '#e8eff0',
+                      size: 188,
+                      lineCap: 'butt',
+                      animate: 1000
+                    }">
+                                <div>
+                                    <span class="h2 m-l-sm step">25</span>%
+                                    <div class="text text-sm">today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">
+                        Training goals
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4>
+                            <small>last</small>
+                            24
+                            <small> hrs</small>
+                        </h4>
+                        <small class="text-muted block">yesterday: 20%</small>
+                        <div class="inline">
+                            <div ui-jq="easyPieChart" ui-options="{
+                      percent: 25,
+                      lineWidth: 10,
+                      trackColor: '#e8eff0',
+                      barColor: '#23b7e5',
+                      scaleColor: '#e8eff0',
+                      size: 188,
+                      lineCap: 'butt',
+                      animate: 1000
+                    }">
+                                <div>
+                                    <span class="h2 m-l-sm step">25</span>%
+                                    <div class="text text-sm">today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

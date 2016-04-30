@@ -1,0 +1,117 @@
+<!--////////////////BMR CALCULATION FORM//////////////////////////-->
+<!--<div class="col-sm-8">-->
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Your daily calories need (BMR):</div>
+
+        <img src="assets/img/couple.png" class="img-full">
+
+        <div class="panel-body">
+            <div class="panel-body">
+                <form name="userProfileForm" class="bs-example form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label" style="font-size: 20px">Sex</label>
+
+                        <div class="col-lg-7">
+                            <label class="checkbox-inline i-checks">
+                                <input type="radio" name="a" value="0" ng-model="vm.userProfile.sex">
+                                <i></i>
+                                Male
+                            </label>
+                            <label class="checkbox-inline  i-checks">
+                                <input type="radio" name="a" value="1" ng-model="vm.userProfile.sex" checked>
+                                <i></i>
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label" style="font-size: 20px">Goal</label>
+
+                        <div class="col-lg-7">
+                            <div class="col-lg-5">
+                                <select name="goal" class="form-control"
+                                        ng-options="option.name for option in vm.goalOptions track by option.id"
+                                        ng-model="vm.userProfile.goal">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label" style="font-size: 20px">Body weight</label>
+
+                        <div class="col-lg-7">
+                            <div class="col-lg-5"><input ng-model="vm.userProfile.weight" min="20" max="500" name="weight" required type="number" class="form-control"></div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label" style="font-size: 20px">Age</label>
+
+                        <div class="col-lg-7">
+                            <div class="col-lg-5">
+                                <input value="30" min="10" max="80" ng-model="vm.userProfile.age" name="age" type="number" required class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label" style="font-size: 20px">Height</label>
+
+                        <div class="col-lg-7">
+                            <div class="col-lg-5">
+                                <input  type="number" min="5" max="300" ng-model="vm.userProfile.height" required class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label" style="font-size: 20px">Daily activity</label>
+
+                        <div class="col-lg-7">
+                            <div class="col-lg-5">
+                                <select name="dailyActivity" class="form-control"
+                                        ng-options="option.name for option in vm.dailyActivityOptions track by option.id"
+                                        ng-model="vm.userProfile.dailyActivity">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="wrapper-lg text-center">
+                        <div class="form-group ">
+                            <div class="col-lg-offset-2"><label class="col-lg-4 control-label">
+                                <h3 class="text-center">I want to {{vm.userProfile.goal.name}}</h3>
+                            </label>
+
+                                <div class="col-lg-8 w-md" style="margin-top: 40px">
+                                    <input id="slider" ui-jq="slider"
+                                           ui-options="
+                                                       {
+                                                        min: 0, max: 20,
+                                                        step: 1,
+                                                        value: {{vm.userProfile.weightChangeQuantity}}
+                                                       }"
+                                           class="slider slider-horizontal form-control" type="text"> {{vm.userProfile.weightChangeQuantity}}
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="m-t-none"><p>Your total calories demand is: <a class="text-success font-bold"> {{vm.userProfile.totalCaloriesDemand}} kcal/per day</a></p></h3>
+                        <div>
+                            <h3><p>Your calories deficit is <a class="text-success font-bold">{{vm.userProfile.caloriesDeficit}} kcal/per day</a> kcal
+                                <br><br>
+                                Your daily calories demand<br>
+                                before exercise is <a class="text-success font-bold"> {{vm.userProfile.caloriesDemand}} kcal/per day</a></p></h3>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-5 col-lg-10">
+                            <div class="col-lg-5">
+                                <button type="submit" ng-disabled="!vm.canSave()" ng-click="vm.submit()" class="btn btn-lg btn-success">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+<!--//////////////////////END OF BMR CALCULATION FORM//////////////////////////////-->

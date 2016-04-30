@@ -21,8 +21,8 @@
             "your_stuff": {
                 "YOUR_STUFF": "Your stuff",
                 "PROFILE": "Profile",
-                "SETTINGS" : "Settings",
-                "QUESTIONS" : "Questions"
+                "CALCULATOR" : "Calculator",
+                "PROGRESS" : "Progress"
             }
         }
     }

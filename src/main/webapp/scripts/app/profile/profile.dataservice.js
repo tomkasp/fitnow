@@ -6,10 +6,10 @@
         .factory('profileDataservice', profileDataservice);
 
     /* @ngInject */
-    function profileDataservice($http, $location, exception) {
+    function profileDataservice($http, $location, exception, profileModel) {
 
         var service = {
-            getProfile: getProfile,
+            getMineProfile: getMineProfile,
             createProfile: createProfile,
             updateProfile: updateProfile,
             deleteProfile: deleteProfile
@@ -17,46 +17,50 @@
 
         return service;
 
-        function getProfile(profileId) {
-            return $http.get('/api/profiles/' + profileId)
+        function getMineProfile() {
+            return $http.get('/api/profilemine')
                 .then(getProfileComplete)
-                .catch(function(message) {
-                    exception.catcher('XHR Failed for profile data')(message);
-                    $location.url('/');
-                });
+                .catch(getProfileFailed);
 
-            function getProfileComplete(data, status, headers, config) {
-                return data;
+            function getProfileFailed(response) {
+                if (response.status == '404') {
+                    return profileModel;
+                }
+                exception.catcher('XHR Failed for profile data')(message);
+            }
+
+            function getProfileComplete(response) {
+                return response.data;
             }
         }
 
         function createProfile(profile) {
             return $http.post('/api/profiles/', profile)
                 .then(createProfileComplete)
-                .catch(function(message) {
+                .catch(function (message) {
                     exception.catcher('XHR Failed for profile data')(message);
                     $location.url('/');
                 });
 
-            function createProfileComplete(data, status, headers, config) {
-                return data;
+            function createProfileComplete(response) {
+                return response.data;
             }
         }
 
         function updateProfile(profile) {
             return $http.put('/api/profiles/', profile)
                 .then(updateProfileComplete)
-                .catch(function(message) {
+                .catch(function (message) {
                     exception.catcher('XHR Failed for profile data')(message);
                     $location.url('/');
                 });
 
-            function updateProfileComplete(data, status, headers, config) {
-                return data;
+            function updateProfileComplete(response) {
+                return response.data;
             }
         }
 
-        function deleteProfile(){
+        function deleteProfile() {
 
         }
     }

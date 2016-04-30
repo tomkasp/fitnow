@@ -1,0 +1,82 @@
+<div class="wrapper-md" ng-init="app.settings.container = false;">
+
+    <div class="col">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div style="background:url(assets/img/c4.jpg) center center; background-size:cover">
+                        <div class="wrapper-lg bg-white-opacity">
+                            <div class="row m-t">
+                                <a href class="thumb-lg pull-left m-r">
+                                    <img src="assets/img/a0.jpg" class="img-circle">
+                                </a>
+
+                                <div class="clear m-b">
+                                    <div class="m-b m-t-sm">
+                                        <span class="h3 text-black">John.Smith</span>
+                                        <small class="m-l">London, UK</small>
+                                    </div>
+                                    <p class="m-b">
+                                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-twitter"></i></a>
+                                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-facebook"></i></a>
+                                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-google-plus"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--////////////////SIZES///////////-->
+                <div ui-view="bodysizes"></div>
+
+                <!--///////////////END SIZEZ///////////////// -->
+
+                <div class="panel b-a">
+                    <div class="panel-heading font-bold">
+                        <span class="text-lt">Information video
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="https://www.youtube.com/embed/_LUfA4Yo1Ws" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel wrapper" ng-controller="FlotChartDemoCtrl">
+                    <label class="i-switch bg-warning pull-right" ng-init="showSpline=true">
+                        <input type="checkbox" ng-model="showSpline">
+                        <i></i>
+                    </label>
+                    <h4 class="font-thin m-t-none m-b text-muted">Latest Campaign</h4>
+
+                    <div ui-jq="plot" ui-refresh="showSpline" ui-options="
+              [
+                { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: true, tension: 0.4, lineWidth: 1, fill: 0.8 } },
+                { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: true, tension: 0.4, lineWidth: 1, fill: 0.8 } }
+              ],
+              {
+                colors: ['{{app.color.info}}', '{{app.color.primary}}'],
+                series: { shadowSize: 3 },
+                xaxis:{ font: { color: '#a1a7ac' } },
+                yaxis:{ font: { color: '#a1a7ac' }, max:20 },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
+                tooltip: true,
+                tooltipOpts: { content: 'Visits of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
+              }
+            " style="height:246px">
+                    </div>
+                </div>
+            </div>
+            <!--////////////////BMR CALCULATION FORM//////////////////////////-->
+
+
+            <div class="col-sm-8" ui-view="profile">
+
+            </div>
+            <!--//////////////////////END OF BMR CALCULATION FORM//////////////////////////////-->
+        </div>
+    </div>
+</div>
+
+

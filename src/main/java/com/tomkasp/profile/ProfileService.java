@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -33,11 +33,17 @@ public class ProfileService {
         this.userService = userService;
     }
 
+    public ProfileOutDTO findMine() {
+        log.debug("Request to find logged user Profile");
+        final Long id = userService.getUserWithAuthorities().getId();
+        return profileRepository.findByUserId(id).map(profileMapperImpl::profileToProfileOutDTO).orElse(null);
+    }
+
     public ProfileOutDTO findOne(Long id) {
         log.debug("Request to find Profile : {}", id);
         Profile profile = profileRepository.findOne(id);
-        ProfileOutDTO profileInDTO = profileMapperImpl.profileToProfileOutDTO(profile);
-        return profileInDTO;
+        return Optional.ofNullable(profile).map(profileMapperImpl::profileToProfileOutDTO
+        ).orElse(null);
     }
 
 

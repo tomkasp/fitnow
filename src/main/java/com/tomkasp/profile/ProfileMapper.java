@@ -3,9 +3,8 @@ package com.tomkasp.profile;
 import org.mapstruct.Mapper;
 
 /**
- * @author Tomasz Kasprzycki (A042191)
+ * @author Tomasz Kasprzycki
  */
-@Mapper(componentModel = "spring", uses = {})
 public interface ProfileMapper {
 
     ProfileOutDTO profileToProfileOutDTO(Profile profile);

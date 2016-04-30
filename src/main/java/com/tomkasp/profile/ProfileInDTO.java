@@ -1,5 +1,7 @@
 package com.tomkasp.profile;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,12 +12,29 @@ import java.util.Map;
 public class ProfileInDTO implements Serializable {
 
     private Long id;
+
+    @NotNull
     private Integer weight;
+
+    @NotNull
     private String sex;
+
+    @NotNull
+    @Max(value = 120)
     private Integer age;
+
+    @NotNull
+    @Max(value = 500)
     private Integer height;
+
+    @NotNull
+    @Max(value = 100)
     private Integer weightChangeQuantity;
+
+    @NotNull
     private DailyActivity dailyActivity;
+
+    @NotNull
     private Goal goal;
 
     private static final class DailyActivity {

@@ -34,6 +34,7 @@
 
 
         function calculatePValue(age, sex) {
+            if (isNaN(age) || age < 10) return 0;
             var index = Math.floor(age / 10) - 1;
             var sexValue = 'male';
             if (sex == 0) {
@@ -52,11 +53,17 @@
             ];
 
             var pValue = (values[index])[sexValue];
+
+
             return pValue;
         }
 
         function calculateSValue(height, weight) {
-            return (0.0167 * Math.sqrt(height * weight)).toFixed(2);
+            var sValue = (0.0167 * Math.sqrt(height * weight)).toFixed(2);
+
+            if (isNaN(sValue)) return 0;
+
+            return sValue;
         }
 
         function calculatePALValue(dailyActivity) {

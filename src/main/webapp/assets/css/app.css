@@ -5083,6 +5083,8 @@ a.text-#000000:hover {
           animation: movingbar 0.75s infinite;
 }
 
+input.ng-invalid.ng-dirty { border: solid red 1px; }
+
 /* Moving bar */
 
 @-webkit-keyframes movingbar {
