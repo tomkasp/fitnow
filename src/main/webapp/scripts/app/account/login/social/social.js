@@ -24,8 +24,8 @@ angular.module('fitnowApp')
                 }
             })
             .state('app.register-social', {
-                url: '/register-social2',
-                templateUrl: 'scripts/app/account/login/social/register-social-new.html',
+                url: '/register-social',
+                templateUrl: 'scripts/app/account/login/social/register-social.html',
                 controller: 'RegisterSocialController',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
