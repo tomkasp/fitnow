@@ -6,7 +6,7 @@
         .factory('bodySizesService', bodySizesService);
 
     /* @ngInject */
-    function bodySizesService($http, $location, exception) {
+    function bodySizesService($http, $location, exception, toaster) {
         var service = {
             getBodySizes: getBodySizes,
             saveBodySizes: saveBodySizes
@@ -62,6 +62,7 @@
                 });
 
             function createBodySizeCompleted(response) {
+                toaster.pop('success', '', 'Body sizes updated');
                 return response.data;
             }
         }

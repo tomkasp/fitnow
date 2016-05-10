@@ -6,7 +6,7 @@
         .factory('profileDataservice', profileDataservice);
 
     /* @ngInject */
-    function profileDataservice($http, $location, exception, profileModel) {
+    function profileDataservice($http, $location, exception, profileModel, toaster) {
 
         var service = {
             getMineProfile: getMineProfile,
@@ -38,7 +38,7 @@
             return $http.post('/api/profiles/', profile)
                 .then(createProfileComplete)
                 .catch(function (message) {
-                    exception.catcher('XHR Failed for profile data')(message);
+                    //exception.catcher('XHR Failed for profile data')(message);
                     $location.url('/');
                 });
 
@@ -52,10 +52,11 @@
                 .then(updateProfileComplete)
                 .catch(function (message) {
                     exception.catcher('XHR Failed for profile data')(message);
-                    $location.url('/');
+                    //$location.url('/');
                 });
 
             function updateProfileComplete(response) {
+                toaster.pop('success', '', 'Profile updated');
                 return response.data;
             }
         }

@@ -36,7 +36,7 @@ public class ProfileService {
     public ProfileOutDTO findMine() {
         log.debug("Request to find logged user Profile");
         final Long id = userService.getUserWithAuthorities().getId();
-        return profileRepository.findByUserId(id).map(profileMapperImpl::profileToProfileOutDTO).orElse(null);
+        return profileRepository.findByUserId(id).map(profileMapperImpl::profileToProfileOutDTO).orElse(profileMapperImpl.emptyProfileOutDTO());
     }
 
     public ProfileOutDTO findOne(Long id) {

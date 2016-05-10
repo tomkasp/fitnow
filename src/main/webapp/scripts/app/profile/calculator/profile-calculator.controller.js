@@ -73,7 +73,6 @@
         }
 
         function submit() {
-            logger.info(vm);
             vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
             if (vm.userProfile.id == null) {
                 profileDataservice.createProfile(vm.userProfile);

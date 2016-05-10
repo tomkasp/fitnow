@@ -41,6 +41,14 @@ public class ProfileMapperImpl implements ProfileMapper {
         return profileOutDTO;
     }
 
+    public ProfileOutDTO emptyProfileOutDTO() {
+        ProfileOutDTO profileOutDTO = new ProfileOutDTO();
+        profileOutDTO.setGoal(convertGoal(Goal.LOOSE))
+            .setSex(convertSex(Sex.MALE))
+            .setDailyActivity(convertDailyActivity(DailyActivity.SMALL));
+        return profileOutDTO;
+    }
+
 
     @Override
     public Profile profileInDTOToProfile(ProfileInDTO profileInDTO) {
@@ -65,7 +73,7 @@ public class ProfileMapperImpl implements ProfileMapper {
     }
 
     private String convertSex(Sex sex) {
-        if(sex.equals(Sex.MALE)){
+        if (sex.equals(Sex.MALE)) {
             return "0";
         }
         return "1";

@@ -9,6 +9,9 @@ angular.module('fitnowApp')
             })
             .state('app.profile.calculator', {
                 url: '/calculator',
+                data: {
+                    authorities: []
+                },
                 views: {
                     bodysizes: {
                         templateUrl: 'scripts/app/profile/body-sizes/body-sizes.html',
@@ -21,9 +24,6 @@ angular.module('fitnowApp')
                         controllerAs: 'vm'
                     }
                 },
-                //templateUrl: 'scripts/app/profile/user-profile.html',
-                //controller: 'UserProfileController',
-                //controllerAs: 'vm',
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('login');
@@ -44,14 +44,4 @@ angular.module('fitnowApp')
                     }
                 }
             });
-        //.state('app.profile.profileQuestions', {
-        //    url: '/questions',
-        //    templateUrl: 'scripts/app/profile/questions-form.html',
-        //    resolve: {
-        //        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-        //            $translatePartialLoader.addPart('login');
-        //            return $translate.refresh();
-        //        }]
-        //    }
-        //})
     });

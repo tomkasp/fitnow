@@ -20,7 +20,11 @@
                 rememberMe: $scope.rememberMe
             }).then(function () {
                 $scope.authenticationError = false;
+                if ($rootScope.previousStateName === 'register') {
                     $state.go('app');
+                } else {
+                    $rootScope.back();
+                }
             }).catch(function () {
                 $scope.authenticationError = true;
             });

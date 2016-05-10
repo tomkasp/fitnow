@@ -26,7 +26,6 @@
         }
 
         function saveSizes(){
-            toaster.pop('success', 'title', 'text');
             return bodySizesService.saveBodySizes(vm.size).then(function(data){
                  vm.size = data;
              });
