@@ -27,11 +27,7 @@
                     </div>
                 </div>
 
-                <!--////////////////SIZES///////////-->
-                <div ui-view="bodysizes"></div>
-
-                <!--///////////////END SIZEZ///////////////// -->
-
+                <!--////////////////Youtube video///////////-->
                 <div class="panel b-a">
                     <div class="panel-heading font-bold">
                         <span class="text-lt">Information video
@@ -43,28 +39,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel wrapper" ng-controller="FlotChartDemoCtrl">
-                    <label class="i-switch bg-warning pull-right" ng-init="showSpline=true">
-                        <input type="checkbox" ng-model="showSpline">
-                        <i></i>
-                    </label>
-                    <h4 class="font-thin m-t-none m-b text-muted">Latest Campaign</h4>
+                <!--////////////////END Youtube video///////////-->
 
-                    <div ui-jq="plot" ui-refresh="showSpline" ui-options="
+                <!--////////////////SIZES///////////-->
+                <div ui-view="bodysizes"></div>
+
+                <!--///////////////END SIZEZ///////////////// -->
+
+
+                <div class="panel wrapper" ng-controller="FlotChartDemoCtrl">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Waist</div>
+                        <div class="panel-body">
+                            <div ui-jq="plot" ui-options="
               [
-                { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: true, tension: 0.4, lineWidth: 1, fill: 0.8 } },
-                { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: true, tension: 0.4, lineWidth: 1, fill: 0.8 } }
+                { data: {{d}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
               ],
               {
-                colors: ['{{app.color.info}}', '{{app.color.primary}}'],
+                colors: ['{{app.color.info}}'],
                 series: { shadowSize: 3 },
-                xaxis:{ font: { color: '#a1a7ac' } },
-                yaxis:{ font: { color: '#a1a7ac' }, max:20 },
-                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
+                xaxis:{
+                  font: { color: '#ccc' },
+                  position: 'bottom',
+                  ticks: [
+                    [ 1, 'Jan' ], [ 2, 'Feb' ], [ 3, 'Mar' ], [ 4, 'Apr' ], [ 5, 'May' ], [ 6, 'Jun' ], [ 7, 'Jul' ], [ 8, 'Aug' ], [ 9, 'Sep' ], [ 10, 'Oct' ], [ 11, 'Nov' ], [ 12, 'Dec' ]
+                  ]
+                },
+                yaxis:{ font: { color: '#ccc' } },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
                 tooltip: true,
-                tooltipOpts: { content: 'Visits of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
+                tooltipOpts: { content: '%x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
               }
-            " style="height:246px">
+            " style="height:240px" >
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

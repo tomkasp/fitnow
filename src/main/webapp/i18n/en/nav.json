@@ -1,6 +1,11 @@
 {
     "header": {
         "navbar": {
+            "PROFILE": {
+                "profile": "Profile",
+                "calculator": "Calculator",
+                "progress": "Progress"
+            },
             "UPLOAD": "Upload",
             "new": {
                 "NEW": "New",
@@ -21,8 +26,8 @@
             "your_stuff": {
                 "YOUR_STUFF": "Your stuff",
                 "PROFILE": "Profile",
-                "CALCULATOR" : "Calculator",
-                "PROGRESS" : "Progress"
+                "CALCULATOR": "Calculator",
+                "PROGRESS": "Progress"
             }
         }
     }

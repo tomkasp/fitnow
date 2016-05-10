@@ -30,28 +30,28 @@
         </div>
     </div>
 </div>
-    <!--<div class="panel-body">-->
-    <!--<div class="embed-responsive embed-responsive-16by9">-->
-    <!--<iframe src="https://www.youtube.com/embed/_LUfA4Yo1Ws" frameborder="0" allowfullscreen></iframe>-->
-    <!--</div>-->
-    <!--</div>-->
+<!--<div class="panel-body">-->
+<!--<div class="embed-responsive embed-responsive-16by9">-->
+<!--<iframe src="https://www.youtube.com/embed/_LUfA4Yo1Ws" frameborder="0" allowfullscreen></iframe>-->
+<!--</div>-->
+<!--</div>-->
 
-    <div class="panel">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading font-bold">
-                        Nutrition goals
-                    </div>
-                    <div class="panel-body text-center">
-                        <h4>
-                            <small>last</small>
-                            24
-                            <small> hrs</small>
-                        </h4>
-                        <small class="text-muted block">yesterday: 20%</small>
-                        <div class="inline">
-                            <div ui-jq="easyPieChart" ui-options="{
+<div class="panel">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">
+                    Nutrition goals
+                </div>
+                <div class="panel-body text-center">
+                    <h4>
+                        <small>last</small>
+                        24
+                        <small> hrs</small>
+                    </h4>
+                    <small class="text-muted block">yesterday: 20%</small>
+                    <div class="inline">
+                        <div ui-jq="easyPieChart" ui-options="{
                       percent: 25,
                       lineWidth: 10,
                       trackColor: '#e8eff0',
@@ -61,29 +61,29 @@
                       lineCap: 'butt',
                       animate: 1000
                     }">
-                                <div>
-                                    <span class="h2 m-l-sm step">25</span>%
-                                    <div class="text text-sm">today</div>
-                                </div>
+                            <div>
+                                <span class="h2 m-l-sm step">25</span>%
+                                <div class="text text-sm">today</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading font-bold">
-                        Training goals
-                    </div>
-                    <div class="panel-body text-center">
-                        <h4>
-                            <small>last</small>
-                            24
-                            <small> hrs</small>
-                        </h4>
-                        <small class="text-muted block">yesterday: 20%</small>
-                        <div class="inline">
-                            <div ui-jq="easyPieChart" ui-options="{
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">
+                    Training goals
+                </div>
+                <div class="panel-body text-center">
+                    <h4>
+                        <small>last</small>
+                        24
+                        <small> hrs</small>
+                    </h4>
+                    <small class="text-muted block">yesterday: 20%</small>
+                    <div class="inline">
+                        <div ui-jq="easyPieChart" ui-options="{
                       percent: 25,
                       lineWidth: 10,
                       trackColor: '#e8eff0',
@@ -93,10 +93,9 @@
                       lineCap: 'butt',
                       animate: 1000
                     }">
-                                <div>
-                                    <span class="h2 m-l-sm step">25</span>%
-                                    <div class="text text-sm">today</div>
-                                </div>
+                            <div>
+                                <span class="h2 m-l-sm step">25</span>%
+                                <div class="text text-sm">today</div>
                             </div>
                         </div>
                     </div>
@@ -104,5 +103,41 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="panel">
+    <div class="row">
+
+        <div class="panel wrapper" ng-controller="FlotChartDemoCtrl">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Weight</div>
+                <div class="panel-body">
+                    <div ui-jq="plot" ui-options="
+              [
+                { data: {{d}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
+              ],
+              {
+                colors: ['{{app.color.info}}'],
+                series: { shadowSize: 3 },
+                xaxis:{
+                  font: { color: '#ccc' },
+                  position: 'bottom',
+                  ticks: [
+                    [ 1, 'Jan' ], [ 2, 'Feb' ], [ 3, 'Mar' ], [ 4, 'Apr' ], [ 5, 'May' ], [ 6, 'Jun' ], [ 7, 'Jul' ], [ 8, 'Aug' ], [ 9, 'Sep' ], [ 10, 'Oct' ], [ 11, 'Nov' ], [ 12, 'Dec' ]
+                  ]
+                },
+                yaxis:{ font: { color: '#ccc' } },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                tooltip: true,
+                tooltipOpts: { content: '%x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+              }
+            " style="height:240px" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
