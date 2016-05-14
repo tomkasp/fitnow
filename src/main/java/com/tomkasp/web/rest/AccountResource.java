@@ -28,6 +28,8 @@ import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInAttempt;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.UserOperations;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.WebUtils;
@@ -69,6 +71,7 @@ public class AccountResource {
     @Inject
     private UsersConnectionRepository usersConnectionRepository;
 
+
     /**
      * GET /rest/register -> get the details of an ongoing registration
      * @param request
@@ -98,7 +101,8 @@ public class AccountResource {
     @Timed
     public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
         if (StringUtils.equals(request.getRemoteUser(), userDTO.getLogin()) && isSocialRegistration(request)) {
-            return registerExternalAccount(userDTO, request);
+            final ResponseEntity<String> stringResponseEntity = registerExternalAccount(userDTO, request);
+            return stringResponseEntity;
         }
 
         return userRepository.findOneByLogin(userDTO.getLogin())

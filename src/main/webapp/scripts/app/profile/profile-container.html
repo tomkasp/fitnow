@@ -3,29 +3,11 @@
     <div class="col">
         <div class="row">
             <div class="col-sm-4">
+                <!--////////////////Profile Info panel///////////-->
                 <div class="panel panel-default">
-                    <div style="background:url(assets/img/c4.jpg) center center; background-size:cover">
-                        <div class="wrapper-lg bg-white-opacity">
-                            <div class="row m-t">
-                                <a href class="thumb-lg pull-left m-r">
-                                    <img src="assets/img/a0.jpg" class="img-circle">
-                                </a>
-
-                                <div class="clear m-b">
-                                    <div class="m-b m-t-sm">
-                                        <span class="h3 text-black">John.Smith</span>
-                                        <small class="m-l">London, UK</small>
-                                    </div>
-                                    <p class="m-b">
-                                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-twitter"></i></a>
-                                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-facebook"></i></a>
-                                        <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-google-plus"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div ui-view="profileinfo"></div>
                 </div>
+                <!--////////////////END Profile panel///////////-->
 
                 <!--////////////////Youtube video///////////-->
                 <div class="panel b-a">
@@ -43,7 +25,6 @@
 
                 <!--////////////////SIZES///////////-->
                 <div ui-view="bodysizes"></div>
-
                 <!--///////////////END SIZEZ///////////////// -->
 
 
@@ -77,10 +58,7 @@
                 </div>
             </div>
             <!--////////////////BMR CALCULATION FORM//////////////////////////-->
-
-
             <div class="col-sm-8" ui-view="profile">
-
             </div>
             <!--//////////////////////END OF BMR CALCULATION FORM//////////////////////////////-->
         </div>

@@ -5,6 +5,9 @@ import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,18 +28,27 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
     private final ProfileMapperImpl profileMapperImpl;
     private final UserService userService;
+    private final ConnectionRepository connectionRepository;
 
     @Autowired
-    public ProfileService(ProfileRepository profileRepository, ProfileMapperImpl profileMapperImpl, UserService userService) {
+    public ProfileService(ProfileRepository profileRepository, ProfileMapperImpl profileMapperImpl, UserService userService, ConnectionRepository connectionRepository) {
         this.profileRepository = profileRepository;
         this.profileMapperImpl = profileMapperImpl;
         this.userService = userService;
+        this.connectionRepository = connectionRepository;
     }
 
     public ProfileOutDTO findMine() {
         log.debug("Request to find logged user Profile");
         final Long id = userService.getUserWithAuthorities().getId();
-        return profileRepository.findByUserId(id).map(profileMapperImpl::profileToProfileOutDTO).orElse(profileMapperImpl.emptyProfileOutDTO());
+        return profileRepository.findByUserId(id)
+            .map(result -> {
+                    final String facebookImageUrl = getFacebookImageUrl();
+                    ProfileOutDTO profileOutDTO = profileMapperImpl.profileToProfileOutDTO(result);
+                    profileOutDTO.setSocialProfileImgUrl(facebookImageUrl);
+                    return profileOutDTO;
+                }
+            ).orElse(profileMapperImpl.emptyProfileOutDTO());
     }
 
     public ProfileOutDTO findOne(Long id) {
@@ -69,5 +81,13 @@ public class ProfileService {
     public void delete(Long id) {
         log.debug("Request to delete Profile : {}", id);
         profileRepository.delete(id);
+    }
+
+    private String getFacebookImageUrl(){
+        final String login = userService.getUserWithAuthorities().getLogin();
+        final Connection<Facebook> connection = connectionRepository.getConnection(Facebook.class, login);
+        return Optional.ofNullable(connection)
+            .map(result -> result.getImageUrl())
+            .orElse("");
     }
 }

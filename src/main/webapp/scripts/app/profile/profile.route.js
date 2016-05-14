@@ -22,7 +22,13 @@ angular.module('fitnowApp')
                         templateUrl: 'scripts/app/profile/calculator/profile.calculator.html',
                         controller: 'ProfileCalculatorController',
                         controllerAs: 'vm'
+                    },
+                    profileinfo:{
+                        templateUrl: 'scripts/app/profile/profile-info/profile-info.view.html',
+                        controller: 'ProfileInfoController',
+                        controllerAs: 'vm'
                     }
+
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
@@ -41,6 +47,11 @@ angular.module('fitnowApp')
                     },
                     profile: {
                         templateUrl: 'scripts/app/profile/progress/profile.progress.html'
+                    },
+                    profileinfo:{
+                        templateUrl: 'scripts/app/profile/profile-info/profile-info.view.html',
+                        controller: 'ProfileInfoController',
+                        controllerAs: 'vm'
                     }
                 }
             });
