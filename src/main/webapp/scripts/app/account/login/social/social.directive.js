@@ -5,7 +5,7 @@
         .directive('jhSocialmy', function($cookies) {
             // these link to functionality provided by spring-social
             var scopes = {
-                'facebook': 'public_profile,email',
+                'facebook': 'public_profile,email,user_location',
                 'google': 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
             };
             return {

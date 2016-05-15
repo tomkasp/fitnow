@@ -43,9 +43,7 @@ public class ProfileService {
         final Long id = userService.getUserWithAuthorities().getId();
         return profileRepository.findByUserId(id)
             .map(result -> {
-                    final String facebookImageUrl = getFacebookImageUrl();
                     ProfileOutDTO profileOutDTO = profileMapperImpl.profileToProfileOutDTO(result);
-                    profileOutDTO.setSocialProfileImgUrl(facebookImageUrl);
                     return profileOutDTO;
                 }
             ).orElse(profileMapperImpl.emptyProfileOutDTO());
@@ -71,7 +69,6 @@ public class ProfileService {
     public ProfileOutDTO save(ProfileInDTO profileInDTO) {
         log.debug("Request to save Profile : {}", profileInDTO);
         Profile profile = profileMapperImpl.profileInDTOToProfile(profileInDTO);
-        //TODO handle situation when user is not loged
         profile.setUser(userService.getUserWithAuthorities());
         profile = profileRepository.save(profile);
         ProfileOutDTO result = profileMapperImpl.profileToProfileOutDTO(profile);
@@ -83,11 +80,4 @@ public class ProfileService {
         profileRepository.delete(id);
     }
 
-    private String getFacebookImageUrl(){
-        final String login = userService.getUserWithAuthorities().getLogin();
-        final Connection<Facebook> connection = connectionRepository.getConnection(Facebook.class, login);
-        return Optional.ofNullable(connection)
-            .map(result -> result.getImageUrl())
-            .orElse("");
-    }
 }

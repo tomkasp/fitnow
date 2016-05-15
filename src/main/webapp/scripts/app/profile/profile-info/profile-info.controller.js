@@ -7,18 +7,19 @@
 
 
     /* @ngInject */
-    function ProfileInfoController(profileInfoDataservice, logger) {
+    function ProfileInfoController(profileInfoDataservice, loadData, logger) {
         var vm = this;
-        vm.facebookImgUrl = "";
+
 
         activate();
 
         ////////////////
 
         function activate() {
-            profileInfoDataservice.getProfileInfoData().then(function(data){
-                vm.facebookImgUrl = data.facebookImgUrl + "?type=normal";
-            });
+                vm.facebookImgUrl = loadData.facebookImgUrl + "?type=normal";
+                vm.fullName = loadData.fullName;
+                vm.location = loadData.location;
+                vm.facebookProfileUrl = loadData.facebookProfileUrl;
         }
     }
 

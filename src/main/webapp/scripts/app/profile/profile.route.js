@@ -31,6 +31,9 @@ angular.module('fitnowApp')
 
                 },
                 resolve: {
+                    loadData: ['profileInfoDataservice', function(profileInfoDataservice){
+                        return profileInfoDataservice.getProfileInfoData();
+                    }],
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('login');
                         return $translate.refresh();
@@ -53,6 +56,16 @@ angular.module('fitnowApp')
                         controller: 'ProfileInfoController',
                         controllerAs: 'vm'
                     }
+                },
+                resolve: {
+                    loadData: ['profileInfoDataservice', function(profileInfoDataservice){
+                        return profileInfoDataservice.getProfileInfoData();
+                    }],
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('login');
+                        return $translate.refresh();
+                    }]
                 }
+
             });
     });
