@@ -41,7 +41,7 @@ public class Profile {
     @Column(name = "height")
     private Integer height;
 
-    @Column(name = "weight_difference")
+    @Column(name = "weight_difference", columnDefinition = "default '0'")
     private Integer weightDifference;
 
     @OneToOne(optional = false)

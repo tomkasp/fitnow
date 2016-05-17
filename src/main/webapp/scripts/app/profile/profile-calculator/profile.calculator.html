@@ -90,7 +90,9 @@
                                                         step: 1,
                                                         value: {{vm.userProfile.weightChangeQuantity}}
                                                        }"
-                                           class="slider slider-horizontal form-control" type="text"> {{vm.userProfile.weightChangeQuantity}}
+                                           class="slider slider-horizontal form-control"
+                                           type="text" required ng-model="vm.userProfile.weightChangeQuantity">
+                                    {{vm.userProfile.weightChangeQuantity}}
                                 </div>
                             </div>
                         </div>

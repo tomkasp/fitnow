@@ -3,10 +3,10 @@
 
     angular
         .module('fitnowApp.profile')
-        .factory('bodySizesService', bodySizesService);
+        .factory('bodySizesDataservice', bodySizesDataservice);
 
     /* @ngInject */
-    function bodySizesService($http, $location, exception, toaster) {
+    function bodySizesDataservice($http, $location, exception, toaster) {
         var service = {
             getBodySizes: getBodySizes,
             saveBodySizes: saveBodySizes
@@ -43,12 +43,14 @@
         function createBodySizes(bodySize) {
             return $http.post('/api/bodysizes', bodySize)
                 .then(createBodySizeCompleted)
-                .catch(function (message) {
-                    exception.catcher('XHR Failed create body size')(message);
-                    $location.url('/');
-                });
+                .catch(createdBodySizedFailed);
+
+            function createdBodySizedFailed (message) {
+                exception.catcher('Failed create body size')(message);
+            }
 
             function createBodySizeCompleted(response) {
+                toaster.pop('success', '', 'Body sizes updated');
                 return response.data;
             }
         }

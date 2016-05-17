@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fitnowApp')
-    .controller('NavbarController', function ($scope, $location, $state, Auth, Principal, ENV, profileInfoDataservice) {
+    .controller('NavbarController', function ($scope, $location, $state, Auth, Principal, ENV, profileInfoDataservice, logger) {
         $scope.isAuthenticated = Principal.isAuthenticated;
         $scope.$state = $state;
         $scope.inProduction = ENV === 'prod';
@@ -13,7 +13,14 @@ angular.module('fitnowApp')
             $state.go('home');
         };
 
-        profileInfoDataservice.getProfileInfoData().then(function(data){
-            $scope.profileImg = data.facebookImgUrl;
-        });
+        activate();
+
+        function activate() {
+            if ($scope.isAuthenticated()) {
+                profileInfoDataservice.getProfileInfoData().then(function (data) {
+                    $scope.profileImg = data.facebookImgUrl;
+                });
+            }
+        }
+
     });

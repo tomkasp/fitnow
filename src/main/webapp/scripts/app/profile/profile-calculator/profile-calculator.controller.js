@@ -7,7 +7,7 @@
 
 
     /* @ngInject */
-    function ProfileCalculatorController($scope, profileModel, logger, profileDataservice, caloriesCalculatorService) {
+    function ProfileCalculatorController($scope, profileModel, logger, profileDataservice, caloriesCalculatorService, caloriesCalculatorSimplifiedService) {
         var vm = this;
         vm.submit = submit;
         vm.getCssClasses = getCssClasses;
@@ -41,10 +41,11 @@
         ];
 
         $scope.$watch('vm.userProfile', function (newValue, oldValue) {
-            var caloriesCalculations = caloriesCalculatorService.calculateCalories(vm.userProfile);
+            var caloriesCalculations = caloriesCalculatorSimplifiedService.calculateCalories(vm.userProfile);
             vm.userProfile.totalCaloriesDemand = caloriesCalculations.totalCaloriesDemand;
             vm.userProfile.caloriesDemand = caloriesCalculations.caloriesDemand;
             vm.userProfile.caloriesDeficit = caloriesCalculations.caloriesDeficit;
+            $scope.userProfileForm.$setDirty();
         }, true);
 
         angular.element("#slider").on('slideStop', function (data) {
@@ -56,8 +57,7 @@
         ////////////////
 
         function activate() {
-            return getProfile(); //profileDataservice.getMineProfile();
-            //vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
+            return getProfile();
         }
 
         function getProfile() {

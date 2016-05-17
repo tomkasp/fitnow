@@ -85,10 +85,10 @@
 <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
 <!-- inject:js -->
 <script src="scripts/app/app.js"></script>
-<script src="scripts/app/account/reset/finish/reset.finish.js"></script>
-<script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
 <script src="scripts/app/account/reset/request/reset.request.js"></script>
 <script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+<script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+<script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
 <script src="scripts/app/account/login/social/social.js"></script>
 <script src="scripts/app/account/login/social/social.directive.js"></script>
 <script src="scripts/app/account/login/social/register-social.controller.js"></script>
@@ -106,8 +106,11 @@
 <script src="scripts/app/profile/profile.module.js"></script>
 <script src="scripts/app/profile/profile-info/profile-info.dataservice.js"></script>
 <script src="scripts/app/profile/profile-info/profile-info.controller.js"></script>
-<script src="scripts/app/profile/calculator/profile-calculator.controller.js"></script>
-<script src="scripts/app/profile/calculator/calories-calculator.service.js"></script>
+<script src="scripts/app/profile/profile-calculator/profile.model.js"></script>
+<script src="scripts/app/profile/profile-calculator/profile.dataservice.js"></script>
+<script src="scripts/app/profile/profile-calculator/profile-calculator.controller.js"></script>
+<script src="scripts/app/profile/profile-calculator/calories-calculator.service.js"></script>
+<script src="scripts/app/profile/profile-calculator/calories-calculator-simplifaied.service.js"></script>
 <script src="scripts/app/profile/body-sizes/body-sizes.dataservice.js"></script>
 <script src="scripts/app/profile/body-sizes/body-sizes.controller.js"></script>
 <script src="scripts/app/entities/product/product.js"></script>
@@ -187,24 +190,22 @@
 <script src="scripts/components/form/minbytes.directive.js"></script>
 <script src="scripts/components/form/maxbytes.directive.js"></script>
 <script src="scripts/components/form/form.directive.js"></script>
+<script src="scripts/components/alert/alert.service.js"></script>
+<script src="scripts/components/alert/alert.directive.js"></script>
 <script src="scripts/components/auth/principal.service.js"></script>
 <script src="scripts/components/auth/authority.directive.js"></script>
 <script src="scripts/components/auth/auth.service.js"></script>
-<script src="scripts/components/alert/alert.service.js"></script>
-<script src="scripts/components/alert/alert.directive.js"></script>
 <script src="scripts/components/admin/monitoring.service.js"></script>
 <script src="scripts/components/admin/logs.service.js"></script>
 <script src="scripts/components/admin/configuration.service.js"></script>
 <script src="scripts/components/admin/audits.service.js"></script>
 <script src="scripts/app/profile/profile.route.js"></script>
-<script src="scripts/app/profile/profile.model.js"></script>
-<script src="scripts/app/profile/profile.dataservice.js"></script>
 <script src="scripts/app/main/main.route.js"></script>
 <script src="scripts/app/main/main.controller.js"></script>
 <script src="scripts/app/error/error.js"></script>
+<script src="scripts/app/entities/entity.js"></script>
 <script src="scripts/app/directives/ui-nav.js"></script>
 <script src="scripts/app/directives/ui-jq.js"></script>
-<script src="scripts/app/entities/entity.js"></script>
 <script src="scripts/app/dashboard/dashboard.route.js"></script>
 <script src="scripts/app/dashboard/dashboard.controller.js"></script>
 <script src="scripts/app/dashboard/chart.js"></script>

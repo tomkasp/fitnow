@@ -45,7 +45,8 @@ public class ProfileMapperImpl implements ProfileMapper {
         ProfileOutDTO profileOutDTO = new ProfileOutDTO();
         profileOutDTO.setGoal(convertGoal(Goal.LOOSE))
             .setSex(convertSex(Sex.MALE))
-            .setDailyActivity(convertDailyActivity(DailyActivity.SMALL));
+            .setDailyActivity(convertDailyActivity(DailyActivity.SMALL))
+            .setWeightChangeQuantity(0);
         return profileOutDTO;
     }
 

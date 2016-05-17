@@ -19,7 +19,7 @@ angular.module('fitnowApp')
                         controllerAs: 'vm'
                     },
                     profile: {
-                        templateUrl: 'scripts/app/profile/calculator/profile.calculator.html',
+                        templateUrl: 'scripts/app/profile/profile-calculator/profile.calculator.html',
                         controller: 'ProfileCalculatorController',
                         controllerAs: 'vm'
                     },
