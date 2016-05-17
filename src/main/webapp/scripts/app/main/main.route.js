@@ -3,7 +3,7 @@
 angular.module('fitnowApp')
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider
-            .otherwise('/app');
+            .otherwise('/app/dashboard');
         $stateProvider
             .state('app', {
                 parent: 'site',
@@ -25,11 +25,5 @@ angular.module('fitnowApp')
                         return $translate.refresh();
                     }]
                 }
-            })
-            .state('app.todo', {
-                url: '/todo',
-                templateUrl: 'tpl/apps_todo.html',
-                //resolve: load(['js/app/todo/todo.js', 'moment'])
-            })
-        ;
+            });
     });

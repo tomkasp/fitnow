@@ -1,5 +1,6 @@
 package com.tomkasp.service;
 
+import com.tomkasp.Application;
 import com.tomkasp.domain.Authority;
 import com.tomkasp.domain.PersistentToken;
 import com.tomkasp.domain.User;
@@ -9,8 +10,15 @@ import com.tomkasp.repository.UserRepository;
 import com.tomkasp.security.SecurityUtils;
 import com.tomkasp.service.util.RandomUtil;
 import com.tomkasp.web.rest.dto.ManagedUserDTO;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.ZonedDateTime;
 import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,10 +26,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import java.util.*;
 
@@ -64,20 +74,20 @@ public class UserService {
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
-       log.debug("Reset user password for reset key {}", key);
+        log.debug("Reset user password for reset key {}", key);
 
-       return userRepository.findOneByResetKey(key)
+        return userRepository.findOneByResetKey(key)
             .filter(user -> {
                 ZonedDateTime oneDayAgo = ZonedDateTime.now().minusHours(24);
                 return user.getResetDate().isAfter(oneDayAgo);
-           })
-           .map(user -> {
+            })
+            .map(user -> {
                 user.setPassword(passwordEncoder.encode(newPassword));
                 user.setResetKey(null);
                 user.setResetDate(null);
                 userRepository.save(user);
                 return user;
-           });
+            });
     }
 
     public Optional<User> requestPasswordReset(String mail) {
@@ -101,9 +111,8 @@ public class UserService {
     }
 
 
-
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
-        String langKey, Connection<?> connection) {
+                                      String langKey, Connection<?> connection) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
@@ -133,7 +142,6 @@ public class UserService {
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
-
 
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
                                       String langKey) {

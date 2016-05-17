@@ -30,6 +30,7 @@
             <column name="hip" type="integer"/>
             <column name="arm" type="integer"/>
             <column name="neck" type="integer"/>
+            <column name="date" type="TIMESTAMP"/>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>

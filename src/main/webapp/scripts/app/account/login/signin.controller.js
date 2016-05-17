@@ -20,12 +20,12 @@
                 rememberMe: $scope.rememberMe
             }).then(function () {
                 $scope.authenticationError = false;
-                if ($rootScope.previousStateName === 'register') {
-                    $state.go('app');
-                } else {
+                if ($rootScope.previousStateName == undefined || $rootScope.previousStateName.name === 'register' || $rootScope.previousStateName.name == 'app.login') {
+                    $state.go('app.dashboard.details');
+                }else {
                     $rootScope.back();
                 }
-            }).catch(function () {
+            }).catch(function (data) {
                 $scope.authenticationError = true;
             });
         };

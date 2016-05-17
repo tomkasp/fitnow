@@ -5,6 +5,7 @@ import com.tomkasp.config.JHipsterProperties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.MetricFilterAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
@@ -12,12 +13,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -33,6 +36,8 @@ public class Application {
 
     @Inject
     private Environment env;
+
+    public static String ROOT = "upload-dir";
 
     /**
      * Initializes fitnow.
@@ -80,6 +85,13 @@ public class Application {
             InetAddress.getLocalHost().getHostAddress(),
             env.getProperty("server.port"));
 
+    }
+
+    @Bean
+    CommandLineRunner init() {
+        return (String[] args) -> {
+            new File(ROOT).mkdir();
+        };
     }
 
     /**

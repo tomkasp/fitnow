@@ -37,27 +37,30 @@
         function createProfile(profile) {
             return $http.post('/api/profiles/', profile)
                 .then(createProfileComplete)
-                .catch(function (message) {
-                    //exception.catcher('XHR Failed for profile data')(message);
-                    $location.url('/');
-                });
+                .catch(createProfileFailed);
 
             function createProfileComplete(response) {
+                toaster.pop('success', '', 'Profile updated');
                 return response.data;
+            }
+
+            function createProfileFailed(response){
+                exception.catcher('Update profile failed')(response);
             }
         }
 
         function updateProfile(profile) {
             return $http.put('/api/profiles/', profile)
                 .then(updateProfileComplete)
-                .catch(function (message) {
-                    exception.catcher('XHR Failed for profile data')(message);
-                    //$location.url('/');
-                });
+                .catch(updateProfileFailed);
 
             function updateProfileComplete(response) {
                 toaster.pop('success', '', 'Profile updated');
                 return response.data;
+            }
+
+            function updateProfileFailed(response){
+                exception.catcher('Update profile failed')(response);
             }
         }
 

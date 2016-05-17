@@ -17,6 +17,7 @@ public class ProfileOutDTO implements Serializable {
     private DailyActivity dailyActivity;
     private Goal goal;
     private String sex;
+    private String socialProfileImgUrl;
 
     public static class DailyActivity {
         private String id;
@@ -137,6 +138,15 @@ public class ProfileOutDTO implements Serializable {
 
     public ProfileOutDTO setWeightChangeQuantity(Integer weightChangeQuantity) {
         this.weightChangeQuantity = weightChangeQuantity;
+        return this;
+    }
+
+    public String getSocialProfileImgUrl() {
+        return socialProfileImgUrl;
+    }
+
+    public ProfileOutDTO setSocialProfileImgUrl(String socialProfileImgUrl) {
+        this.socialProfileImgUrl = socialProfileImgUrl;
         return this;
     }
 }

@@ -6,7 +6,7 @@
         .controller('BodySizeController', BodySizeController);
 
     /* @ngInject */
-    function BodySizeController(bodySizesService, toaster) {
+    function BodySizeController(bodySizesDataservice, toaster) {
         var vm = this;
         vm.saveSizes = saveSizes;
         activate();
@@ -19,14 +19,14 @@
         }
 
         function getBodySizes(){
-            return bodySizesService.getBodySizes().then(function(data){
+            return bodySizesDataservice.getBodySizes().then(function(data){
                 vm.size = data;
                 return vm.size;
             });
         }
 
         function saveSizes(){
-            return bodySizesService.saveBodySizes(vm.size).then(function(data){
+            return bodySizesDataservice.saveBodySizes(vm.size).then(function(data){
                  vm.size = data;
              });
         }

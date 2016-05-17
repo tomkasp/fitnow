@@ -5,8 +5,7 @@
         <div class="wrapper text-center">
             <strong>Sign in to get in touch</strong>
         </div>
-        <form name="form" class="form-validation" ng-submit="login($event)">
-
+        <form name="form" role="form" class="form-validation" ng-submit="login($event)">
             <div class="text-danger wrapper text-center" ng-show="authenticationError"
                  translate="login.messages.error.authentication">
                 <strong>Failed to sign in!</strong> Please check your credentials and try again.
@@ -20,8 +19,7 @@
                            ng-model="password" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="login()"
-                    ng-disabled='form.$invalid'>Log in
+            <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled='form.$invalid'>Log in
             </button>
             <div class="line line-dashed"></div>
             <p class="text-center" translate="login.form.facebook">

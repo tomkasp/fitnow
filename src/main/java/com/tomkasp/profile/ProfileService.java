@@ -5,6 +5,9 @@ import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,18 +28,25 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
     private final ProfileMapperImpl profileMapperImpl;
     private final UserService userService;
+    private final ConnectionRepository connectionRepository;
 
     @Autowired
-    public ProfileService(ProfileRepository profileRepository, ProfileMapperImpl profileMapperImpl, UserService userService) {
+    public ProfileService(ProfileRepository profileRepository, ProfileMapperImpl profileMapperImpl, UserService userService, ConnectionRepository connectionRepository) {
         this.profileRepository = profileRepository;
         this.profileMapperImpl = profileMapperImpl;
         this.userService = userService;
+        this.connectionRepository = connectionRepository;
     }
 
     public ProfileOutDTO findMine() {
         log.debug("Request to find logged user Profile");
         final Long id = userService.getUserWithAuthorities().getId();
-        return profileRepository.findByUserId(id).map(profileMapperImpl::profileToProfileOutDTO).orElse(profileMapperImpl.emptyProfileOutDTO());
+        return profileRepository.findByUserId(id)
+            .map(result -> {
+                    ProfileOutDTO profileOutDTO = profileMapperImpl.profileToProfileOutDTO(result);
+                    return profileOutDTO;
+                }
+            ).orElse(profileMapperImpl.emptyProfileOutDTO());
     }
 
     public ProfileOutDTO findOne(Long id) {
@@ -59,7 +69,6 @@ public class ProfileService {
     public ProfileOutDTO save(ProfileInDTO profileInDTO) {
         log.debug("Request to save Profile : {}", profileInDTO);
         Profile profile = profileMapperImpl.profileInDTOToProfile(profileInDTO);
-        //TODO handle situation when user is not loged
         profile.setUser(userService.getUserWithAuthorities());
         profile = profileRepository.save(profile);
         ProfileOutDTO result = profileMapperImpl.profileToProfileOutDTO(profile);
@@ -70,4 +79,5 @@ public class ProfileService {
         log.debug("Request to delete Profile : {}", id);
         profileRepository.delete(id);
     }
+
 }
