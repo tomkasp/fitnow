@@ -1,6 +1,8 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.webui;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tomkasp.profile.dto.ProfileInfoOutDTO;
+import com.tomkasp.profile.application.ProfileInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

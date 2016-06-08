@@ -75,9 +75,14 @@
 <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
 <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
 <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+<script src="bower_components/angular-ui-chart/src/chart.js"></script>
 <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
 <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
 <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+<script src="bower_components/flot/jquery.flot.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -85,10 +90,10 @@
 <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
 <!-- inject:js -->
 <script src="scripts/app/app.js"></script>
-<script src="scripts/app/account/reset/request/reset.request.js"></script>
-<script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
 <script src="scripts/app/account/reset/finish/reset.finish.js"></script>
 <script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+<script src="scripts/app/account/reset/request/reset.request.js"></script>
+<script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
 <script src="scripts/app/account/login/social/social.js"></script>
 <script src="scripts/app/account/login/social/social.directive.js"></script>
 <script src="scripts/app/account/login/social/register-social.controller.js"></script>
@@ -106,13 +111,13 @@
 <script src="scripts/app/profile/profile.module.js"></script>
 <script src="scripts/app/profile/profile-info/profile-info.dataservice.js"></script>
 <script src="scripts/app/profile/profile-info/profile-info.controller.js"></script>
+<script src="scripts/app/profile/body-sizes/body-sizes.dataservice.js"></script>
+<script src="scripts/app/profile/body-sizes/body-sizes.controller.js"></script>
 <script src="scripts/app/profile/profile-calculator/profile.model.js"></script>
 <script src="scripts/app/profile/profile-calculator/profile.dataservice.js"></script>
 <script src="scripts/app/profile/profile-calculator/profile-calculator.controller.js"></script>
 <script src="scripts/app/profile/profile-calculator/calories-calculator.service.js"></script>
 <script src="scripts/app/profile/profile-calculator/calories-calculator-simplifaied.service.js"></script>
-<script src="scripts/app/profile/body-sizes/body-sizes.dataservice.js"></script>
-<script src="scripts/app/profile/body-sizes/body-sizes.controller.js"></script>
 <script src="scripts/app/entities/product/product.js"></script>
 <script src="scripts/app/entities/product/product.controller.js"></script>
 <script src="scripts/app/entities/product/product-dialog.controller.js"></script>
@@ -161,13 +166,13 @@
 <script src="scripts/app/account/register/register.js"></script>
 <script src="scripts/app/account/register/register.controller.js"></script>
 <script src="scripts/app/account/register/register.controller.fut.js"></script>
+<script src="scripts/app/account/password/password.js"></script>
+<script src="scripts/app/account/password/password.directive.js"></script>
+<script src="scripts/app/account/password/password.controller.js"></script>
 <script src="scripts/app/account/login/signin.controller.js"></script>
 <script src="scripts/app/account/login/logout.controller.js"></script>
 <script src="scripts/app/account/login/login.js"></script>
 <script src="scripts/app/account/login/login.controller.js"></script>
-<script src="scripts/app/account/password/password.js"></script>
-<script src="scripts/app/account/password/password.directive.js"></script>
-<script src="scripts/app/account/password/password.controller.js"></script>
 <script src="scripts/app/account/activate/activate.js"></script>
 <script src="scripts/app/account/activate/activate.controller.js"></script>
 <script src="scripts/components/util/truncate.filter.js"></script>
@@ -190,11 +195,11 @@
 <script src="scripts/components/form/minbytes.directive.js"></script>
 <script src="scripts/components/form/maxbytes.directive.js"></script>
 <script src="scripts/components/form/form.directive.js"></script>
-<script src="scripts/components/alert/alert.service.js"></script>
-<script src="scripts/components/alert/alert.directive.js"></script>
 <script src="scripts/components/auth/principal.service.js"></script>
 <script src="scripts/components/auth/authority.directive.js"></script>
 <script src="scripts/components/auth/auth.service.js"></script>
+<script src="scripts/components/alert/alert.service.js"></script>
+<script src="scripts/components/alert/alert.directive.js"></script>
 <script src="scripts/components/admin/monitoring.service.js"></script>
 <script src="scripts/components/admin/logs.service.js"></script>
 <script src="scripts/components/admin/configuration.service.js"></script>
@@ -219,3 +224,4 @@
 </body>
 </html>
 
+<!--<script src="bower_components/flot/jquery.flot.time.js"></script>-->

@@ -1,4 +1,4 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.domain;
 
 import com.tomkasp.domain.User;
 import org.hibernate.annotations.Cache;

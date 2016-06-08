@@ -1,4 +1,4 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.dto;
 
 import java.io.Serializable;
 

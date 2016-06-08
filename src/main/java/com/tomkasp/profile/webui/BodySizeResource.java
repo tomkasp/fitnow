@@ -1,7 +1,8 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.webui;
 
 import com.codahale.metrics.annotation.Timed;
-import com.tomkasp.web.rest.dto.AuthorDTO;
+import com.tomkasp.profile.dto.BodySizeDTO;
+import com.tomkasp.profile.application.BodySizeService;
 import com.tomkasp.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

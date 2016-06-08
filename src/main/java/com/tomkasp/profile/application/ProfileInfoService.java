@@ -1,7 +1,7 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.application;
 
 import com.tomkasp.domain.User;
-import com.tomkasp.repository.UserRepository;
+import com.tomkasp.profile.dto.ProfileInfoOutDTO;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,6 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.NotConnectedException;
 import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.Reference;
 import org.springframework.stereotype.Service;
 
 /**

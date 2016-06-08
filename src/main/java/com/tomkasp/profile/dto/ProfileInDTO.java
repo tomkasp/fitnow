@@ -1,4 +1,6 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.dto;
+
+import com.tomkasp.profile.domain.Sex;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -99,12 +101,12 @@ public class ProfileInDTO implements Serializable {
         return dailyActivity;
     }
 
-    public com.tomkasp.profile.DailyActivity getConvertedDailyActivity() {
-        final Map<String, com.tomkasp.profile.DailyActivity> dailyActivity = new HashMap<>();
-        dailyActivity.put("0", com.tomkasp.profile.DailyActivity.SMALL);
-        dailyActivity.put("1", com.tomkasp.profile.DailyActivity.MEDIUM);
-        dailyActivity.put("2", com.tomkasp.profile.DailyActivity.HIGH);
-        dailyActivity.put("3", com.tomkasp.profile.DailyActivity.VERY_HIGH);
+    public com.tomkasp.profile.domain.DailyActivity getConvertedDailyActivity() {
+        final Map<String, com.tomkasp.profile.domain.DailyActivity> dailyActivity = new HashMap<>();
+        dailyActivity.put("0", com.tomkasp.profile.domain.DailyActivity.SMALL);
+        dailyActivity.put("1", com.tomkasp.profile.domain.DailyActivity.MEDIUM);
+        dailyActivity.put("2", com.tomkasp.profile.domain.DailyActivity.HIGH);
+        dailyActivity.put("3", com.tomkasp.profile.domain.DailyActivity.VERY_HIGH);
         return dailyActivity.get(this.dailyActivity.getId());
     }
 
@@ -118,10 +120,10 @@ public class ProfileInDTO implements Serializable {
         return goal;
     }
 
-    public com.tomkasp.profile.Goal getConvertedGoal(){
-        final Map<String, com.tomkasp.profile.Goal> goalsMap = new HashMap<>();
-        goalsMap.put("0", com.tomkasp.profile.Goal.LOOSE);
-        goalsMap.put("1", com.tomkasp.profile.Goal.GAIN);
+    public com.tomkasp.profile.domain.Goal getConvertedGoal(){
+        final Map<String, com.tomkasp.profile.domain.Goal> goalsMap = new HashMap<>();
+        goalsMap.put("0", com.tomkasp.profile.domain.Goal.LOOSE);
+        goalsMap.put("1", com.tomkasp.profile.domain.Goal.GAIN);
         return goalsMap.get(this.goal.getId());
     }
 

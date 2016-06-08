@@ -1,4 +1,4 @@
-package com.tomkasp.profile.facebook;
+package com.tomkasp.profile.webui;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;

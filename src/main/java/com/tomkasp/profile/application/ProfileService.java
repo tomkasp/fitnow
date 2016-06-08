@@ -1,13 +1,15 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.application;
 
+import com.tomkasp.profile.dto.ProfileInDTO;
+import com.tomkasp.profile.ProfileMapperImpl;
+import com.tomkasp.profile.dto.ProfileOutDTO;
+import com.tomkasp.profile.domain.Profile;
 import com.tomkasp.repository.ProfileRepository;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

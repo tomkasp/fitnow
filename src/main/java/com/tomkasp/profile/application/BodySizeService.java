@@ -1,7 +1,12 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.application;
 
+import com.tomkasp.profile.domain.BodySizeHistory;
+import com.tomkasp.profile.dto.BodySizeDTO;
+import com.tomkasp.profile.BodySizeMapper;
+import com.tomkasp.profile.domain.BodySize;
 import com.tomkasp.repository.BodySizeRepository;
 import com.tomkasp.service.UserService;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +48,20 @@ public class BodySizeService {
     public BodySizeDTO save(BodySizeDTO bodySizeDTO) {
         log.debug("Request to save body size : {}", bodySizeDTO);
         BodySize bodySize = bodySizeMapper.bodySizeDTOToBodySize(bodySizeDTO);
-        //TODO handle situation when user is not loged
         bodySize.setUser(userService.getUserWithAuthorities());
+        if (Optional.of(bodySize.getId()).isPresent()) {
+            final BodySize oldBodySize = bodySizeRepository.getOne(bodySize.getId());
+            BodySizeHistory bodySizeHistory = new BodySizeHistory();
+            bodySizeHistory.setArm(oldBodySize.getArm())
+                .setChest(oldBodySize.getChest())
+                .setDate(new DateTime())
+                .setHip(oldBodySize.getHip())
+                .setNeck(oldBodySize.getNeck())
+                .setThigh(oldBodySize.getThigh())
+                .setWaist(oldBodySize.getWaist());
+            bodySize.getBodySizeHistories().add(bodySizeHistory);
+
+        }
         bodySize = bodySizeRepository.save(bodySize);
         BodySizeDTO result = bodySizeMapper.bodySizeToBodySizeDTO(bodySize);
         return result;

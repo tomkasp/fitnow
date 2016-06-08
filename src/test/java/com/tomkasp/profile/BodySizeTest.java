@@ -24,11 +24,8 @@ public class BodySizeTest {
             .withMillisOfSecond(0);
 
         //when
-        BodySize bodySize = new BodySize().setArm(1).setDate(firstDate);
-        BodySize bodySizeSecond = new BodySize().setArm(1).setDate(secondDate);
 
         //then
-        Assertions.assertThat(bodySize).isEqualTo(bodySizeSecond);
     }
 
     @Test
@@ -47,12 +44,6 @@ public class BodySizeTest {
             .withSecondOfMinute(0)
             .withMillisOfSecond(0);
 
-        //when
-        BodySize bodySize = new BodySize().setArm(1).setDate(firstDate);
-        BodySize bodySizeSecond = new BodySize().setArm(1).setDate(secondDate);
-
-        //then
-        Assertions.assertThat(bodySize).isNotEqualTo(bodySizeSecond);
     }
 
 }

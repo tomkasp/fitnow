@@ -1,4 +1,4 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.dto;
 
 /**
  * @author Tomasz Kasprzycki

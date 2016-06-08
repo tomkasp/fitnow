@@ -1,14 +1,14 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.domain;
 
 import com.tomkasp.domain.User;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.*;
-import org.joda.time.DateTime;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Tomasz Kasprzycki
@@ -40,14 +40,16 @@ public class BodySize {
     @Column(name = "neck")
     private Integer neck;
 
-    @Column(name = "date")
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    private DateTime date;
-
-    @OneToOne(optional = false) //change to manyToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "USER_ID", nullable = false)
     @Fetch(FetchMode.JOIN)
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "BODY_SIZE_ID", nullable = false)
+    @Fetch(FetchMode.JOIN)
+    @OrderBy("date ASC")
+    private List<BodySizeHistory> bodySizeHistories = new ArrayList<>();
 
 
     public Integer getArm() {
@@ -122,32 +124,12 @@ public class BodySize {
         return this;
     }
 
-    public DateTime getDate() {
-        return date;
+    public List<BodySizeHistory> getBodySizeHistories() {
+        return bodySizeHistories;
     }
 
-    public BodySize setDate(DateTime date) {
-        this.date = date;
+    public BodySize setBodySizeHistories(List<BodySizeHistory> bodySizeHistories) {
+        this.bodySizeHistories = bodySizeHistories;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BodySize)) return false;
-        BodySize bodySize = (BodySize) o;
-        return Objects.equals(id, bodySize.id) &&
-            Objects.equals(waist, bodySize.waist) &&
-            Objects.equals(thigh, bodySize.thigh) &&
-            Objects.equals(chest, bodySize.chest) &&
-            Objects.equals(hip, bodySize.hip) &&
-            Objects.equals(arm, bodySize.arm) &&
-            Objects.equals(neck, bodySize.neck) &&
-            Objects.equals(date, bodySize.date);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, waist, thigh, chest, hip, arm, neck, date);
     }
 }

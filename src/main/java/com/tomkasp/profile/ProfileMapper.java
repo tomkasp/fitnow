@@ -1,6 +1,8 @@
 package com.tomkasp.profile;
 
-import org.mapstruct.Mapper;
+import com.tomkasp.profile.domain.Profile;
+import com.tomkasp.profile.dto.ProfileInDTO;
+import com.tomkasp.profile.dto.ProfileOutDTO;
 
 /**
  * @author Tomasz Kasprzycki

@@ -1,5 +1,11 @@
 package com.tomkasp.profile;
 
+import com.tomkasp.profile.domain.DailyActivity;
+import com.tomkasp.profile.domain.Goal;
+import com.tomkasp.profile.domain.Profile;
+import com.tomkasp.profile.domain.Sex;
+import com.tomkasp.profile.dto.ProfileInDTO;
+import com.tomkasp.profile.dto.ProfileOutDTO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

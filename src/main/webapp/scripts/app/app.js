@@ -10,6 +10,7 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'infinite-scroll',
     'angular-loading-bar',
     'oc.lazyLoad',
+    'ngLodash',
     'toaster',
     'fitnowApp.dashboard',
     'fitnowApp.profile',

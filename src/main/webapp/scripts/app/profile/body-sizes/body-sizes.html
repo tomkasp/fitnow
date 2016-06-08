@@ -54,4 +54,40 @@
             </div>
         </form>
     </div>
+    <div class="panel">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                History:
+                <select name="goal" class="btn-sm"
+
+                        ng-options="option.name for option in vm.bodyParts track by option.id"
+                        ng-change="vm.change()"
+                        ng-model="vm.selected">
+                </select>
+            </div>
+            <div class="panel-body">
+                <div ui-jq="plot" ui-refresh="vm.data" ui-options="
+                      [
+                        { data: {{vm.data}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
+                      ],
+                      {
+                        colors: ['{{app.color.info}}'],
+                        series: { shadowSize: 3 },
+                        xaxis:{
+                          font: { color: '#ccc' },
+                          position: 'bottom',
+                          minTickSize: [1, 'hour'],
+                          mode: 'time'
+                        },
+                        yaxis:{ font: { color: '#ccc' } },
+                        grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                        tooltip: true,
+
+                        tooltipOpts: { content: '%x.2 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                      }
+                " style="height:240px">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

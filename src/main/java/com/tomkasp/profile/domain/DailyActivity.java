@@ -1,4 +1,4 @@
-package com.tomkasp.profile;
+package com.tomkasp.profile.domain;
 
 /**
  * @author Tomasz Kasprzycki
