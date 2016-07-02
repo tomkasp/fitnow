@@ -1,5 +1,20 @@
+<!--<div class="navbar-header box-shadow {{app.settings.navbarCollapseColor}}">-->
+    <!--<button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">-->
+        <!--<i class="glyphicon glyphicon-cog"></i>-->
+    <!--</button>-->
+    <!--<button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll-to="app">-->
+        <!--<i class="glyphicon glyphicon-align-justify"></i>-->
+    <!--</button>-->
+    <!--&lt;!&ndash; brand &ndash;&gt;-->
+    <!--<a href="#/" class="navbar-brand text-lt">-->
+        <!--<i class="fa fa-btc"></i>-->
+        <!--<img src="img/logo.png" alt="." class="hide">-->
+        <!--<span class="hidden-folded m-l-xs">{{app.name}}</span>-->
+    <!--</a>-->
+    <!--&lt;!&ndash; / brand &ndash;&gt;-->
+<!--</div>-->
 <!-- navbar collapse -->
-<div ng-controller="NavbarController" ng-switch="isAuthenticated()" class="nav box-shadow bg-white-only">
+    <div ng-controller="NavbarController" ng-switch="isAuthenticated()" class="navbar box-shadow {{app.settings.navbarCollapseColor}}">
 
     <!-- link and dropdown -->
     <ul class="nav navbar-nav hidden-sm">
@@ -10,6 +25,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a ui-sref="app.profile.calculator" translate="header.navbar.PROFILE.calculator">Calculator</a></li>
                 <li><a ui-sref="app.profile.progress" translate="header.navbar.PROFILE.progress">Progress</a></li>
+                <li><a ui-sref="app.diet" translate="header.navbar.PROFILE.diet">Diet</a></li>
             </ul>
         </li>
     </ul>
@@ -139,5 +155,5 @@
             <!-- / navbar right -->
         </li>
     </ul>
-</div>
+</div></div>
 <!-- / navbar collapse -->

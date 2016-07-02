@@ -14,6 +14,7 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'toaster',
     'fitnowApp.dashboard',
     'fitnowApp.profile',
+    'fitnowApp.diet',
 
     'blocks.logger',
     'blocks.exception'

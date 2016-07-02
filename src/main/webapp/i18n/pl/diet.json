@@ -1,0 +1,19 @@
+{
+    "diet": {
+            "FORM": {
+                "title": "Informacje dietetyczne",
+                "birthdate": "Data urodzenia",
+                "sex" : "Płeć:",
+                "height": "Wzrost:",
+                "dailyactivity": "Dzienna aktywnosc:",
+                "wakeuphours" : "Godziny wstawania:",
+                "workhours" : "Godziny pracy:",
+                "allergy" : "Czy wystepuja u Ciebie jakies Alergie? Jeśli tak to jakie?",
+                "intolerance" : "Czy wystepuja u Ciebie jakies nietolerancje pokarmowe? Jeśli tak to jakie?",
+                "favorite" : "Mojego jadlospisu nie wyobrażam sibie bez",
+                "soup" : "Lubisz zupy?",
+                "exclusions": "W mojej diecie nie chce:",
+                "info": "Czy jest jeszcze cos o czym chcial bys poinformowac dietetyka?"
+            }
+        }
+}

@@ -2,10 +2,10 @@
     "header": {
         "navbar": {
             "PROFILE": {
-                "profile": "Profile",
-                "calculator": "Calculator",
-                "progress": "Progress",
-                "diet": "Diet"
+                "profile": "Profil",
+                "calculator": "Kalkulator",
+                "progress": "Progres",
+                "diet": "Dieta"
             },
             "UPLOAD": "Upload",
             "new": {

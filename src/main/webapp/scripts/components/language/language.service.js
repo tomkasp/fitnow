@@ -8,7 +8,7 @@ angular.module('fitnowApp')
                 var language = $translate.storage().get('NG_TRANSLATE_LANG_KEY');
 
                 if (angular.isUndefined(language)) {
-                    language = 'en';
+                    language = 'pl';
                 }
 
                 deferred.resolve(language);
@@ -27,7 +27,7 @@ angular.module('fitnowApp')
  They are written in English to avoid character encoding issues (not a perfect solution)
  */
     .constant('LANGUAGES', [
-        'en', 'fr'
+        'en', 'fr', 'pl'
         // jhipster-needle-006 - JHipster will add new languages here
     ]
 );

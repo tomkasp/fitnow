@@ -1,0 +1,15 @@
+{
+    "dashboard": {
+        "main": {
+            "TITLE": "Fit Now dashboard",
+            "WELCOME": "Welcome to your dashboard"
+        },
+        "nutrition": {
+            "TITLE": "Nutrition",
+            "DAILY_QUANTITY" : "Your daily calories quantity: ",
+            "PROTEINS": "Proteins",
+            "FATS": "Fats",
+            "CARBOHYDRATES": "Carbohydrates"
+        }
+    }
+}
