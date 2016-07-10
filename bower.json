@@ -36,6 +36,7 @@
     "angular-ui-chart": "latest",
     "swagger-ui": "2.1.3",
     "bootstrap-material-design": "0.5.7",
+    "venturocket-angular-slider": "~0.3.2",
     "bootstrap-social": "4.9.1",
     "font-awesome": "~4.3.0",
     "flot-charts": "*"

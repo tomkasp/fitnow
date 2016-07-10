@@ -117,8 +117,8 @@ angular.module('fitnowApp')
       {
           name: 'vr.directives.slider',
           files: [
-              '../libs/angular/venturocket-angular-slider/build/angular-slider.min.js',
-              '../libs/angular/venturocket-angular-slider/build/angular-slider.css'
+              'libs/angular/venturocket-angular-slider/build/angular-slider.min.js',
+              'libs/angular/venturocket-angular-slider/build/angular-slider.css'
           ]
       },
       {

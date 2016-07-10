@@ -1,19 +1,41 @@
 {
     "diet": {
-            "FORM": {
-                "title": "Diet information",
-                "birthdate": "Birth Date",
-                "sex": "Sex",
-                "height": "Height",
-                "dailyactivity": "Daily Activity",
-                "wakeuphours" : "Wake up hours",
-                "workhours" : "Work hours",
-                "allergy" : "Do you have any allergy? If yes then what kind?",
-                "intolerance" : "Do you have any food intolerance? If yes then what kind?",
-                "favorite" : "I can't imagine my diet without",
-                "soup" : "Do you like soups?",
-                "exclusions": "In my diet I don't want:",
-                "info": "Additional information"
-            }
+        "FORM": {
+            "title": "Diet information",
+            "birthdate": "Birth Date",
+            "sex": "Sex",
+            "height": "Height",
+            "dailyactivity": "Daily Activity",
+            "wakeuphours": "Wake up hours",
+            "workhours": "Work hours",
+            "allergy": "Do you have any allergy? If yes then what kind?",
+            "intolerance": "Do you have any food intolerance? If yes then what kind?",
+            "favorite": "I can't imagine my diet without",
+            "soup": "Do you like soups?",
+            "exclusions": "In my diet I don't want:",
+            "info": "Czy jest jeszcze cos o czym chcial bys poinformowac dietetyka?",
+            "days": {
+                "mon" : "Monday",
+                "tue" : "Tuesday",
+                "wed" : "Wendesday",
+                "thu" : "Thursday",
+                "fri" : "Friday",
+                "sat" : "Saturday",
+                "sun" : "Sunday"
+            },
+            "meals" : {
+                "breakfast" : "breakfast",
+                "sec_breakfast" : "second breakfast",
+                "lunch" : "lunch",
+                "dinner" : "dinner",
+                "supper" : "supper"
+            },
+            "next" : "Next",
+            "prev" : "Prev",
+            "finish" : "Finish",
+            "step1" : "Step 1",
+            "step2" : "Step 2",
+            "step3" : "Step 3"
         }
+    }
 }
