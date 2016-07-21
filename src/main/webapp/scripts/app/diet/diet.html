@@ -13,7 +13,8 @@
                         <div class="col-sm-4"><p class="m-t" translate="diet.FORM.birthdate">Birth date</p>
 
                             <div class="input-group">
-                                <input type="text" class="form-control" datepicker-popup="{{vm.format}}" ng-model="vm.dt" is-open="vm.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close"
+                                <input type="text" class="form-control" datepicker-popup="{{vm.format}}"
+                                       ng-model="vm.step1.bornDate" is-open="vm.opened" datepicker-options="vm.dateOptions" ng-required="true"
                                        required/>
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -56,20 +57,20 @@
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <p class="m-t" name="wakeuphours" >{{'diet.FORM.wakeuphours' | translate}} ({{vm.wakeup.min}}:00 - {{vm.wakeup.max}}:00)</p>
+                            <p class="m-t" name="wakeuphours" >{{'diet.FORM.wakeuphours' | translate}} ({{vm.step1.wakeup.min}}:00 - {{vm.step1.wakeup.max}}:00)</p>
                             <slider
-                                ng-model="vm.wakeup.min"
-                                ng-model-range="vm.wakeup.max"
+                                ng-model="vm.step1.wakeup.min"
+                                ng-model-range="vm.step1.wakeup.max"
                                 floor="1"
                                 ceiling="15">
                             </slider>
                         </div>
                         <div class="col-sm-offset-1 col-sm-4">
-                            <p class="m-t" name="workhours">{{'diet.FORM.workhours' | translate}} ( min:{{vm.workhours.min}} - max:{{vm.workhours.max}} )</p>
+                            <p class="m-t" name="workhours">{{'diet.FORM.workhours' | translate}} ( min:{{vm.step1.workhours.min}} - max:{{vm.step1.workhours.max}} )</p>
 
                             <slider
-                                ng-model="vm.workhours.min"
-                                ng-model-range="vm.workhours.max"
+                                ng-model="vm.step1.workhours.min"
+                                ng-model-range="vm.step1.workhours.max"
                                 floor="1"
                                 ceiling="15">
                             </slider>
@@ -258,36 +259,36 @@
 
                 <div class="m-t">
                     <label class="checkbox-inline i-checks">
-                        <input type="radio" ng-model="vm.allergy" name="a" value="0">
+                        <input type="radio" ng-model="vm.step3.allergy" name="a" value="0">
                         <i></i>
                         Yes
                     </label>
                     <label class="checkbox-inline  i-checks">
-                        <input type="radio" ng-model="vm.allergy" name="a" value="1">
+                        <input type="radio" ng-model="vm.step3.allergy" name="a" value="1">
                         <i></i>
                         No
                     </label>
                 </div>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" ng-show="vm.allergy==0" style="overflow:scroll;height:100px;max-height:200px">
+                <div ui-jq="wysiwyg" class="form-control m-t" ng-show="vm.step3.allergy==0" ng-model="vm.step3.allergyDetails" style="overflow:scroll;height:100px;max-height:200px">
                 </div>
 
                 <p class="m-t" translate="diet.FORM.intolerance">Intolerance</p>
 
                 <div class="m-t">
                     <label class="checkbox-inline i-checks">
-                        <input type="radio" name="intoleranceYes" value="0" ng-model="vm.intolerance">
+                        <input type="radio" name="intoleranceYes" value="0" ng-model="vm.step3.intolerance">
                         <i></i>
                         Yes
                     </label>
                     <label class="checkbox-inline  i-checks">
-                        <input type="radio" name="intoleranceNo" value="1" ng-model="vm.intolerance" checked>
+                        <input type="radio" name="intoleranceNo" value="1" ng-model="vm.step3.intolerance" checked>
                         <i></i>
                         No
                     </label>
                 </div>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" ng-show="vm.intolerance==0" style="overflow:scroll;height:100px;max-height:200px">
+                <div ui-jq="wysiwyg" class="form-control m-t" ng-show="vm.step3.intolerance==0" style="overflow:scroll;height:100px;max-height:200px">
                 </div>
 
                 <p class="m-t" translate="diet.FORM.favorite">Favorite</p>
@@ -323,6 +324,7 @@
                 <div class="m-t m-b">
                     <button type="button" class="btn btn-default btn-rounded" ng-click="vm.steps.step2=true" translate="diet.FORM.prev">Prev</button>
                     <button type="button" class="btn btn-default btn-rounded" ng-click="vm.steps.percent=100" translate="diet.FORM.finish">Finish</button>
+                    <button ng-click="vm.clicktest()">test</button>
                 </div>
             </form>
         </tab>

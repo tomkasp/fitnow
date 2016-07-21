@@ -9,69 +9,70 @@
     /* @ngInject */
     function wizardStepsModel() {
         var service = {
-            build: build
-        };
-
-        var stepsModel = {
-            monday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            },
-            tuesday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            },
-            wednesday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            },
-            thursday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            },
-            friday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            },
-            saturday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            },
-            sunday: {
-                breakfast: true,
-                secbreakfast: true,
-                lunch: true,
-                dinner: true,
-                supper: true
-            }
+            mealsModel: mealsModel,
+            createConfiguration: createConfiguration
         };
         return service;
 
         ////////////////
 
-        function build() {
-            return stepsModel;
+        function createConfiguration() {
+
         }
 
-
+        function mealsModel() {
+            return {
+                monday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                },
+                tuesday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                },
+                wednesday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                },
+                thursday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                },
+                friday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                },
+                saturday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                },
+                sunday: {
+                    breakfast: true,
+                    secbreakfast: true,
+                    lunch: true,
+                    dinner: true,
+                    supper: true
+                }
+            };
+        }
     }
 
 })();

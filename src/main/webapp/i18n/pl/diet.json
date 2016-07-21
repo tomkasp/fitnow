@@ -35,7 +35,8 @@
                 "finish" : "Zakończ",
                 "step1" : "Krok 1",
                 "step2" : "Krok 2",
-                "step3" : "Krok 3"
+                "step3" : "Krok 3",
+                "close" : "Zamknij"
             }
         }
 }
