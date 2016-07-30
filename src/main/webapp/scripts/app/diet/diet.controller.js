@@ -6,24 +6,17 @@
         .controller('DietController', DietController);
 
     /* @ngInject */
-    function DietController(uibDatepickerPopupConfig, dietDataservice, logger, wizardStepsModel, dietModel) {
+    function DietController(uibDatepickerPopupConfig, dietDataservice, logger, wizardStepsModel, dietModel, Utility) {
+
         var vm = this;
         vm.open = open;
-
-        vm.clicktest = function () {
-
-            logger.log('', vm.step3);
-        };
-
         vm.steps = {percent: 20, step1: true, step2: false, step3: false};
-
         vm.dailyActivityOptions = [
             {id: '0', name: 'Small'},
             {id: '1', name: 'Medium'},
             {id: '2', name: 'High'},
             {id: '3', name: 'Very High'}
         ];
-
         vm.step1 = {
             dailyActivity: vm.dailyActivityOptions[0],
             sex: 0,
@@ -31,13 +24,12 @@
             wakeup: {min: 3, max: 8},
             workhours: {min: 3, max: 8}
         };
-        vm.step3 = {
-            soup: 0,
-            allergy: 1,
-            intolerance: 1,
-            allergyDetails: ''
-        };
         vm.step2 = wizardStepsModel.mealsModel();
+        vm.step3 = {};
+
+        vm.submitDietInfo = submitDietInfo;
+        vm.goToStepTwo = goToStepTwo;
+
 
         vm.dateOptions = {
             formatYear: 'yy',
@@ -56,6 +48,8 @@
             uibDatepickerPopupConfig.showButtonBar = false;
             dietDataservice.getMineDiet().then(function (response) {
                 vm.step1 = dietModel.buildStepOneObject(response);
+                vm.step2 = response.mealQuantity;
+                vm.step3 = dietModel.buildStepThreeObject(response);
             });
         }
 
@@ -63,6 +57,27 @@
             $event.preventDefault();
             $event.stopPropagation();
             vm.opened = true;
+        }
+
+        function submitDietInfo() {
+            vm.steps.percent=100
+            var modelToTransfer = dietModel.buildTransferObject(vm.step1, vm.step2, vm.step3);
+            if (Utility.checkIfUndefinedOrNull(vm.step1.id)) {
+                dietDataservice.createDiet(modelToTransfer).then(function (response) {
+                    vm.step1.id = response.id;
+                });
+            } else {
+                dietDataservice.updateDiet(modelToTransfer);
+            }
+        }
+
+        function goToStepTwo() {
+            if (vm.formStep1.$valid) {
+                vm.steps.step2 = true;
+            }
+            else {
+                vm.step2 = false;
+            }
         }
     }
 

@@ -1,9 +1,11 @@
 package com.tomkasp.fitnow.profile.application;
 
+import com.tomkasp.fitnow.profile.domain.DailyActivity;
 import com.tomkasp.fitnow.profile.dto.ProfileInDTO;
 import com.tomkasp.fitnow.profile.ProfileMapperImpl;
 import com.tomkasp.fitnow.profile.dto.ProfileOutDTO;
 import com.tomkasp.fitnow.profile.domain.Profile;
+import com.tomkasp.fitnow.sharedkernel.Sex;
 import com.tomkasp.repository.ProfileRepository;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
@@ -75,6 +77,11 @@ public class ProfileService {
         profile = profileRepository.save(profile);
         ProfileOutDTO result = profileMapperImpl.profileToProfileOutDTO(profile);
         return result;
+    }
+
+    @Transactional(readOnly = false)
+    public void updateProfileAfterEvent(Integer height, DailyActivity dailyActivity, Sex sex){
+        profileRepository.updateProfile(height,dailyActivity, sex, userService.getUserWithAuthorities().getId());
     }
 
     public void delete(Long id) {

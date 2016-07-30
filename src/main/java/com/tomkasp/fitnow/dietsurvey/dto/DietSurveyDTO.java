@@ -1,30 +1,37 @@
-package com.tomkasp.fitnow.diet.dto;
+package com.tomkasp.fitnow.dietsurvey.dto;
 
-import org.joda.time.DateTime;
+import com.tomkasp.fitnow.sharedkernel.Sex;
+import org.joda.time.LocalDate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Tomasz Kasprzycki
  */
+
 public class DietSurveyDTO {
 
     private Long id;
     private Integer height;
     private DailyActivity dailyActivity;
-    private DateTime bornDate;
+    private LocalDate bornDate;
     private String sex;
     private Integer wakeupMin;
     private Integer wakeupMax;
     private Integer workMin;
     private Integer workMax;
-    private String mealQuantity; // JSON based field
-    private Boolean isAllergy;
+    private MealQuantity mealQuantity; // JSON based field
+    private Boolean isAllergy = false;
     private String allergyDetails;
-    private Boolean isFoodIntolerance;
+    private Boolean isFoodIntolerance = false;
     private String foodIntolleranceDetails;
     private String favorites;
-    private Boolean isLikingSoup;
+    private Boolean isLikingSoup = false;
     private String foodExclusion;
     private String additionalInfo;
+
+
 
     public static class DailyActivity {
         private String id;
@@ -67,11 +74,11 @@ public class DietSurveyDTO {
         return this;
     }
 
-    public DateTime getBornDate() {
+    public LocalDate getBornDate() {
         return bornDate;
     }
 
-    public DietSurveyDTO setBornDate(DateTime bornDate) {
+    public DietSurveyDTO setBornDate(LocalDate bornDate) {
         this.bornDate = bornDate;
         return this;
     }
@@ -157,11 +164,11 @@ public class DietSurveyDTO {
         return this;
     }
 
-    public String getMealQuantity() {
+    public MealQuantity getMealQuantity() {
         return mealQuantity;
     }
 
-    public DietSurveyDTO setMealQuantity(String mealQuantity) {
+    public DietSurveyDTO setMealQuantity(MealQuantity mealQuantity) {
         this.mealQuantity = mealQuantity;
         return this;
     }
@@ -209,5 +216,21 @@ public class DietSurveyDTO {
     public DietSurveyDTO setWorkMin(Integer workMin) {
         this.workMin = workMin;
         return this;
+    }
+
+    public com.tomkasp.fitnow.profile.domain.DailyActivity getConvertedDailyActivity() {
+        final Map<String, com.tomkasp.fitnow.profile.domain.DailyActivity> dailyActivity = new HashMap<>();
+        dailyActivity.put("0", com.tomkasp.fitnow.profile.domain.DailyActivity.SMALL);
+        dailyActivity.put("1", com.tomkasp.fitnow.profile.domain.DailyActivity.MEDIUM);
+        dailyActivity.put("2", com.tomkasp.fitnow.profile.domain.DailyActivity.HIGH);
+        dailyActivity.put("3", com.tomkasp.fitnow.profile.domain.DailyActivity.VERY_HIGH);
+        return dailyActivity.get(this.dailyActivity.getId());
+    }
+
+    public Sex getConvertedSex(){
+        Map<String, Sex> sexMap = new HashMap<>();
+        sexMap.put("0", Sex.MALE);
+        sexMap.put("1", Sex.FEMALE);
+        return sexMap.get(this.sex);
     }
 }

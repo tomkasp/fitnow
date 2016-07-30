@@ -1,10 +1,21 @@
-package com.tomkasp.fitnow.diet.application;
+package com.tomkasp.fitnow.dietsurvey.application;
 
-import com.tomkasp.fitnow.diet.domain.DietSurvey;
-import com.tomkasp.fitnow.diet.dto.DietSurveyDTO;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.tomkasp.fitnow.dietsurvey.domain.DietSurvey;
+import com.tomkasp.fitnow.dietsurvey.dto.DietSurveyDTO;
+import com.tomkasp.fitnow.dietsurvey.dto.MealQuantity;
 import com.tomkasp.fitnow.profile.dto.ProfileOutDTO;
 import com.tomkasp.fitnow.sharedkernel.Sex;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.util.Optional.ofNullable;
 
@@ -13,42 +24,46 @@ import static java.util.Optional.ofNullable;
  */
 @Component
 public class DietSurveyFactory {
-    public DietSurvey build(DietSurveyDTO dietSurveyDto) {
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    public DietSurvey build(DietSurveyDTO dietSurveyDto) throws JsonProcessingException {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(dietSurveyDto.getMealQuantity());
+
         return new DietSurvey().setAdditionalInfo(dietSurveyDto.getAdditionalInfo())
             .setIsAllergy(dietSurveyDto.getIsAllergy())
-            .setBornDate(dietSurveyDto.getBornDate())
+            .setBornDate(dietSurveyDto.getBornDate().toDateTimeAtCurrentTime())
             .setAllergyDetails(dietSurveyDto.getAllergyDetails())
             .setFavorites(dietSurveyDto.getFavorites())
             .setFoodExclusion(dietSurveyDto.getFoodExclusion())
             .setFoodIntolleranceDetails(dietSurveyDto.getFoodIntolleranceDetails())
-            .setHeight(dietSurveyDto.getHeight())
             .setId(dietSurveyDto.getId())
             .setIsFoodIntolerance(dietSurveyDto.getIsFoodIntolerance())
-            .setHeight(dietSurveyDto.getHeight())
             .setIsLikingSoup(dietSurveyDto.getIsLikingSoup())
             .setFavorites(dietSurveyDto.getFavorites())
-            .setMealQuantity(dietSurveyDto.getMealQuantity())
+            .setMealQuantity(json)
             .setWakeupMax(dietSurveyDto.getWakeupMax())
             .setWakeupMin(dietSurveyDto.getWakeupMin())
             .setWorkMax(dietSurveyDto.getWorkMax())
             .setWorkMin(dietSurveyDto.getWorkMin());
     }
 
-    public DietSurveyDTO build(DietSurvey dietSurvey, ProfileOutDTO mine) {
+    public DietSurveyDTO build(DietSurvey dietSurvey, ProfileOutDTO mine) throws IOException {
+        MealQuantity mealQuantityMap = mapper.readValue(dietSurvey.getMealQuantity(), MealQuantity.class);
         final DietSurveyDTO dietSurveyDTO = new DietSurveyDTO().setAdditionalInfo(dietSurvey.getAdditionalInfo())
             .setIsAllergy(dietSurvey.getIsAllergy())
-            .setBornDate(dietSurvey.getBornDate())
+            .setBornDate(dietSurvey.getBornDate().toLocalDate())
             .setAllergyDetails(dietSurvey.getAllergyDetails())
             .setFavorites(dietSurvey.getFavorites())
             .setFoodExclusion(dietSurvey.getFoodExclusion())
             .setFoodIntolleranceDetails(dietSurvey.getFoodIntolleranceDetails())
-            .setHeight(dietSurvey.getHeight())
+            .setHeight(mine.getHeight())
             .setId(dietSurvey.getId())
             .setIsFoodIntolerance(dietSurvey.getIsFoodIntolerance())
-            .setHeight(dietSurvey.getHeight())
             .setIsLikingSoup(dietSurvey.getIsLikingSoup())
             .setFavorites(dietSurvey.getFavorites())
-            .setMealQuantity(dietSurvey.getMealQuantity())
+            .setMealQuantity(mealQuantityMap)
             .setWakeupMax(dietSurvey.getWakeupMax())
             .setWakeupMin(dietSurvey.getWakeupMin())
             .setWorkMax(dietSurvey.getWorkMax())
@@ -61,14 +76,12 @@ public class DietSurveyFactory {
         return dietSurveyDTO;
     }
 
-    public DietSurveyDTO emptyDietSurveyDTO() {
-        return new DietSurveyDTO();
-    }
-
-    private Sex convertSex(String sex) {
-        if ("0".equals(sex)) {
-            return Sex.MALE;
-        }
-        return Sex.FEMALE;
+    public DietSurveyDTO emptyDietSurveyDTO(ProfileOutDTO mine) {
+        final DietSurveyDTO dietSurveyDTO = new DietSurveyDTO()
+            .setHeight(mine.getHeight())
+            .setSex(mine.getSex());
+        ofNullable(mine.getDailyActivity()).map(result ->
+            dietSurveyDTO.setDailyActivity(new DietSurveyDTO.DailyActivity().setName(result.getName()).setId(result.getId().toString())));
+        return dietSurveyDTO;
     }
 }

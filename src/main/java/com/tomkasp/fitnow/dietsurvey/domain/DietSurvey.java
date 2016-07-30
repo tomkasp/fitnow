@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.diet.domain;
+package com.tomkasp.fitnow.dietsurvey.domain;
 
 import com.tomkasp.domain.User;
 import org.hibernate.annotations.*;
@@ -20,9 +20,6 @@ public class DietSurvey {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(name = "height")
-    private Integer height;
 
     @Column(name = "born_date")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
@@ -119,15 +116,6 @@ public class DietSurvey {
 
     public DietSurvey setFoodIntolleranceDetails(String foodIntolleranceDetails) {
         this.foodIntolleranceDetails = foodIntolleranceDetails;
-        return this;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public DietSurvey setHeight(Integer height) {
-        this.height = height;
         return this;
     }
 

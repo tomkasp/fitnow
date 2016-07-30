@@ -24,7 +24,6 @@
             <column name="user_id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="height" type="integer"/>
             <column name="born_date" type="TIMESTAMP"/>
             <column name="wakeup_min" type="integer"/>
             <column name="wakeup_max" type="integer"/>

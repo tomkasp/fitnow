@@ -42,7 +42,7 @@ public class ProfileInfoService {
             facebookProfileUrl = primaryConnection.getProfileUrl();
             fullName = userWithAuthorities.getFirstName() + " " + userWithAuthorities.getLastName();
         }catch (NotConnectedException ex){
-            log.warn("not assigned facebook conection", ex);
+            log.warn("not assigned facebook conection");
         }
         final ProfileInfoOutDTO profileInfoOutDTO = new ProfileInfoOutDTO()
             .setFacebookImgUrl(imageUrl)

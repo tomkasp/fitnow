@@ -1,8 +1,11 @@
-package com.tomkasp.fitnow.diet.application;
+package com.tomkasp.fitnow.dietsurvey.application;
 
-import com.tomkasp.fitnow.diet.domain.DietSurvey;
-import com.tomkasp.fitnow.diet.domain.DietSurveyRepository;
-import com.tomkasp.fitnow.diet.dto.DietSurveyDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.tomkasp.fitnow.infrastructure.event.DietSurveyUpdatedEvent;
+import com.tomkasp.fitnow.dietsurvey.domain.DietSurvey;
+import com.tomkasp.fitnow.dietsurvey.domain.DietSurveyRepository;
+import com.tomkasp.fitnow.dietsurvey.dto.DietSurveyDTO;
+import com.tomkasp.fitnow.infrastructure.event.EventPublisher;
 import com.tomkasp.fitnow.profile.application.ProfileService;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
@@ -10,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.IOException;
 
 /**
  * @author Tomasz Kasprzycki
@@ -24,13 +29,15 @@ public class DietSurveyService {
     private final DietSurveyFactory dietSurveyFactory;
     //TODO move this to http request
     private final ProfileService profileService;
+    private final EventPublisher eventPublisher;
 
     @Autowired
-    public DietSurveyService(DietSurveyRepository dietSurveyRepository, UserService userService, DietSurveyFactory dietSurveyFactory, ProfileService profileService) {
+    public DietSurveyService(DietSurveyRepository dietSurveyRepository, UserService userService, DietSurveyFactory dietSurveyFactory, ProfileService profileService, EventPublisher eventPublisher) {
         this.dietSurveyRepository = dietSurveyRepository;
         this.userService = userService;
         this.dietSurveyFactory = dietSurveyFactory;
         this.profileService = profileService;
+        this.eventPublisher = eventPublisher;
     }
 
     public DietSurveyDTO getMineDietSurvey() {
@@ -38,19 +45,25 @@ public class DietSurveyService {
         final Long id = userService.getUserWithAuthorities().getId();
         return dietSurveyRepository.findByUserId(id)
             .map(result -> {
-                    final DietSurveyDTO dietSurveyDTO = dietSurveyFactory.build(result, profileService.findMine());
+                    DietSurveyDTO dietSurveyDTO = null;
+                    try {
+                        dietSurveyDTO = dietSurveyFactory.build(result, profileService.findMine());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     return dietSurveyDTO;
                 }
             )
-            .orElse(dietSurveyFactory.emptyDietSurveyDTO());
+            .orElse(dietSurveyFactory.emptyDietSurveyDTO(profileService.findMine()));
     }
 
-    public  DietSurveyDTO saveMineDietSurvey(DietSurveyDTO dietSurveyDTO){
+    public  DietSurveyDTO saveMineDietSurvey(DietSurveyDTO dietSurveyDTO) throws IOException {
         log.debug("Request to save Profile : {}", dietSurveyDTO);
         DietSurvey dietSurvey = dietSurveyFactory.build(dietSurveyDTO);
         dietSurvey.setUser(userService.getUserWithAuthorities());
         final DietSurvey savedDietSurvey = dietSurveyRepository.save(dietSurvey);
         DietSurveyDTO result = dietSurveyFactory.build(savedDietSurvey, profileService.findMine());
+        eventPublisher.publish(new DietSurveyUpdatedEvent(dietSurveyDTO.getHeight(), dietSurveyDTO.getConvertedSex(), dietSurveyDTO.getConvertedDailyActivity()));
         return result;
 
     }

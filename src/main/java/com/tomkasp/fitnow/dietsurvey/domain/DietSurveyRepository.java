@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.diet.domain;
+package com.tomkasp.fitnow.dietsurvey.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

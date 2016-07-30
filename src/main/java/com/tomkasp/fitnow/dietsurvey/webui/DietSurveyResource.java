@@ -1,10 +1,10 @@
-package com.tomkasp.fitnow.diet.webui;
+package com.tomkasp.fitnow.dietsurvey.webui;
 
 import com.codahale.metrics.annotation.Timed;
-import com.tomkasp.fitnow.diet.application.DietSurveyFactory;
-import com.tomkasp.fitnow.diet.application.DietSurveyService;
-import com.tomkasp.fitnow.diet.domain.DietSurveyRepository;
-import com.tomkasp.fitnow.diet.dto.DietSurveyDTO;
+import com.tomkasp.fitnow.dietsurvey.application.DietSurveyFactory;
+import com.tomkasp.fitnow.dietsurvey.application.DietSurveyService;
+import com.tomkasp.fitnow.dietsurvey.domain.DietSurveyRepository;
+import com.tomkasp.fitnow.dietsurvey.dto.DietSurveyDTO;
 import com.tomkasp.fitnow.profile.application.ProfileService;
 import com.tomkasp.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -49,7 +50,7 @@ public class DietSurveyResource {
 
     @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<DietSurveyDTO> updateDietSurvey(@Valid @RequestBody DietSurveyDTO dietSurveyDto) throws URISyntaxException {
+    public ResponseEntity<DietSurveyDTO> updateDietSurvey(@Valid @RequestBody DietSurveyDTO dietSurveyDto) throws URISyntaxException, IOException {
         log.debug("REST request to diet survey : {}", dietSurveyDto);
         if (dietSurveyDto.getId() == null) {
             return createDietSurvey(dietSurveyDto);
@@ -62,7 +63,7 @@ public class DietSurveyResource {
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<DietSurveyDTO> createDietSurvey(@Valid @RequestBody DietSurveyDTO dietSurveyDto) throws URISyntaxException {
+    public ResponseEntity<DietSurveyDTO> createDietSurvey(@Valid @RequestBody DietSurveyDTO dietSurveyDto) throws URISyntaxException, IOException {
         log.debug("REST request to create survey : {}", dietSurveyDto);
         if (dietSurveyDto.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dietsurveys", "idexists", "A new dietsurveys cannot already have an ID")).body(null);

@@ -7,7 +7,7 @@
             <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 
             <div class="panel-body">
-                <form name="step1" class="form-validation form-horizontal">
+                <form name="vm.formStep1" class="form-validation form-horizontal">
 
                     <div class="form-group">
                         <div class="col-sm-4"><p class="m-t" translate="diet.FORM.birthdate">Birth date</p>
@@ -57,7 +57,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <p class="m-t" name="wakeuphours" >{{'diet.FORM.wakeuphours' | translate}} ({{vm.step1.wakeup.min}}:00 - {{vm.step1.wakeup.max}}:00)</p>
+                            <p class="m-t" name="wakeuphours">{{'diet.FORM.wakeuphours' | translate}} ({{vm.step1.wakeup.min}}:00 - {{vm.step1.wakeup.max}}:00)</p>
                             <slider
                                 ng-model="vm.step1.wakeup.min"
                                 ng-model-range="vm.step1.wakeup.max"
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="form-group col-lg-4 m-t m-b">
-                        <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="vm.steps.step2=true" translate="diet.FORM.next">Next</button>
+                        <button type="submit"  class="btn btn-success" ng-click="vm.goToStepTwo()" translate="diet.FORM.next">Next</button>
                     </div>
                 </form>
             </div>
@@ -245,8 +245,8 @@
 
                 <div class="form-group m-t m-b">
                     <div class="col-sm-4 col-sm-offset-0">
-                        <button type="button" class="btn btn-default btn-rounded" ng-click="vm.steps.step1=true" translate="diet.FORM.prev">Prev</button>
-                        <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default btn-rounded" ng-click="vm.steps.step3=true" translate="diet.FORM.next">Next</button>
+                        <button type="button" class="btn btn-success" ng-click="vm.steps.step1=true" translate="diet.FORM.prev">Prev</button>
+                        <button type="submit" ng-disabled="step2.$invalid" class="btn btn-success" ng-click="vm.steps.step3=true" translate="diet.FORM.next">Next</button>
                     </div>
                 </div>
             </form>
@@ -259,53 +259,53 @@
 
                 <div class="m-t">
                     <label class="checkbox-inline i-checks">
-                        <input type="radio" ng-model="vm.step3.allergy" name="a" value="0">
+                        <input type="radio" ng-model="vm.step3.isAllergy" name="isallergy" ng-value="true">
                         <i></i>
                         Yes
                     </label>
                     <label class="checkbox-inline  i-checks">
-                        <input type="radio" ng-model="vm.step3.allergy" name="a" value="1">
+                        <input type="radio" ng-model="vm.step3.isAllergy" name="isallergy" ng-value="false">
                         <i></i>
                         No
                     </label>
                 </div>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" ng-show="vm.step3.allergy==0" ng-model="vm.step3.allergyDetails" style="overflow:scroll;height:100px;max-height:200px">
-                </div>
+                <textarea class="form-control m-t" ng-model="vm.step3.allergyDetails" ng-show="vm.step3.isAllergy==true">
+                </textarea>
 
                 <p class="m-t" translate="diet.FORM.intolerance">Intolerance</p>
 
                 <div class="m-t">
                     <label class="checkbox-inline i-checks">
-                        <input type="radio" name="intoleranceYes" value="0" ng-model="vm.step3.intolerance">
+                        <input type="radio" name="intoleranceYes" ng-value="true" ng-model="vm.step3.isFoodIntolerance">
                         <i></i>
                         Yes
                     </label>
                     <label class="checkbox-inline  i-checks">
-                        <input type="radio" name="intoleranceNo" value="1" ng-model="vm.step3.intolerance" checked>
+                        <input type="radio" name="intoleranceNo" ng-value="false" ng-model="vm.step3.isFoodIntolerance" checked>
                         <i></i>
                         No
                     </label>
                 </div>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" ng-show="vm.step3.intolerance==0" style="overflow:scroll;height:100px;max-height:200px">
-                </div>
+                <textarea class="form-control m-t" ng-model="vm.step3.foodIntolleranceDetails" ng-show="vm.step3.isFoodIntolerance==true">
+                </textarea>
 
                 <p class="m-t" translate="diet.FORM.favorite">Favorite</p>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" style="overflow:scroll;height:100px;max-height:200px">
-                </div>
+                <textarea class="form-control m-t" ng-model="vm.step3.favorites">
+                </textarea>
 
                 <p class="m-t" translate="diet.FORM.soup">Soup</p>
 
                 <div class="m-t">
                     <label class="checkbox-inline i-checks">
-                        <input type="radio" name="soupYes" value="0" ng-model="vm.step3.soup">
+                        <input type="radio" name="soupYes" ng-value="true" ng-model="vm.step3.isLikingSoup">
                         <i></i>
                         Yes
                     </label>
                     <label class="checkbox-inline  i-checks">
-                        <input type="radio" name="soupNo" value="1" ng-model="vm.step3.soup" >
+                        <input type="radio" name="soupNo" ng-value="false" ng-model="vm.step3.isLikingSoup">
                         <i></i>
                         No
                     </label>
@@ -313,18 +313,17 @@
 
                 <p class="m-t" translate="diet.FORM.exclusions">Exclusions</p>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" style="overflow:scroll;height:100px;max-height:200px">
-                </div>
+                <textarea class="form-control m-t" ng-model="vm.step3.foodExclusion">
+                </textarea>
 
                 <p class="m-t" translate="diet.FORM.info">Info</p>
 
-                <div ui-jq="wysiwyg" class="form-control m-t" style="overflow:scroll;height:100px;max-height:200px">
-                </div>
+               <textarea class="form-control m-t" ng-model="vm.step3.additionalInfo">
+                </textarea>
 
                 <div class="m-t m-b">
-                    <button type="button" class="btn btn-default btn-rounded" ng-click="vm.steps.step2=true" translate="diet.FORM.prev">Prev</button>
-                    <button type="button" class="btn btn-default btn-rounded" ng-click="vm.steps.percent=100" translate="diet.FORM.finish">Finish</button>
-                    <button ng-click="vm.clicktest()">test</button>
+                    <button type="button" class="btn btn-success" ng-click="vm.steps.step2=true" translate="diet.FORM.prev">Prev</button>
+                    <button type="button" class="btn btn-info" ng-click="vm.submitDietInfo()" translate="diet.FORM.finish">Finish</button>
                 </div>
             </form>
         </tab>
