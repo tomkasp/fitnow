@@ -28,6 +28,7 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js',
             'main/webapp/bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js',
             'main/webapp/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
+            'main/webapp/bower_components/angular-translate-storage-local/angular-translate-storage-local.js',
             'main/webapp/bower_components/moment/moment.js',
             'main/webapp/bower_components/fullcalendar/dist/fullcalendar.js',
             'main/webapp/bower_components/angular-ui-calendar/src/calendar.js',

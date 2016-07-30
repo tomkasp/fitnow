@@ -132,7 +132,7 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
         });
 
         $translateProvider.preferredLanguage('en');
-        $translateProvider.useCookieStorage();
+        $translateProvider.useLocalStorage();
         $translateProvider.useSanitizeValueStrategy('escaped');
         $translateProvider.addInterpolation('$translateMessageFormatInterpolation');
 

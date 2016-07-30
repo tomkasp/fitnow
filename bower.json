@@ -18,6 +18,7 @@
     "angular-translate": "2.8.1",
     "angular-translate-interpolation-messageformat": "2.8.1",
     "angular-translate-loader-partial": "2.8.1",
+    "angular-translate-storage-local" : "2.8.1",
     "angular-translate-storage-cookie": "2.8.1",
     "angular-ui-calendar": "latest",
     "angular-ui-grid": "~3.0.0-rc.16",
