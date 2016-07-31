@@ -1,9 +1,9 @@
 <div ng-controller="NavbarController" ng-switch="isAuthenticated()" class="navbar box-shadow {{app.settings.navbarCollapseColor}}">
 
     <!-- link and dropdown -->
-    <ul class="nav navbar-nav hidden-sm">
+    <ul class="nav navbar-nav hidden-xs">
         <li class="dropdown" dropdown>
-            <a href class="dropdown-toggle" dropdown-toggle>
+            <a href class="dropdown-toggle btn no-shadow navbar-btn" dropdown-toggle>
                 <span translate="header.navbar.PROFILE.profile" class="text-lg" style="font-weight: 500">Profile</span> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -11,6 +11,15 @@
                 <!--<li><a ui-sref="app.profile.progress" translate="header.navbar.PROFILE.progress">Progress</a></li>-->
                 <li><a ui-sref="app.diet" translate="header.navbar.PROFILE.diet">Diet</a></li>
             </ul>
+        </li>
+    </ul>
+
+    <!-- link and dropdown -->
+    <ul class="nav navbar-nav hidden-xs">
+        <li>
+            <a ui-sref="app.shop"  class="btn navbar-btn btn-info">
+                <span translate="header.navbar.PROFILE.buydiet" class="text-lg" style="font-weight: 500">buydiet</span>
+            </a>
         </li>
     </ul>
     <!-- / link and dropdown -->

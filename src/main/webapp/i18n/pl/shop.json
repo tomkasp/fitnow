@@ -1,0 +1,25 @@
+{
+    "shop": {
+        "title": "Kup dietę",
+        "standard": "Standart",
+        "super": "Super",
+        "premium": "Premium",
+        "dietproposition": "50 propozycji żywieniowych",
+        "dietproposition150": "150 propozycji żywieniowych",
+        "nutritiondirections": "Wytyczne żywieniowe",
+        "emailcontact": "Stały kontakt mailowy",
+        "consultation": "Telefoniczna konsultacja z dietetykiem",
+        "consultation3": "3 Telefoniczne konsultacja z dietetykiem",
+        "reconsultation": "Dwutygodniowa rekonsultacja telefoniczna",
+
+        "profile": {
+            "goalloose" : "Loose weight",
+            "goalgain" : "Gain muscles",
+            "small" : "Small",
+            "medium" : "Medium",
+            "high": "High",
+            "veryhigh" :"Very High"
+
+        }
+    }
+}
