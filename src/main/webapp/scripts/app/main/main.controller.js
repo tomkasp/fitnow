@@ -52,8 +52,8 @@ angular.module('fitnowApp')
 
         // angular translate
         $scope.lang = { isopen: false };
-        $scope.langs = {en:'English', de_DE:'German', it_IT:'Italian'};
-        $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
+        $scope.langs = {en:'English', pl:'Polski'};
+        $scope.selectLang = $scope.langs[$translate.use()] || "English";
         $scope.setLang = function(langKey, $event) {
             // set the current lang
             $scope.selectLang = $scope.langs[langKey];

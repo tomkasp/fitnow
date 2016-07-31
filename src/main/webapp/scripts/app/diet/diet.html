@@ -1,0 +1,331 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 translate="diet.FORM.title" class="m-n font-thin h3">Diet Information</h1>
+</div>
+<div class="wrapper-md">
+    <tabset class="tab-container">
+        <tab heading="{{'diet.FORM.step1' | translate}}" active="vm.steps.step1" select="vm.steps.percent=10">
+            <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
+
+            <div class="panel-body">
+                <form name="vm.formStep1" class="form-validation form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-sm-4"><p class="m-t" translate="diet.FORM.birthdate">Birth date</p>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="{{vm.format}}"
+                                       ng-model="vm.step1.bornDate" is-open="vm.opened" datepicker-options="vm.dateOptions" ng-required="true"
+                                       required/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-offset-1 col-sm-4">
+                            <p class="m-t" translate="diet.FORM.sex">Sex</p>
+
+                            <div>
+                                <label class="checkbox-inline i-checks">
+                                    <input type="radio" ng-model="vm.step1.sex" name="sex" value="0">
+                                    <i></i>
+                                    Male
+                                </label>
+                                <label class="checkbox-inline  i-checks">
+                                    <input type="radio" ng-model="vm.step1.sex" name="sex" value="1">
+                                    <i></i>
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <p class="m-t" translate="diet.FORM.height">Height</p>
+                            <input class="form-control" type="number" name="height" min="10" max="400" ng-model="vm.step1.height" required>
+                        </div>
+
+                        <div class="col-sm-offset-1 col-sm-4">
+                            <p class="m-t" translate="diet.FORM.dailyactivity">Daily Activity</p>
+                            <select name="dailyActivity" class="form-control"
+                                    ng-options="option.name for option in vm.dailyActivityOptions track by option.id"
+                                    ng-model="vm.step1.dailyActivity">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <p class="m-t" name="wakeuphours">{{'diet.FORM.wakeuphours' | translate}} ({{vm.step1.wakeup.min}}:00 - {{vm.step1.wakeup.max}}:00)</p>
+                            <slider
+                                ng-model="vm.step1.wakeup.min"
+                                ng-model-range="vm.step1.wakeup.max"
+                                floor="1"
+                                ceiling="15">
+                            </slider>
+                        </div>
+                        <div class="col-sm-offset-1 col-sm-4">
+                            <p class="m-t" name="workhours">{{'diet.FORM.workhours' | translate}} ( min:{{vm.step1.workhours.min}} - max:{{vm.step1.workhours.max}} )</p>
+
+                            <slider
+                                ng-model="vm.step1.workhours.min"
+                                ng-model-range="vm.step1.workhours.max"
+                                floor="1"
+                                ceiling="15">
+                            </slider>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 m-t m-b">
+                        <button type="submit"  class="btn btn-success" ng-click="vm.goToStepTwo()" translate="diet.FORM.next">Next</button>
+                    </div>
+                </form>
+            </div>
+        </tab>
+
+        <tab heading="{{'diet.FORM.step2' | translate}}" disable="step1.$invalid" active="vm.steps.step2" select="vm.steps.percent=30">
+            <form name="step2" class="form-validation form-horizontal">
+                <p class="m-b">Continue the next step</p>
+                <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
+
+                <div class="form-group">
+                    <label translate="diet.FORM.days.mon" class="col-sm-2 control-label">Monday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.monday.breakfast" ng-checked="vm.step2.monday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.monday.secbreakfast" ng-checked="vm.step2.monday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.monday.lunch" ng-checked="vm.step2.monday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.monday.dinner" ng-checked="vm.step2.monday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.monday.supper" ng-checked="vm.step2.monday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label translate="diet.FORM.days.tue" class="col-sm-2 control-label">Tuesday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.tuesday.breakfast" ng-checked="vm.step2.tuesday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.tuesday.secbreakfast" ng-checked="vm.step2.tuesday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.tuesday.lunch" ng-checked="vm.step2.tuesday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.tuesday.dinner" ng-checked="vm.step2.tuesday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.tuesday.supper" ng-checked="vm.step2.tuesday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label translate="diet.FORM.days.wed" class="col-sm-2 control-label">Wednesday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.wednesday.breakfast" ng-checked="vm.step2.wednesday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.wednesday.secbreakfast" ng-checked="vm.step2.wednesday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.wednesday.lunch" ng-checked="vm.step2.wednesday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.wednesday.dinner" ng-checked="vm.step2.wednesday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.wednesday.supper" ng-checked="vm.step2.wednesday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label translate="diet.FORM.days.thu" class="col-sm-2 control-label">Thursday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.thursday.breakfast" ng-checked="vm.step2.thursday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.thursday.secbreakfast" ng-checked="vm.step2.thursday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.thursday.lunch" ng-checked="vm.step2.thursday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.thursday.dinner" ng-checked="vm.step2.thursday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.thursday.supper" ng-checked="vm.step2.thursday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label translate="diet.FORM.days.fri" class="col-sm-2 control-label">Friday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.friday.breakfast" ng-checked="vm.step2.friday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.friday.secbreakfast" ng-checked="vm.step2.friday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.friday.lunch" ng-checked="vm.step2.friday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.friday.dinner" ng-checked="vm.step2.friday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.friday.supper" ng-checked="vm.step2.friday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label translate="diet.FORM.days.sat" class="col-sm-2 control-label">Saturday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.saturday.breakfast" ng-checked="vm.step2.saturday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.saturday.secbreakfast" ng-checked="vm.step2.saturday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.saturday.lunch" ng-checked="vm.step2.saturday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.saturday.dinner" ng-checked="vm.step2.saturday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.saturday.supper" ng-checked="vm.step2.saturday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label translate="diet.FORM.days.sun" class="col-sm-2 control-label">Sunday</label>
+
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.sunday.breakfast" ng-checked="vm.step2.sunday.breakfast"><i></i>{{'diet.FORM.meals.breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.sunday.secbreakfast" ng-checked="vm.step2.sunday.secbreakfast"><i></i>{{'diet.FORM.meals.sec_breakfast' | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.sunday.lunch" ng-checked="vm.step2.sunday.lunch"><i></i> {{"diet.FORM.meals.lunch" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.sunday.dinner" ng-checked="vm.step2.sunday.dinner"><i></i> {{"diet.FORM.meals.dinner" | translate}}
+                        </label>
+                        <label class="checkbox-inline i-checks">
+                            <input type="checkbox" ng-model="vm.step2.sunday.supper" ng-checked="vm.step2.sunday.supper"><i></i> {{"diet.FORM.meals.supper" | translate}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group m-t m-b">
+                    <div class="col-sm-4 col-sm-offset-0">
+                        <button type="button" class="btn btn-success" ng-click="vm.steps.step1=true" translate="diet.FORM.prev">Prev</button>
+                        <button type="submit" ng-disabled="step2.$invalid" class="btn btn-success" ng-click="vm.steps.step3=true" translate="diet.FORM.next">Next</button>
+                    </div>
+                </div>
+            </form>
+        </tab>
+        <tab heading="{{'diet.FORM.step3' | translate}}" disable="step1.$invalid" active="vm.steps.step3" select="vm.steps.percent=60">
+            <form name="step3" class="form-validation form-horizontal">
+                <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
+
+                <p class="m-t" translate="diet.FORM.allergy">Allergy</p>
+
+                <div class="m-t">
+                    <label class="checkbox-inline i-checks">
+                        <input type="radio" ng-model="vm.step3.isAllergy" name="isallergy" ng-value="true">
+                        <i></i>
+                        Yes
+                    </label>
+                    <label class="checkbox-inline  i-checks">
+                        <input type="radio" ng-model="vm.step3.isAllergy" name="isallergy" ng-value="false">
+                        <i></i>
+                        No
+                    </label>
+                </div>
+
+                <textarea class="form-control m-t" ng-model="vm.step3.allergyDetails" ng-show="vm.step3.isAllergy==true">
+                </textarea>
+
+                <p class="m-t" translate="diet.FORM.intolerance">Intolerance</p>
+
+                <div class="m-t">
+                    <label class="checkbox-inline i-checks">
+                        <input type="radio" name="intoleranceYes" ng-value="true" ng-model="vm.step3.isFoodIntolerance">
+                        <i></i>
+                        Yes
+                    </label>
+                    <label class="checkbox-inline  i-checks">
+                        <input type="radio" name="intoleranceNo" ng-value="false" ng-model="vm.step3.isFoodIntolerance" checked>
+                        <i></i>
+                        No
+                    </label>
+                </div>
+
+                <textarea class="form-control m-t" ng-model="vm.step3.foodIntolleranceDetails" ng-show="vm.step3.isFoodIntolerance==true">
+                </textarea>
+
+                <p class="m-t" translate="diet.FORM.favorite">Favorite</p>
+
+                <textarea class="form-control m-t" ng-model="vm.step3.favorites">
+                </textarea>
+
+                <p class="m-t" translate="diet.FORM.soup">Soup</p>
+
+                <div class="m-t">
+                    <label class="checkbox-inline i-checks">
+                        <input type="radio" name="soupYes" ng-value="true" ng-model="vm.step3.isLikingSoup">
+                        <i></i>
+                        Yes
+                    </label>
+                    <label class="checkbox-inline  i-checks">
+                        <input type="radio" name="soupNo" ng-value="false" ng-model="vm.step3.isLikingSoup">
+                        <i></i>
+                        No
+                    </label>
+                </div>
+
+                <p class="m-t" translate="diet.FORM.exclusions">Exclusions</p>
+
+                <textarea class="form-control m-t" ng-model="vm.step3.foodExclusion">
+                </textarea>
+
+                <p class="m-t" translate="diet.FORM.info">Info</p>
+
+               <textarea class="form-control m-t" ng-model="vm.step3.additionalInfo">
+                </textarea>
+
+                <div class="m-t m-b">
+                    <button type="button" class="btn btn-success" ng-click="vm.steps.step2=true" translate="diet.FORM.prev">Prev</button>
+                    <button type="button" class="btn btn-info" ng-click="vm.submitDietInfo()" translate="diet.FORM.finish">Finish</button>
+                </div>
+            </form>
+        </tab>
+    </tabset>
+</div>

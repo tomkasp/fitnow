@@ -1,0 +1,9 @@
+{
+    "fitnowApp": {
+        "MealType" : {
+            "null": "",
+            "Breakfast": "Breakfast",
+            "Lunch": "Lunch"
+        }
+    }
+}

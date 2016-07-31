@@ -1,0 +1,24 @@
+{
+    "shop": {
+        "title": "Buy diet",
+        "standard": "Standard",
+        "super": "Super",
+        "premium": "Premium",
+        "dietproposition": "50 meals proposition",
+        "dietproposition150": "150 meals proposition",
+        "nutritiondirections": "Nutrition directions",
+        "emailcontact": "Constant email contact",
+        "consultation": "Telephone consultation with a nutritionist",
+        "consultation3": "3 Telephone consultation with a nutritionist",
+        "reconsultation": "Two-week phone consultations",
+        "profile": {
+            "goalloose" : "Loose weight",
+            "goalgain" : "Gain muscles",
+            "small" : "Small",
+            "medium" : "Medium",
+            "high": "High",
+            "veryhigh" :"Very High"
+
+        }
+    }
+}

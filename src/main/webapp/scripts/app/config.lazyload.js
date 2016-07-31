@@ -12,6 +12,7 @@ angular.module('fitnowApp')
       plot:           [   '../libs/jquery/flot/jquery.flot.js',
                           '../libs/jquery/flot/jquery.flot.pie.js',
                           '../libs/jquery/flot/jquery.flot.resize.js',
+                          '../libs/jquery/flot/jquery.flot.time.js',
                           '../libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js',
                           '../libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js',
                           '../libs/jquery/flot-spline/js/jquery.flot.spline.min.js'],
@@ -116,8 +117,8 @@ angular.module('fitnowApp')
       {
           name: 'vr.directives.slider',
           files: [
-              '../libs/angular/venturocket-angular-slider/build/angular-slider.min.js',
-              '../libs/angular/venturocket-angular-slider/build/angular-slider.css'
+              'libs/angular/venturocket-angular-slider/build/angular-slider.min.js',
+              'libs/angular/venturocket-angular-slider/build/angular-slider.css'
           ]
       },
       {

@@ -1,0 +1,42 @@
+{
+    "diet": {
+            "FORM": {
+                "title": "Informacje dietetyczne",
+                "birthdate": "Data urodzenia",
+                "sex" : "Płeć:",
+                "height": "Wzrost:",
+                "dailyactivity": "Dzienna aktywnosc:",
+                "wakeuphours" : "Godziny wstawania:",
+                "workhours" : "Godziny pracy:",
+                "allergy" : "Czy wystepuja u Ciebie jakies Alergie? Jeśli tak to jakie?",
+                "intolerance" : "Czy wystepuja u Ciebie jakies nietolerancje pokarmowe? Jeśli tak to jakie?",
+                "favorite" : "Mojego jadlospisu nie wyobrażam sibie bez",
+                "soup" : "Lubisz zupy?",
+                "exclusions": "W mojej diecie nie chce:",
+                "info": "Czy jest jeszcze cos o czym chcial bys poinformowac dietetyka?",
+                "days": {
+                    "mon" : "Poniedziałek",
+                    "tue" : "Wtorek",
+                    "wed" : "Sroda",
+                    "thu" : "Czwartek",
+                    "fri" : "Piątek",
+                    "sat" : "Sobota",
+                    "sun" : "Niedziela"
+                },
+                "meals" : {
+                    "breakfast" : "śniadanie",
+                    "sec_breakfast" : "drugie śniadanie",
+                    "lunch" : "lunch",
+                    "dinner" : "obiad",
+                    "supper" : "kolacja"
+                },
+                "next" : "Następny",
+                "prev" : "Poprzedni",
+                "finish" : "Zakończ",
+                "step1" : "Krok 1",
+                "step2" : "Krok 2",
+                "step3" : "Krok 3",
+                "close" : "Zamknij"
+            }
+        }
+}

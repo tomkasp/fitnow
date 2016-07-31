@@ -10,9 +10,14 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'infinite-scroll',
     'angular-loading-bar',
     'oc.lazyLoad',
+    'ngLodash',
     'toaster',
+    'vr.directives.slider',
+
     'fitnowApp.dashboard',
     'fitnowApp.profile',
+    'fitnowApp.diet',
+    'fitnowApp.shop',
 
     'blocks.logger',
     'blocks.exception'
@@ -129,7 +134,7 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
         });
 
         $translateProvider.preferredLanguage('en');
-        $translateProvider.useCookieStorage();
+        $translateProvider.useLocalStorage();
         $translateProvider.useSanitizeValueStrategy('escaped');
         $translateProvider.addInterpolation('$translateMessageFormatInterpolation');
 

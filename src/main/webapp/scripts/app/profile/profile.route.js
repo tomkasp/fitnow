@@ -35,7 +35,9 @@ angular.module('fitnowApp')
                         return profileInfoDataservice.getProfileInfoData();
                     }],
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('login');
+                        $translatePartialLoader.addPart('profilecalculator');
+                        $translatePartialLoader.addPart('profilebodysize');
+                        $translatePartialLoader.addPart('fitnowshared');
                         return $translate.refresh();
                     }]
                 }

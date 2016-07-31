@@ -1,0 +1,22 @@
+{
+    "profilecalculator": {
+        "FORM": {
+            "title": "Your daily calories need (BMR):",
+            "sex": "Sex",
+            "male": "Male",
+            "female": "Female",
+            "goal": "Goal",
+            "weight": "Weight",
+            "age": "Age",
+            "height": "Height",
+            "dailyactivity": "Daily activity",
+            "wantto": "I want to ",
+            "caloriesdemand": "Your total calories demand is:",
+            "caloriesdeficit": "Your calories deficit is:",
+            "day": "day",
+            "dailydemand": "Your daily calories demand before",
+            "excercise": "exercise is",
+            "save": "Save"
+        }
+    }
+}

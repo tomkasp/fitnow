@@ -1,47 +1,48 @@
 <div class="panel panel-default">
-    <div class="panel-heading font-bold">
-                        <span class="text-lt">Body Sizes
-                        </span>
-    </div>
+    <!--<div class="panel-heading font-bold">-->
+                        <!--<span class="text-lt" translate="profilecalculator.Form.title">Body Sizes-->
+                        <!--</span>-->
+    <!--</div>-->
+    <div class="panel-heading font-bold" translate="profilebodysize.FORM.title">Body sizes</div>
     <div class="panel-body">
         <form class="bs-example form-horizontal">
             <div class="form-group">
-                <label class="col-lg-5 control-label">Waist</label>
+                <label class="col-lg-5 control-label" translate="profilebodysize.FORM.waist">Waist</label>
 
                 <div class="col-lg-4">
                     <input type="number" min="0" ng-model="vm.size.waist" class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-5 control-label">Thigh</label><!-- udo -->
+                <label class="col-lg-5 control-label" translate="profilebodysize.FORM.thigh">Thigh</label><!-- udo -->
 
                 <div class="col-lg-4">
                     <input type="number" min="0" ng-model="vm.size.thigh" class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-5 control-label">Chest</label>
+                <label class="col-lg-5 control-label" translate="profilebodysize.FORM.chest">Chest</label>
 
                 <div class="col-lg-4">
                     <input type="number" min="0" ng-model="vm.size.chest" class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-5 control-label">Hip</label>
+                <label class="col-lg-5 control-label" translate="profilebodysize.FORM.hip">Hip</label>
 
                 <div class="col-lg-4">
                     <input type="number" min="0" ng-model="vm.size.hip" class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-5 control-label">Arm</label>
+                <label class="col-lg-5 control-label" translate="profilebodysize.FORM.arm">Arm</label>
 
                 <div class="col-lg-4">
                     <input type="number" min="0" ng-model="vm.size.arm" class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-5 control-label">Neck</label>
+                <label class="col-lg-5 control-label" translate="profilebodysize.FORM.neck">Neck</label>
 
                 <div class="col-lg-4">
                     <input type="number" min="0" ng-model="vm.size.neck" class="form-control">
@@ -49,9 +50,45 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-offset-4 col-lg-10">
-                    <button type="submit" ng-click="vm.saveSizes()" class="btn btn-success">Save</button>
+                    <button type="submit" ng-click="vm.saveSizes()" class="btn btn-success" translate="profilebodysize.FORM.save">Save</button>
                 </div>
             </div>
         </form>
+    </div>
+    <div class="panel">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center" >
+                <span translate="profilebodysize.FORM.history">History:</span>
+                <select name="goal" class="btn-sm"
+
+                        ng-options="option.name |translate for option in vm.bodyParts track by option.id"
+                        ng-change="vm.change()"
+                        ng-model="vm.selected">
+                </select>
+            </div>
+            <div class="panel-body">
+                <div ui-jq="plot" ui-refresh="vm.data" ui-options="
+                      [
+                        { data: {{vm.data}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
+                      ],
+                      {
+                        colors: ['{{app.color.info}}'],
+                        series: { shadowSize: 3 },
+                        xaxis:{
+                          font: { color: '#ccc' },
+                          position: 'bottom',
+                          minTickSize: [1, 'hour'],
+                          mode: 'time'
+                        },
+                        yaxis:{ font: { color: '#ccc' } },
+                        grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                        tooltip: true,
+
+                        tooltipOpts: {   defaultTheme: false, shifts: { x: 0, y: 20 } }
+                      }
+                " style="height:240px">
+                </div>
+            </div>
+        </div>
     </div>
 </div>

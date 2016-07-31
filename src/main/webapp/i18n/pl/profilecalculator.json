@@ -1,0 +1,22 @@
+{
+    "profilecalculator": {
+        "FORM": {
+            "title": "Zapotrzebowanie kaloryczne (BMR):",
+            "sex": "Płeć",
+            "male": "Mężczyzna",
+            "female": "Kobieta",
+            "goal": "Cel",
+            "weight": "Waga",
+            "age": "Wiek",
+            "height": "Wzrost",
+            "dailyactivity": "Dzienna aktywność",
+            "wantto": "Chcę ",
+            "caloriesdemand": "Całkowite zapotrzebowanie kaloryczne:",
+            "caloriesdeficit": "Twój deficyt kaloryczny:",
+            "day": "dzień",
+            "dailydemand": "Dzienne zapotrzebowanie kaloryczne",
+            "excercise": "przed ćwiczeniam",
+            "save": "Zapisz"
+        }
+    }
+}

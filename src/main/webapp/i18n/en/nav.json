@@ -4,7 +4,9 @@
             "PROFILE": {
                 "profile": "Profile",
                 "calculator": "Calculator",
-                "progress": "Progress"
+                "progress": "Progress",
+                "diet": "Diet",
+                "buydiet": "Buy diet"
             },
             "UPLOAD": "Upload",
             "new": {
