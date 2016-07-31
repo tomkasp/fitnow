@@ -50,9 +50,9 @@ module.exports = function (config) {
             'main/webapp/bower_components/bootstrap-material-design/dist/js/ripples.js',
             'main/webapp/bower_components/angular-touch/angular-touch.js',
             'main/webapp/bower_components/venturocket-angular-slider/build/angular-slider.js',
-            'main/webapp/bower_components/webcomponentsjs/webcomponents.js',
             'main/webapp/bower_components/flot/jquery.flot.js',
-            'main/webapp/bower_components/jquery-ui/jquery-ui.js',
+            'main/webapp/bower_components/flot-spline/js/jquery.flot.spline.js',
+            'main/webapp/bower_components/flot.tooltip/js/jquery.flot.tooltip.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

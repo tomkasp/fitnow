@@ -1,6 +1,9 @@
 package com.tomkasp.config;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.tomkasp.domain.util.*;
 
@@ -26,7 +29,17 @@ public class JacksonConfiguration {
 //        module.addSerializer(Instant.class, JSR310DateTimeSerializer.INSTANCE);
 //        module.addDeserializer(LocalDate.class, JSR310LocalDateDeserializer.INSTANCE);
 
-        return new Jackson2ObjectMapperBuilder()
+        final Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder = new Jackson2ObjectMapperBuilder(){
+
+            @Override
+            public void configure(ObjectMapper objectMapper) {
+                super.configure(objectMapper);
+                objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+            }
+
+        };
+
+        return jackson2ObjectMapperBuilder
             .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
             .featuresToEnable(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES)
             .featuresToEnable(JsonParser.Feature.ALLOW_SINGLE_QUOTES)

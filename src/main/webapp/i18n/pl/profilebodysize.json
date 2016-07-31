@@ -1,0 +1,15 @@
+{
+    "profilebodysize": {
+        "FORM": {
+            "title": "Pomiary ciala:",
+            "waist": "Talia",
+            "thigh": "Udo",
+            "chest": "Klatka piersiowa",
+            "hip": "Biodro",
+            "arm": "Ramie",
+            "neck": "Szyja",
+            "history": "Historia",
+            "save": "Zapisz"
+        }
+    }
+}

@@ -13,6 +13,7 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'ngLodash',
     'toaster',
     'vr.directives.slider',
+
     'fitnowApp.dashboard',
     'fitnowApp.profile',
     'fitnowApp.diet',

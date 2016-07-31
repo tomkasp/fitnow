@@ -1,0 +1,15 @@
+{
+    "profilebodysize": {
+        "FORM": {
+            "title": "Body Sizes",
+            "waist": "Waist",
+            "thigh": "Thigh",
+            "chest": "Chest",
+            "hip": "Hip",
+            "arm": "Arm",
+            "neck": "Neck",
+            "history": "History",
+            "save": "Save"
+        }
+    }
+}

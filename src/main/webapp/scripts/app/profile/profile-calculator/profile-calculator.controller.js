@@ -7,19 +7,13 @@
 
 
     /* @ngInject */
-    function ProfileCalculatorController($scope, profileModel, logger, profileDataservice, caloriesCalculatorService, caloriesCalculatorSimplifiedService) {
+    function ProfileCalculatorController($scope, profileModel, logger,
+                                         profileDataservice, caloriesCalculatorService, caloriesCalculatorSimplifiedService) {
         var vm = this;
         vm.submit = submit;
         vm.getCssClasses = getCssClasses;
         vm.showError = showError;
-        vm.test = click;
         vm.canSave = canSave;
-
-        function click() {
-            profileDataservice.getMineProfile().then(function (response) {
-                vm.userProfile = response.data;
-            });
-        }
 
         vm.userProfile = profileModel;
 
@@ -29,15 +23,15 @@
         ];
 
         vm.goalOptions = [
-            {id: '0', name: 'Loose weight', enumValue: 'LOOSE'},
-            {id: '1', name: 'Gain muscles', enumValue: 'GAIN'}
+            {id: '0', name: 'fitnowshared.profile.goalloose', enumValue: 'LOOSE'},
+            {id: '1', name: 'fitnowshared.profile.goalgain', enumValue: 'GAIN'}
         ];
 
         vm.dailyActivityOptions = [
-            {id: '0', name: 'Small'},
-            {id: '1', name: 'Medium'},
-            {id: '2', name: 'High'},
-            {id: '3', name: 'Very High'}
+            {id: '0', name: 'fitnowshared.profile.small'},
+            {id: '1', name: 'fitnowshared.profile.medium'},
+            {id: '2', name: 'fitnowshared.profile.high'},
+            {id: '3', name: 'fitnowshared.profile.veryhigh'}
         ];
 
         $scope.$watch('vm.userProfile', function (newValue, oldValue) {
@@ -48,9 +42,6 @@
             $scope.userProfileForm.$setDirty();
         }, true);
 
-        angular.element("#slider").on('slideStop', function (data) {
-            updateModel(data.value);
-        });
 
         activate();
 
@@ -59,6 +50,10 @@
         function activate() {
             return getProfile();
         }
+
+        angular.element("#slider").on('slideStop', function (data) {
+            updateModel(data.value);
+        });
 
         function getProfile() {
             return profileDataservice.getMineProfile().then(function (data) {

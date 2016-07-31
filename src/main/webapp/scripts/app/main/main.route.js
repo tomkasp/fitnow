@@ -3,7 +3,7 @@
 angular.module('fitnowApp')
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider
-            .otherwise('/app/dashboard');
+            .otherwise('/app/profile/calculator');
         $stateProvider
             .state('app', {
                 parent: 'site',

@@ -1,0 +1,12 @@
+{
+    "fitnowshared": {
+        "profile": {
+            "goalloose" : "Schudnąć",
+            "goalgain" : "Powiększyć masę",
+            "small" : "Mała",
+            "medium" : "Średnia",
+            "high": "Wysoka",
+            "veryhigh" :"Bardzo wysoka"
+        }
+    }
+}

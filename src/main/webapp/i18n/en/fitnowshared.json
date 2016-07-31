@@ -1,0 +1,13 @@
+{
+    "fitnowshared": {
+        "profile": {
+            "goalloose" : "Loose weight",
+            "goalgain" : "Gain muscles",
+            "small" : "Small",
+            "medium" : "Medium",
+            "high": "High",
+            "veryhigh" :"Very High"
+
+        }
+    }
+}

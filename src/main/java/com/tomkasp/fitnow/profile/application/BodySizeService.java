@@ -49,7 +49,7 @@ public class BodySizeService {
         log.debug("Request to save body size : {}", bodySizeDTO);
         BodySize bodySize = bodySizeMapper.bodySizeDTOToBodySize(bodySizeDTO);
         bodySize.setUser(userService.getUserWithAuthorities());
-        if (Optional.of(bodySize.getId()).isPresent()) {
+        if (Optional.ofNullable(bodySize.getId()).isPresent()) {
             final BodySize oldBodySize = bodySizeRepository.getOne(bodySize.getId());
             BodySizeHistory bodySizeHistory = new BodySizeHistory();
             bodySizeHistory.setArm(oldBodySize.getArm())

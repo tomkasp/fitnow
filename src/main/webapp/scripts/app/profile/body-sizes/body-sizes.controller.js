@@ -16,12 +16,12 @@
 
         vm.bodyParts =
             [
-                {id: 0, name: 'Arm', data: []},
-                {id: 1, name: 'Waist', data: []},
-                {id: 2, name: 'Thigh', data: []},
-                {id: 3, name: 'Chest', data: []},
-                {id: 4, name: 'Hip', data: []},
-                {id: 5, name: 'Neck', data: []}
+                {id: 0, name: 'profilebodysize.FORM.arm', data: []},
+                {id: 1, name: 'profilebodysize.FORM.waist', data: []},
+                {id: 2, name: 'profilebodysize.FORM.thigh', data: []},
+                {id: 3, name: 'profilebodysize.FORM.chest', data: []},
+                {id: 4, name: 'profilebodysize.FORM.hip', data: []},
+                {id: 5, name: 'profilebodysize.FORM.neck', data: []}
             ];
 
         activate();
@@ -43,7 +43,7 @@
         function getBodySizesHistory() {
             bodySizesDataservice.getBodySizesHistory().then(function (data) {
                 lodash(data).forEach(function (value) {
-                    var xVal = value.date.millis;
+                    var xVal = Date.parse(value.date);
                     var yArmVal = value.arm;
                     var yWaistVal = value.waist;
                     var yThighVal = value.thigh;

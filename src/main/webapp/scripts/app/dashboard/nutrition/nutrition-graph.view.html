@@ -7,8 +7,8 @@
 
     <div ui-jq="plot" ui-refresh="showSpline" ui-options="
               [
-                { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: true, tension: 0.4, lineWidth: 1, fill: 0.8 } },
-                { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: true, tension: 0.4, lineWidth: 1, fill: 0.8 } }
+                { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: {{showSpline}}, tension: 0.4, lineWidth: 1, fill: 0.8 } },
+                { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: {{showSpline}}, tension: 0.4, lineWidth: 1, fill: 0.8 } }
               ],
               {
                 colors: ['{{app.color.info}}', '{{app.color.primary}}'],
@@ -19,6 +19,6 @@
                 tooltip: true,
                 tooltipOpts: { content: 'Visits of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
               }
-            " style="height:246px">
+            " style="height:246px" >
     </div>
 </div>

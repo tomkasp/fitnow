@@ -3,6 +3,7 @@ package com.tomkasp.fitnow.profile.webui;
 import com.codahale.metrics.annotation.Timed;
 import com.tomkasp.fitnow.profile.application.BodySizeHistoryService;
 import com.tomkasp.fitnow.profile.domain.BodySizeHistory;
+import com.tomkasp.fitnow.profile.dto.BodySizeHistoryDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class BodySizeHistoryResource {
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<BodySizeHistory> getMineBodySizesHistory() {
+    public List<BodySizeHistoryDTO> getMineBodySizesHistory() {
         log.debug("Rest request to get a body sizes history");
         return bodySizeHistoryService.getBodySizeHistory();
     }
