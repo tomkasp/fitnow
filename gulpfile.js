@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     usemin = require('gulp-usemin'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
-    imagemin = require('gulp-imagemin'),
+    // imagemin = require('gulp-imagemin'),
     inject = require('gulp-inject'),
     ngAnnotate = require('gulp-ng-annotate'),
     ngConstant = require('gulp-ng-constant-fork'),
@@ -97,10 +97,10 @@ gulp.task('copy', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src(yeoman.app + 'assets/images/**').
-        pipe(imagemin({optimizationLevel: 5})).
-        pipe(gulp.dest(yeoman.dist + 'assets/images')).
-        pipe(browserSync.reload({stream: true}));
+    return gulp.src(yeoman.app + 'assets/images/**')
+        // pipe(imagemin({optimizationLevel: 5})).
+        // pipe(gulp.dest(yeoman.dist + 'assets/images')).
+        // pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('styles', [], function () {

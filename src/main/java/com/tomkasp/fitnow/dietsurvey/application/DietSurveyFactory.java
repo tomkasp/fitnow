@@ -79,7 +79,8 @@ public class DietSurveyFactory {
     public DietSurveyDTO emptyDietSurveyDTO(ProfileOutDTO mine) {
         final DietSurveyDTO dietSurveyDTO = new DietSurveyDTO()
             .setHeight(mine.getHeight())
-            .setSex(mine.getSex());
+            .setSex(mine.getSex())
+            .setMealQuantity(new MealQuantity());
         ofNullable(mine.getDailyActivity()).map(result ->
             dietSurveyDTO.setDailyActivity(new DietSurveyDTO.DailyActivity().setName(result.getName()).setId(result.getId().toString())));
         return dietSurveyDTO;

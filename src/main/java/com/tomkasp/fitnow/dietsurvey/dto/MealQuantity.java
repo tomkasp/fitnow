@@ -4,20 +4,20 @@ package com.tomkasp.fitnow.dietsurvey.dto;
  * @author Tomasz Kasprzycki (A042191)
  */
 public class MealQuantity {
-    Meal monday;
-    Meal tueasday;
-    Meal wednesday;
-    Meal thrusday;
-    Meal firday;
-    Meal saturday;
-    Meal sunday;
+    private Meal monday = new Meal();
+    private Meal tuesday = new Meal();
+    private Meal wednesday = new Meal();
+    private Meal thursday = new Meal();
+    private Meal friday = new Meal();
+    private Meal saturday = new Meal();
+    private Meal sunday = new Meal();
 
-    public Meal getFirday() {
-        return firday;
+    public Meal getFriday() {
+        return friday;
     }
 
-    public MealQuantity setFirday(Meal firday) {
-        this.firday = firday;
+    public MealQuantity setFriday(Meal friday) {
+        this.friday = friday;
         return this;
     }
 
@@ -48,21 +48,21 @@ public class MealQuantity {
         return this;
     }
 
-    public Meal getThrusday() {
-        return thrusday;
+    public Meal getThursday() {
+        return thursday;
     }
 
-    public MealQuantity setThrusday(Meal thrusday) {
-        this.thrusday = thrusday;
+    public MealQuantity setThursday(Meal thursday) {
+        this.thursday = thursday;
         return this;
     }
 
-    public Meal getTueasday() {
-        return tueasday;
+    public Meal getTuesday() {
+        return tuesday;
     }
 
-    public MealQuantity setTueasday(Meal tueasday) {
-        this.tueasday = tueasday;
+    public MealQuantity setTuesday(Meal tuesday) {
+        this.tuesday = tuesday;
         return this;
     }
 
@@ -76,11 +76,11 @@ public class MealQuantity {
     }
 
     public static final class Meal {
-        Boolean breakfast;
-        Boolean secbreakfast;
-        Boolean lunch;
-        Boolean dinner;
-        Boolean supper;
+        Boolean breakfast = true;
+        Boolean secbreakfast = true;
+        Boolean lunch = true;
+        Boolean dinner = true;
+        Boolean supper = true;
 
         public Boolean getBreakfast() {
             return breakfast;
