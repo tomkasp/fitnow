@@ -1,54 +1,41 @@
-<div>
-    <span translate="header.navbar.UPLOAD">New</span> </span>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <h1 translate="login.title">Sign in</h1>
+<div class="container w-xxl w-auto-xs" ng-init="app.settings.container = false;">
+    <a href class="navbar-brand block m-t">{{app.name}}</a>
 
-            <div class="alert alert-danger" ng-show="authenticationError" translate="login.messages.error.authentication">
+    <div class="m-b-lg">
+        <div class="wrapper text-center">
+            <strong translate="login.title">Sign in to get in touch</strong>
+        </div>
+        <form name="form" role="form" class="form-validation" ng-submit="login($event)">
+            <div class="text-danger wrapper text-center" ng-show="authenticationError"
+                 translate="login.messages.error.authentication">
                 <strong>Failed to sign in!</strong> Please check your credentials and try again.
             </div>
-        </div>
-        <div class="col-md-4 col-md-offset-4">
-            <form class="form" role="form" ng-submit="login($event)">
-                <div class="form-group">
-                    <label for="username" translate="global.form.username">Login</label>
-                    <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="username">
+            <div class="list-group list-group-sm">
+                <div class="list-group-item">
+                    <input id="username" class="form-control no-border" ng-model="username" required>
                 </div>
-                <div class="form-group">
-                    <label for="password" translate="login.form.password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
-                           ng-model="password">
+                <div class="list-group-item">
+                    <input id="password" type="password" placeholder="Password" class="form-control no-border"
+                           ng-model="password" required>
                 </div>
-                <div class="form-group">
-                    <label for="rememberMe">
-                        <input type="checkbox" id="rememberMe" ng-model="rememberMe" checked>
-                        <span translate="login.form.rememberme">Remember me</span>
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-primary" translate="login.form.button">Sign in</button>
-            </form>
-
-            <form action="/connect/facebook" method="POST">
-                <input type="hidden" name="scope" value="user_posts" />
-            <!--<form  role="form" ng-submit="facebookLogin($event)">-->
-                <!--<input type="hidden" name="scope" value="user_posts" />-->
-                <div class="formInfo">
-                    <p>You aren't connected to Facebook yet. Click the button to connect this application with your Facebook account.</p>
-                </div>
-                <p><button type="submit">Connect to Facebook</button></p>
-            </form>
-
-
-            <p></p>
-            <div class="alert alert-warning">
-                <a class="alert-link" href="#/reset/request" translate="login.password.forgot">Did you forget your password?</a>
             </div>
-            <div class="alert alert-warning" translate="global.messages.info.register">
-                You don't have an account yet? <a class="alert-link" href="#/register">Register a new account</a>
-            </div>
-            <div class="col-md-4">
-                <jh-socialmy type='block' external-account-provider="'facebook'">facebook</jh-socialmy>
-            </div>
-        </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled='form.$invalid'>Log in
+            </button>
+            <div class="line line-dashed"></div>
+            <p class="text-center" translate="login.form.facebook">
+                <small>Or login with Facebook</small>
+            </p>
+            <jh-socialmy type='block' external-account-provider="'facebook'">facebook</jh-socialmy>
+
+            <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd" translate="login.password.forgot">Forgot password?</a></div>
+            <div class="line line-dashed"></div>
+            <p class="text-center">
+                <small translate="login.account.question">Do not have an account?</small>
+            </p>
+            <a ui-sref="app.register" class="btn btn-lg btn-default btn-block" translate="login.account.new">Create an account</a>
+        </form>
+    </div>
+    <div class="text-center" ng-include="'tpl/blocks/page_footer.html'">
+        {% include 'blocks/page_footer.html' %}
     </div>
 </div>

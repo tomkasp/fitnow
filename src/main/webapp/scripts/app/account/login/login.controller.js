@@ -1,7 +1,12 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('fitnowApp')
-    .controller('LoginController', function ($rootScope, $scope, $state, $timeout, Auth, $resource) {
+    angular
+        .module('fitnowApp')
+        .controller('LogInController', LogInController);
+
+    /* @ngInject */
+    function LogInController($rootScope, $scope, $state, $timeout, Auth, $resource) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -15,25 +20,28 @@ angular.module('fitnowApp')
                 rememberMe: $scope.rememberMe
             }).then(function () {
                 $scope.authenticationError = false;
-                if ($rootScope.previousStateName === 'register') {
+                if ($rootScope.previousStateName == undefined || $rootScope.previousStateName.name === 'register' || $rootScope.previousStateName.name == 'app.login') {
                     $state.go('app.profile.calculator');
-                } else {
+                }else {
                     $state.go('app.profile.calculator');
                 }
-            }).catch(function () {
+            }).catch(function (data) {
                 $scope.authenticationError = true;
             });
         };
 
-        $scope.facebookLogin = function(){
-            var Facebook = $resource('/connect/facebook', {}, {
-                'save': { method:'POST' }
-            });
 
-            var user = Facebook.save({}, function() {
-                console.log("test");
-            });
+
+        var vm = this;
+        vm.title = 'SignInController';
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+            console.log("hello for singin")
         }
-    });
+    }
 
-//scope" value="user_posts
+})();

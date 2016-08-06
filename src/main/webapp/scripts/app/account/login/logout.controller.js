@@ -16,7 +16,7 @@
 
         function activate() {
             Auth.logout();
-            $state.go('app.dashboard.details');
+            $state.go('app.login');
         }
     }
 
