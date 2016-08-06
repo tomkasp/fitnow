@@ -4,6 +4,8 @@
         "form": {
             "button": "Zarejestruj"
         },
+        "or": "Lub",
+        "social": "Zarejestruj się przez facebook",
         "messages": {
             "validate": {
                 "login": {

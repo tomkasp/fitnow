@@ -4,6 +4,8 @@
         "form": {
             "button": "Register"
         },
+        "or": "Or",
+        "social": "Register with facebook",
         "messages": {
             "validate": {
                 "login": {
