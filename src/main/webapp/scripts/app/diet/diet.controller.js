@@ -13,10 +13,10 @@
         vm.open = open;
         vm.steps = {percent: 20, step1: true, step2: false, step3: false};
         vm.dailyActivityOptions = [
-            {id: '0', name: 'Small'},
-            {id: '1', name: 'Medium'},
-            {id: '2', name: 'High'},
-            {id: '3', name: 'Very High'}
+            {id: '0', name: 'fitnowshared.profile.small'},
+            {id: '1', name: 'fitnowshared.profile.medium'},
+            {id: '2', name: 'fitnowshared.profile.high'},
+            {id: '3', name: 'fitnowshared.profile.veryhigh'}
         ];
         vm.step1 = {
             dailyActivity: vm.dailyActivityOptions[0],

@@ -53,13 +53,13 @@
                 "register": "You don't have an account yet? <a class=\"alert-link\" href=\"#/register\">Register a new account</a>"
             },
             "error": {
-                "dontmatch": "The password and its confirmation do not match!"
+                "dontmatch": "Hasło i jego potwierdzenie nie pasują!"
             },
             "validate": {
                 "newpassword": {
-                    "required": "Your password is required.",
-                    "minlength": "Your password is required to be at least 5 characters.",
-                    "maxlength": "Your password cannot be longer than 50 characters.",
+                    "required": "Hasło jest wymagane",
+                    "minlength": "Minimalna długość hasła to 5 znaków",
+                    "maxlength": "Hasło nie może być dłuższe niż 50 znaków",
                     "strength": "Password strength:"
                 },
                 "confirmpassword": {

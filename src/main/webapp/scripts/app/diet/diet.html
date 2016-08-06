@@ -49,7 +49,7 @@
                         <div class="col-sm-offset-1 col-sm-4">
                             <p class="m-t" translate="diet.FORM.dailyactivity">Daily Activity</p>
                             <select name="dailyActivity" class="form-control"
-                                    ng-options="option.name for option in vm.dailyActivityOptions track by option.id"
+                                    ng-options="option.name | translate for option in vm.dailyActivityOptions track by option.id"
                                     ng-model="vm.step1.dailyActivity">
                             </select>
                         </div>
