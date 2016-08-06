@@ -37,7 +37,14 @@ spring:
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
     mail:
-        host: localhost
+        host: smtp.sendgrid.net
+        port: 587
+        username: app50193550@heroku.com
+        password: bbvd5xqz0339
+        protocol: smtp
+        auth: true
+
+
     messages:
         cache-seconds: 1
     social:
@@ -60,6 +67,7 @@ liquibase:
 server:
     port: 8081
 
+
 # ===================================================================
 # JHipster specific properties
 # ===================================================================
@@ -70,7 +78,7 @@ jhipster:
         ehcache:
             maxBytesLocalHeap: 16M
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: fitnow@localhost
+        from: tomkasp@gmail.com
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         spark:

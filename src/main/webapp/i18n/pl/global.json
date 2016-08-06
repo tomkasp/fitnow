@@ -13,14 +13,14 @@
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
-                "main": "Account",
-                "settings": "Settings",
-                "password": "Password",
-                "sessions": "Sessions",
-                "login": "Sign in",
-                "logout": "Sign out",
-                "register": "Register",
-                "profile": "Profile"
+                "main": "Konto",
+                "settings": "Ustawienia",
+                "password": "Hasło",
+                "sessions": "Sesje",
+                "login": "Zaloguj się",
+                "logout": "Wyloguj się",
+                "register": "Zarejestruj się",
+                "profile": "Profil"
             },
             "admin": {
                 "main": "Administration",
@@ -38,14 +38,14 @@
             "language": "Language"
         },
         "form": {
-            "username": "Username",
-            "username.placeholder": "Your username",
-            "newpassword": "New password",
-            "newpassword.placeholder": "New password",
-            "confirmpassword": "New password confirmation",
-            "confirmpassword.placeholder": "Confirm the new password",
+            "username": "Nazwa użytkownika",
+            "username.placeholder": "Twój użytkownik",
+            "newpassword": "Nowe hasło",
+            "newpassword.placeholder": "Nowe hasło",
+            "confirmpassword": "Potwierdź nowe hasło",
+            "confirmpassword.placeholder": "Potwierdź nowe hasło",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "Twój e-mail"
         },
         "messages": {
             "info": {

@@ -1,23 +1,23 @@
 {
     "register": {
-        "title": "Registration",
+        "title": "Rejestracja",
         "form": {
-            "button": "Register"
+            "button": "Zarejestruj"
         },
         "messages": {
             "validate": {
                 "login": {
-                    "required": "Your username is required.",
-                    "minlength": "Your username is required to be at least 1 character.",
-                    "maxlength": "Your username cannot be longer than 50 characters.",
-                    "pattern": "Your username can only contain lower-case letters and digits."
+                    "required": "Nazwa użytkownika jest wymagana",
+                    "minlength": "Nazwa użytkownika musi mieć conajmniej jeden znak.",
+                    "maxlength": "Nazwa użytkownika nie może być dłuższa niż 50 znaków.",
+                    "pattern": "Nazwa użytkownika może zawierać tyko małe litery."
                 }
             },
-            "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",
+            "success": "<strong>Rejestracja zapisana!</strong> Sprawdź email w celu potwierdzenia.",
             "error": {
-                "fail": "<strong>Registration failed!</strong> Please try again later.",
-                "userexists": "<strong>Login name already registered!</strong> Please choose another one.",
-                "emailexists": "<strong>E-mail is already in use!</strong> Please choose another one."
+                "fail": "<strong>Rejestracja nieudana!</strong> Spróbuj za chwilę.",
+                "userexists": "<strong>Nazwa użytkownika już istnieje!</strong> Wybierz inną.",
+                "emailexists": "<strong>E-mail jest już używany!</strong> Wybierz inny."
             }
         }
     }

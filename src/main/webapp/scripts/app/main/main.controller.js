@@ -5,7 +5,7 @@ angular.module('fitnowApp')
 
         // config
         $scope.app = {
-            name: 'Angulr',
+            name: 'FitNow',
             version: '2.2.0',
             // for chart colors
             color: {

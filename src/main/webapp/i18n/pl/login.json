@@ -1,20 +1,24 @@
 {
     "login": {
-        "title": "Sign in",
+        "title": "Zaloguj się",
         "form": {
-            "password": "Password",
-            "password.placeholder": "Your password",
-            "rememberme": "Remember me",
-            "button": "Sign in",
-            "facebook" : "Or login with Facebook"
+            "password": "Hasło",
+            "password.placeholder": "Twoje hasło",
+            "rememberme": "Zapamiętaj mnie",
+            "button": "Zaloguj",
+            "facebook" : "Zaloguj przez Facebook"
         },
         "messages": {
             "error": {
-                "authentication": "<strong>Failed to sign in!</strong> Please check your credentials and try again."
+                "authentication": "<strong>Błąd logowania!</strong> Sprawdź login i hasło."
             }
         },
         "password" : {
-            "forgot": "Did you forget your password?"
+            "forgot": "Zapomniałeś hasła?"
+        },
+        "account" :{
+            "new" : "Stwórz konto",
+            "question": "Nie masz konta?"
         }
     }
 }

@@ -16,9 +16,9 @@ angular.module('fitnowApp')
             }).then(function () {
                 $scope.authenticationError = false;
                 if ($rootScope.previousStateName === 'register') {
-                    $state.go('app');
+                    $state.go('app.profile.calculator');
                 } else {
-                    $rootScope.back();
+                    $state.go('app.profile.calculator');
                 }
             }).catch(function () {
                 $scope.authenticationError = true;

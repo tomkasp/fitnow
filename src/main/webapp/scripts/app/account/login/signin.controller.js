@@ -21,9 +21,9 @@
             }).then(function () {
                 $scope.authenticationError = false;
                 if ($rootScope.previousStateName == undefined || $rootScope.previousStateName.name === 'register' || $rootScope.previousStateName.name == 'app.login') {
-                    $state.go('app.dashboard.details');
+                    $state.go('app.profile.calculator');
                 }else {
-                    $rootScope.back();
+                    $state.go('app.profile.calculator');
                 }
             }).catch(function (data) {
                 $scope.authenticationError = true;

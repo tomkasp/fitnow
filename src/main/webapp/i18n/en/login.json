@@ -15,6 +15,10 @@
         },
         "password" : {
             "forgot": "Did you forget your password?"
+        },
+        "account" :{
+            "new" : "Create an account",
+            "question": "Don't have an account?"
         }
     }
 }

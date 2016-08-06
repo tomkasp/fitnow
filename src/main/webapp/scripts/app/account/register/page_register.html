@@ -29,14 +29,14 @@
             </div>
         </div>
         <div>
-            <div class="col-md-9 col-md-offset-2">
+            <div ng-show="!vm.success" class="col-md-9 col-md-offset-2">
                 <jh-socialmy external-account-provider="'facebook'">{{'social.facebook.register' | translate}}</jh-socialmy>
                 <div class="line line-dashed"></div>
                 <p class="text-center">
                     <small>Or</small>
                 </p>
                 <div class="line line-dashed"></div>
-                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+                <form  name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
 
                     <div class="form-group">
                         <label class="control-label" for="login" translate="global.form.username">Username</label>
