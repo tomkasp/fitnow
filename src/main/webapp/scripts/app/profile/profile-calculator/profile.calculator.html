@@ -1,120 +1,144 @@
 <!--////////////////BMR CALCULATION FORM//////////////////////////-->
 <!--<div class="col-sm-8">-->
-    <div class="panel panel-default">
-        <div class="panel-heading font-bold" translate="profilecalculator.FORM.title">Your daily calories need (BMR):</div>
+<div class="panel panel-default">
+    <div class="panel-heading font-bold" translate="profilecalculator.FORM.title">Your daily calories need (BMR):</div>
 
-        <img src="assets/img/couple.png" class="img-full">
+    <img src="assets/img/couple.png" class="img-full">
 
+    <div class="panel-body">
         <div class="panel-body">
-            <div class="panel-body">
-                <form name="userProfileForm" class="bs-example form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-5 control-label" style="font-size: 20px" translate="profilecalculator.FORM.sex">Sex</label>
+            <form name="vm.userProfileForm" class="bs-example form-horizontal form-validation" novalidate
+                  ng-submit="vm.submit()">
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" style="font-size: 20px"
+                           translate="profilecalculator.FORM.sex">Sex</label>
 
-                        <div class="col-lg-7">
-                            <label class="checkbox-inline i-checks">
-                                <input type="radio" name="a" value="0" ng-model="vm.userProfile.sex">
-                                <i></i>
-                                <a translate="profilecalculator.FORM.male">Male</a>
-                            </label>
-                            <label class="checkbox-inline  i-checks">
-                                <input type="radio" name="a" value="1" ng-model="vm.userProfile.sex" checked>
-                                <i></i>
-                                <a translate="profilecalculator.FORM.female">Female</a>
-                            </label>
+                    <div class="col-lg-7">
+                        <label class="checkbox-inline i-checks">
+                            <input type="radio" name="a" value="0" ng-model="vm.userProfile.sex">
+                            <i></i>
+                            <a translate="profilecalculator.FORM.male">Male</a>
+                        </label>
+                        <label class="checkbox-inline  i-checks">
+                            <input type="radio" name="a" value="1" ng-model="vm.userProfile.sex" checked>
+                            <i></i>
+                            <a translate="profilecalculator.FORM.female">Female</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" style="font-size: 20px"
+                           translate="profilecalculator.FORM.goal">Goal</label>
+
+                    <div class="col-lg-7">
+                        <div class="col-lg-5">
+                            <select name="goal" class="form-control"
+                                    ng-options="option.name | translate for option in vm.goalOptions track by option.id"
+                                    ng-model="vm.userProfile.goal">
+                            </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-5 control-label" style="font-size: 20px" translate="profilecalculator.FORM.goal">Goal</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" style="font-size: 20px" ng-class=
+                        translate="profilecalculator.FORM.weight">Body weight</label>
 
-                        <div class="col-lg-7">
-                            <div class="col-lg-5">
-                                <select name="goal" class="form-control"
-                                        ng-options="option.name | translate for option in vm.goalOptions track by option.id"
-                                        ng-model="vm.userProfile.goal">
-                                </select>
-                            </div>
+                    <div class="col-lg-7">
+                        <div class="col-lg-5">
+                            <input name="weight" ng-model="vm.userProfile.weight"
+                                   ng-class="{error: vm.userProfileForm.weight.$invalid && vm.userProfileFormSubmitted}"
+                                   min="20" max="500"
+                                   type="number" class="form-control" required></div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" style="font-size: 20px"
+                           translate="profilecalculator.FORM.age">Age</label>
+
+                    <div class="col-lg-7">
+                        <div class="col-lg-5">
+                            <input value="30" min="10" max="80" ng-model="vm.userProfile.age" name="age" type="number"
+                                   ng-class="{error: vm.userProfileForm.age.$invalid && vm.userProfileFormSubmitted}"
+                                   required class="form-control">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-5 control-label" style="font-size: 20px" translate="profilecalculator.FORM.weight">Body weight</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" style="font-size: 20px"
+                           translate="profilecalculator.FORM.height">Height</label>
 
-                        <div class="col-lg-7">
-                            <div class="col-lg-5"><input ng-model="vm.userProfile.weight" min="20" max="500" name="weight" required type="number" class="form-control"></div>
-
+                    <div class="col-lg-7">
+                        <div class="col-lg-5">
+                            <input type="number" name="height" min="5" max="300" ng-model="vm.userProfile.height" required
+                                   ng-class="{error: vm.userProfileForm.height.$invalid && vm.userProfileFormSubmitted}"
+                                   class="form-control">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-5 control-label" style="font-size: 20px" translate="profilecalculator.FORM.age">Age</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" style="font-size: 20px"
+                           translate="profilecalculator.FORM.dailyactivity">Daily activity</label>
 
-                        <div class="col-lg-7">
-                            <div class="col-lg-5">
-                                <input value="30" min="10" max="80" ng-model="vm.userProfile.age" name="age" type="number" required class="form-control">
-                            </div>
+                    <div class="col-lg-7">
+                        <div class="col-lg-5">
+                            <select name="dailyActivity" class="form-control"
+                                    ng-options="option.name | translate for option in vm.dailyActivityOptions track by option.id"
+                                    ng-model="vm.userProfile.dailyActivity">
+                            </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-5 control-label" style="font-size: 20px" translate="profilecalculator.FORM.height">Height</label>
-
-                        <div class="col-lg-7">
-                            <div class="col-lg-5">
-                                <input  type="number" min="5" max="300" ng-model="vm.userProfile.height" required class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-5 control-label" style="font-size: 20px" translate="profilecalculator.FORM.dailyactivity">Daily activity</label>
-
-                        <div class="col-lg-7">
-                            <div class="col-lg-5">
-                                <select name="dailyActivity" class="form-control"
-                                        ng-options="option.name | translate for option in vm.dailyActivityOptions track by option.id"
-                                        ng-model="vm.userProfile.dailyActivity">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                </div>
 
 
-                    <div class="wrapper-lg text-center">
-                        <div class="form-group ">
-                            <div class="col-lg-offset-2"><label class="col-lg-4 control-label">
-                                    <h3 class="text-center"><span translate="profilecalculator.FORM.wantto">I want to</span><span>{{vm.goalOptions[vm.userProfile.goal.id].name | translate}}</span></h3>
-                            </label>
+                <div class="wrapper-lg text-center">
+                    <div class="form-group ">
+                        <div class="col-lg-offset-2"><label class="col-lg-4 control-label">
+                            <h3 class="text-center"><span
+                                translate="profilecalculator.FORM.wantto">I want to</span><span>{{vm.goalOptions[vm.userProfile.goal.id].name | translate}}</span>
+                            </h3>
+                        </label>
 
-                                <div class="col-lg-8 w-md" style="margin-top: 40px">
-                                    <input id="slider" ui-jq="slider"
-                                           ui-options="
+                            <div class="col-lg-8 w-md" style="margin-top: 40px">
+                                <input id="slider" ui-jq="slider"
+                                       ui-options="
                                                        {
                                                         min: 0, max: 20,
                                                         step: 1,
                                                         value: {{vm.userProfile.weightChangeQuantity}}
                                                        }"
-                                           class="slider slider-horizontal form-control"
-                                           type="text" required ng-model="vm.userProfile.weightChangeQuantity">
-                                    {{vm.userProfile.weightChangeQuantity}}
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="m-t-none"><p><span translate="profilecalculator.FORM.caloriesdemand">Your total calories demand is: </span><a class="text-success font-bold"> {{vm.userProfile.totalCaloriesDemand}} kcal/per <span translate="profilecalculator.FORM.day">day</span></a></p></h3>
-                        <div>
-                            <h3><p><span translate="profilecalculator.FORM.caloriesdeficit">Your calories deficit is</span> <a class="text-success font-bold">{{vm.userProfile.caloriesDeficit}} kcal/per <span translate="profilecalculator.FORM.day">day</span></a> kcal
-                                <br><br>
-                                <span translate="profilecalculator.FORM.dailydemand">Your daily calories demand</span><br>
-                                <span translate="profilecalculator.FORM.excercise">exercise is</span>
-                                <a class="text-success font-bold"> {{vm.userProfile.caloriesDemand}} kcal/per <span translate="profilecalculator.FORM.day">day</span></a></p></h3>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-offset-5 col-lg-10">
-                            <div class="col-lg-5">
-                                <button type="submit" ng-disabled="!vm.canSave()" ng-click="vm.submit()" class="btn btn-lg btn-success" translate="profilecalculator.FORM.save">Save</button>
+                                       class="slider slider-horizontal form-control"
+                                       type="text" required ng-model="vm.userProfile.weightChangeQuantity">
+                                {{vm.userProfile.weightChangeQuantity}}
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <h3 class="m-t-none"><p><span translate="profilecalculator.FORM.caloriesdemand">Your total calories demand is: </span><a
+                        class="text-success font-bold"> {{vm.userProfile.totalCaloriesDemand}} kcal/per <span
+                        translate="profilecalculator.FORM.day">day</span></a></p></h3>
+                    <div>
+                        <h3><p><span translate="profilecalculator.FORM.caloriesdeficit">Your calories deficit is</span>
+                            <a class="text-success font-bold">{{vm.userProfile.caloriesDeficit}} kcal/per <span
+                                translate="profilecalculator.FORM.day">day</span></a> kcal
+                            <br><br>
+                            <span translate="profilecalculator.FORM.dailydemand">Your daily calories demand</span><br>
+                            <span translate="profilecalculator.FORM.excercise">exercise is</span>
+                            <a class="text-success font-bold"> {{vm.userProfile.caloriesDemand}} kcal/per <span
+                                translate="profilecalculator.FORM.day">day</span></a></p></h3>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-5 col-lg-10">
+                        <div class="col-lg-5">
+                            <button type="submit" class="btn btn-lg btn-success"
+                                    translate="profilecalculator.FORM.save">Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 <!--</div>-->
 <!--//////////////////////END OF BMR CALCULATION FORM//////////////////////////////-->

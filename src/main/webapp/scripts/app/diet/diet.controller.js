@@ -6,7 +6,8 @@
         .controller('DietController', DietController);
 
     /* @ngInject */
-    function DietController(uibDatepickerPopupConfig, dietDataservice, logger, wizardStepsModel, dietModel, Utility) {
+    function DietController(uibDatepickerPopupConfig,
+                            dietDataservice, logger, wizardStepsModel, dietModel, Utility) {
 
         var vm = this;
         vm.open = open;
@@ -29,7 +30,6 @@
 
         vm.submitDietInfo = submitDietInfo;
         vm.goToStepTwo = goToStepTwo;
-
 
         vm.dateOptions = {
             formatYear: 'yy',
@@ -60,7 +60,7 @@
         }
 
         function submitDietInfo() {
-            vm.steps.percent=100
+            vm.steps.percent = 100;
             var modelToTransfer = dietModel.buildTransferObject(vm.step1, vm.step2, vm.step3);
             if (Utility.checkIfUndefinedOrNull(vm.step1.id)) {
                 dietDataservice.createDiet(modelToTransfer).then(function (response) {
@@ -72,6 +72,7 @@
         }
 
         function goToStepTwo() {
+            vm.step1.submitted = true;
             if (vm.formStep1.$valid) {
                 vm.steps.step2 = true;
             }
@@ -79,6 +80,7 @@
                 vm.step2 = false;
             }
         }
+
     }
 
 })();

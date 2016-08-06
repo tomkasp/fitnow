@@ -17,6 +17,9 @@
             "dailydemand": "Dzienne zapotrzebowanie kaloryczne",
             "excercise": "przed ćwiczeniam",
             "save": "Zapisz"
+        },
+        "messeges": {
+            "formerror": "Złe wartości pól w formie"
         }
     }
 }

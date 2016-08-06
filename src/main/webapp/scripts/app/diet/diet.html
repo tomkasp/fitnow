@@ -7,7 +7,7 @@
             <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 
             <div class="panel-body">
-                <form name="vm.formStep1" class="form-validation form-horizontal">
+                <form name="vm.formStep1" class="form-validation form-horizontal" novalidate>
 
                     <div class="form-group">
                         <div class="col-sm-4"><p class="m-t" translate="diet.FORM.birthdate">Birth date</p>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <div class="col-sm-4">
                             <p class="m-t" translate="diet.FORM.height">Height</p>
-                            <input class="form-control" type="number" name="height" min="10" max="400" ng-model="vm.step1.height" required>
+                            <input class="form-control" ng-class="{error : vm.formStep1.height.$invalid && vm.step1.submitted}" type="number" name="height" min="10" max="400" ng-model="vm.step1.height" required>
                         </div>
 
                         <div class="col-sm-offset-1 col-sm-4">
@@ -85,7 +85,7 @@
             </div>
         </tab>
 
-        <tab heading="{{'diet.FORM.step2' | translate}}" disable="step1.$invalid" active="vm.steps.step2" select="vm.steps.percent=30">
+        <tab heading="{{'diet.FORM.step2' | translate}}" disable="vm.formStep1.$invalid" active="vm.steps.step2" select="vm.steps.percent=30">
             <form name="step2" class="form-validation form-horizontal">
                 <p class="m-b">Continue the next step</p>
                 <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
@@ -251,7 +251,7 @@
                 </div>
             </form>
         </tab>
-        <tab heading="{{'diet.FORM.step3' | translate}}" disable="step1.$invalid" active="vm.steps.step3" select="vm.steps.percent=60">
+        <tab heading="{{'diet.FORM.step3' | translate}}" disable="vm.formStep1.$invalid" active="vm.steps.step3" select="vm.steps.percent=60">
             <form name="step3" class="form-validation form-horizontal">
                 <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 

@@ -7,13 +7,13 @@
 
 
     /* @ngInject */
-    function ProfileCalculatorController($scope, profileModel, logger,
+    function ProfileCalculatorController($scope, $translate, profileModel, logger,
                                          profileDataservice, caloriesCalculatorService, caloriesCalculatorSimplifiedService) {
         var vm = this;
+
         vm.submit = submit;
-        vm.getCssClasses = getCssClasses;
-        vm.showError = showError;
-        vm.canSave = canSave;
+        vm.userProfileFormSubmitted = false;
+
 
         vm.userProfile = profileModel;
 
@@ -49,6 +49,7 @@
 
         function activate() {
             return getProfile();
+
         }
 
         angular.element("#slider").on('slideStop', function (data) {
@@ -68,27 +69,19 @@
         }
 
         function submit() {
-            vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
-            if (vm.userProfile.id == null) {
-                profileDataservice.createProfile(vm.userProfile);
+            vm.userProfileFormSubmitted = true;
+            if (vm.userProfileForm.$valid) {
+                vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
+                if (vm.userProfile.id == null) {
+                    profileDataservice.createProfile(vm.userProfile);
+                } else {
+                    profileDataservice.updateProfile(vm.userProfile);
+                }
             } else {
-                profileDataservice.updateProfile(vm.userProfile);
+                $translate('profilecalculator.messeges.formerror').then(function (formError) {
+                    logger.error(formError)
+                });
             }
-        }
-
-        function getCssClasses(ngModelController) {
-            return {
-                error: ngModelController.$invalid && ngModelController.$dirty,
-                success: ngModelController.$valid && ngModelController.$dirty
-            };
-        }
-
-        function showError(ngModelController, error) {
-            return ngModelController.$error[error];
-        }
-
-        function canSave() {
-            return $scope.userProfileForm.$dirty && $scope.userProfileForm.$valid;
         }
     }
 

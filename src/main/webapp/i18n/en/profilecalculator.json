@@ -17,6 +17,9 @@
             "dailydemand": "Your daily calories demand before",
             "excercise": "exercise is",
             "save": "Save"
+        },
+        "messeges":{
+            "formerror": "Wrong values for input fields"
         }
     }
 }

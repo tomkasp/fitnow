@@ -78,7 +78,8 @@
                 sex: 0,
                 bornDate: new Date(),
                 wakeup: {min: 3, max: 8},
-                workhours: {min: 3, max: 8}
+                workhours: {min: 3, max: 8},
+                submitted : false
             }
         }
 

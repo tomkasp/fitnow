@@ -5084,6 +5084,8 @@ a.text-#000000:hover {
 }
 
 input.ng-invalid.ng-dirty { border: solid red 1px; }
+.error { border: solid red 1px; }
+
 
 /* Moving bar */
 
