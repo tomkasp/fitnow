@@ -30,13 +30,16 @@
                 "dinner" : "dinner",
                 "supper" : "supper"
             },
+            "mealsfrequency": "How often do you want to eat?",
             "next" : "Next",
             "prev" : "Prev",
             "finish" : "Finish",
             "step1" : "Step 1",
             "step2" : "Step 2",
             "step3" : "Step 3",
-            "close" : "Close"
+            "close" : "Close",
+            "yes": "Yes",
+            "no": "No"
         }
     }
 }

@@ -30,13 +30,16 @@
                     "dinner" : "obiad",
                     "supper" : "kolacja"
                 },
+                "mealsfrequency": "Jak często chcesz jesść posilki?",
                 "next" : "Następny",
                 "prev" : "Poprzedni",
                 "finish" : "Zakończ",
                 "step1" : "Krok 1",
                 "step2" : "Krok 2",
                 "step3" : "Krok 3",
-                "close" : "Zamknij"
+                "close" : "Zamknij",
+                "yes": "Tak",
+                "no": "Nie"
             }
         }
 }

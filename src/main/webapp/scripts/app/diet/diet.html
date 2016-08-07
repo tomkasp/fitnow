@@ -87,7 +87,7 @@
 
         <tab heading="{{'diet.FORM.step2' | translate}}" disable="vm.formStep1.$invalid" active="vm.steps.step2" select="vm.steps.percent=30">
             <form name="step2" class="form-validation form-horizontal">
-                <p class="m-b">Continue the next step</p>
+                <p class="m-b" translate="diet.FORM.mealsfrequency">how often do you want to eat meals?</p>
                 <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 
                 <div class="form-group">
@@ -261,12 +261,12 @@
                     <label class="checkbox-inline i-checks">
                         <input type="radio" ng-model="vm.step3.isAllergy" name="isallergy" ng-value="true">
                         <i></i>
-                        Yes
+                        <a translate="diet.FORM.yes">Yes</a>
                     </label>
-                    <label class="checkbox-inline  i-checks">
+                    <label class="checkbox-inline  i-checks" >
                         <input type="radio" ng-model="vm.step3.isAllergy" name="isallergy" ng-value="false">
                         <i></i>
-                        No
+                        <a translate="diet.FORM.no">No</a>
                     </label>
                 </div>
 
@@ -279,12 +279,12 @@
                     <label class="checkbox-inline i-checks">
                         <input type="radio" name="intoleranceYes" ng-value="true" ng-model="vm.step3.isFoodIntolerance">
                         <i></i>
-                        Yes
+                        <a translate="diet.FORM.yes">Yes</a>
                     </label>
                     <label class="checkbox-inline  i-checks">
                         <input type="radio" name="intoleranceNo" ng-value="false" ng-model="vm.step3.isFoodIntolerance" checked>
                         <i></i>
-                        No
+                        <a translate="diet.FORM.no">No</a>
                     </label>
                 </div>
 
@@ -302,12 +302,12 @@
                     <label class="checkbox-inline i-checks">
                         <input type="radio" name="soupYes" ng-value="true" ng-model="vm.step3.isLikingSoup">
                         <i></i>
-                        Yes
+                        <a translate="diet.FORM.yes">Yes</a>
                     </label>
                     <label class="checkbox-inline  i-checks">
                         <input type="radio" name="soupNo" ng-value="false" ng-model="vm.step3.isLikingSoup">
                         <i></i>
-                        No
+                        <a translate="diet.FORM.no">No</a>
                     </label>
                 </div>
 

@@ -39,7 +39,6 @@
             vm.userProfile.totalCaloriesDemand = caloriesCalculations.totalCaloriesDemand;
             vm.userProfile.caloriesDemand = caloriesCalculations.caloriesDemand;
             vm.userProfile.caloriesDeficit = caloriesCalculations.caloriesDeficit;
-            $scope.userProfileForm.$setDirty();
         }, true);
 
 
@@ -73,7 +72,9 @@
             if (vm.userProfileForm.$valid) {
                 vm.userProfile.caloriesDemand = caloriesCalculatorService.calculateCalories(vm.userProfile);
                 if (vm.userProfile.id == null) {
-                    profileDataservice.createProfile(vm.userProfile);
+                    profileDataservice.createProfile(vm.userProfile).then(function (response) {
+                        vm.userProfile.id = response.id;
+                    });
                 } else {
                     profileDataservice.updateProfile(vm.userProfile);
                 }

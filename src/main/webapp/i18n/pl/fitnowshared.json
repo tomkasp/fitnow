@@ -6,7 +6,8 @@
             "small" : "Mała",
             "medium" : "Średnia",
             "high": "Wysoka",
-            "veryhigh" :"Bardzo wysoka"
+            "veryhigh" :"Bardzo wysoka",
+            "info": "Video dnia"
         }
     }
 }

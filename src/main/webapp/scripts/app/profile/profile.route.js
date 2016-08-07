@@ -5,7 +5,13 @@ angular.module('fitnowApp')
         $stateProvider
             .state('app.profile', {
                 url: '/profile',
-                templateUrl: 'scripts/app/profile/profile-container.html'
+                templateUrl: 'scripts/app/profile/profile-container.html',
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('fitnowshared');
+                        return $translate.refresh();
+                    }]
+                }
             })
             .state('app.profile.calculator', {
                 url: '/calculator',

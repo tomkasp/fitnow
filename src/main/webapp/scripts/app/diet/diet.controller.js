@@ -77,7 +77,7 @@
                 vm.steps.step2 = true;
             }
             else {
-                vm.step2 = false;
+                vm.steps.step2 = false;
             }
         }
 

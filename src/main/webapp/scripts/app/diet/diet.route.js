@@ -11,6 +11,7 @@ angular.module('fitnowApp')
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('diet');
+                        $translatePartialLoader.addPart('fitnowshared');
                         return $translate.refresh();
                     }]
                 }
