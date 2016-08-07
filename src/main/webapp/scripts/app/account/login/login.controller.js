@@ -6,9 +6,10 @@
         .controller('LogInController', LogInController);
 
     /* @ngInject */
-    function LogInController($rootScope, $scope, $state, $timeout, Auth, $resource) {
+    function LogInController($rootScope, $scope, $state, $timeout, $cookies, $resource, Auth, logger) {
         $scope.user = {};
         $scope.errors = {};
+
 
         $scope.rememberMe = true;
         $timeout(function (){angular.element('[ng-model="username"]').focus();});
@@ -42,6 +43,7 @@
         function activate() {
             console.log("hello for singin")
         }
+
     }
 
 })();

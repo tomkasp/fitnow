@@ -43,7 +43,8 @@
         function getBodySizesHistory() {
             bodySizesDataservice.getBodySizesHistory().then(function (data) {
                 lodash(data).forEach(function (value) {
-                    var xVal = Date.parse(value.date);
+                    var xVal = (new Date(value.date)).getTime();
+                    // 1470528000000;//.parse(value.date);
                     var yArmVal = value.arm;
                     var yWaistVal = value.waist;
                     var yThighVal = value.thigh;

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('fitnowApp')
-        .directive('jhSocialmy', function($cookies) {
+        .directive('jhSocialmy', function($cookies, $timeout, logger) {
             // these link to functionality provided by spring-social
             var scopes = {
                 'facebook': 'public_profile,email,user_location',
@@ -29,7 +29,14 @@
                                     // set up form
                                     element.attr('action', '/signin/' + clientSideProviderName);
                                     element.find('input[name="scope"]').val(scopes[clientSideProviderName]);
-                                    element.find('input[name="_csrf"]').val($cookies.get('CSRF-TOKEN'));
+                                    var csrf = $cookies.get('CSRF-TOKEN');
+                                    logger.log("refresh");
+                                    element.find('input[name="_csrf"]').val(csrf);
+                                    $timeout(function(){
+                                    logger.log("refresh");
+                                        var csrf = $cookies.get('CSRF-TOKEN');
+                                        element.find('input[name="_csrf"]').val(csrf);
+                                    });
 
                                     btn = element.find('button');
                                     btn.addClass('btn btn-lg btn-primary btn-block');
@@ -49,10 +56,11 @@
                     if (attrs['type'] === 'icon') {
                         return '<a class="btn"><i class="fa"></i><ng-transclude></ng-transclude></a>';
                     } else {
+                        var token = $cookies.get('CSRF-TOKEN');
                         return '<form method="POST" action="#">' +
                             '<button class="btn" type="submit"><i class="fa"></i><ng-transclude></ng-transclude></button>' +
                             '<input name="scope" type="hidden" />' +
-                            '<input name="_csrf" type="hidden" />' +
+                            '<input name="_csrf" value="' + token + '" type="hidden" />' +
                             '</form>';
                     }
                 }
