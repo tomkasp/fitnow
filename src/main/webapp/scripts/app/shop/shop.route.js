@@ -10,6 +10,9 @@
                     controller: 'ShopController',
                     controllerAs: 'vm',
                     resolve: {
+                        loadedData: ['shopDataService', function(shopDataService){
+                            return shopDataService.getPaymentData();
+                        }],
                         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                             $translatePartialLoader.addPart('shop');
                             return $translate.refresh();

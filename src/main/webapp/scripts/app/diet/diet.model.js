@@ -100,24 +100,3 @@
     }
 
 })();
-
-
-//private Long id;
-//private Integer height;
-//private DailyActivity dailyActivity;
-//private DateTime bornDate;
-//private String sex;
-//private Integer wakeupMin;
-//private Integer wakeupMax;
-//private Integer workMin;
-//private Integer workMax;
-//private String mealQuantity; // JSON based field
-//private Boolean isAllergy;
-//private String allergyDetails;
-//private Boolean isFoodIntolerance;
-//private String foodIntolleranceDetails;
-//private String favorites;
-//private Boolean isLikingSoup;
-//private String foodExclusion;
-//private String additionalInfo;
-

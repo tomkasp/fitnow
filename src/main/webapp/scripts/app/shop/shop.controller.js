@@ -6,15 +6,16 @@
         .controller('ShopController', ShopController);
 
     /* @ngInject */
-    function ShopController() {
+    function ShopController(logger, loadedData, paymentDetailsModel) {
         var vm = this;
-        vm.title = 'ShopController';
 
+        vm.paymentDetails = {};
         activate();
 
         ////////////////
 
         function activate() {
+            vm.paymentDetails = paymentDetailsModel.build(loadedData);
         }
     }
 

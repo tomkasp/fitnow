@@ -1,6 +1,5 @@
 package com.tomkasp.fitnow.shop.application.domain;
 
-
 public class PaymentDetails {
 
     private final String name;
@@ -11,7 +10,7 @@ public class PaymentDetails {
     private final String description;
     private final String clientIp;
     private final String timeStamp;
-
+    private String paymentSignature;
 
     public PaymentDetails(String name, String surname, String email, String sessionId, String amount, String description, String clientIp, String timeStamp) {
         this.name = name;
@@ -54,5 +53,14 @@ public class PaymentDetails {
 
     public String getTimeStamp() {
         return timeStamp;
+    }
+
+    public String getPaymentSignature() {
+        return paymentSignature;
+    }
+
+    public PaymentDetails setPaymentSignature(String paymentSignature) {
+        this.paymentSignature = paymentSignature;
+        return this;
     }
 }

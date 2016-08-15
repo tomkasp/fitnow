@@ -1,21 +1,15 @@
 package com.tomkasp.fitnow.dietsurvey.application;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.tomkasp.fitnow.dietsurvey.domain.DietSurvey;
 import com.tomkasp.fitnow.dietsurvey.dto.DietSurveyDTO;
 import com.tomkasp.fitnow.dietsurvey.dto.MealQuantity;
 import com.tomkasp.fitnow.profile.dto.ProfileOutDTO;
-import com.tomkasp.fitnow.sharedkernel.Sex;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import static java.util.Optional.ofNullable;
 
