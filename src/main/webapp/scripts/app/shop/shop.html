@@ -1,6 +1,21 @@
 <div class="bg-light lter b-b wrapper-md hidden-print">
     <h1 class="m-n font-thin h3" translate="shop.title">Buy diet</h1>
 </div>
+<form action="https://secure.payu.com/paygw/UTF/NewPayment" method="POST" name="payform">
+    Name: <input type="text" name="first_name" value="tom"><br/>
+    Surname: <input type="text" name="last_name" value="kasp"><br/>
+    E-mail: <input type="text" name="email" value="tomkasp@gmail.com"><br/>
+    <input type="hidden" name="pos_id" value="218888">
+    <input type="hidden" name="pos_auth_key" value="rPqpYXV">
+    <input type="hidden" name="session_id" value="1234">
+    <input type="hidden" name="amount" value="1000">
+    <input type="hidden" name="desc" value="desc">
+    <input type="hidden" name="client_ip" value="123.123.123.123">
+    <input type="hidden" name="js" value="1">
+    <input type="hidden" name="ts" value="124321879">
+    <input type="hidden" name="sig" value="53d68bf78c4772119e4f3a8c214903e2bd0f8297a29e1912bc9d956ebce24582">
+    <input type="submit" value="Pay via PayU">
+</form>
 <div class="wrapper-md">
     <div class="row row-sm">
         <div class="col-lg-4 col-md-3 col-sm-4">
@@ -30,7 +45,7 @@
                     <input type="hidden" name="currencyCode" value="PLN">
                     <input type="hidden" name="customerIp" value="123.123.123.123">
                     <input type="hidden" name="description" value="Order description">
-                    <input type="hidden" name="merchantPosId" value="145227">
+                    <input type="hidden" name="merchantPosId" value="218888">
                     <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
                     <input type="hidden" name="products[0].name" value="Product 1">
                     <input type="hidden" name="products[0].quantity" value="1">
