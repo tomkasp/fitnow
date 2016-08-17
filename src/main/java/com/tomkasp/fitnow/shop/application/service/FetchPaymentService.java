@@ -4,6 +4,7 @@ import com.tomkasp.domain.User;
 import com.tomkasp.fitnow.shop.application.domain.PaymentDetails;
 import com.tomkasp.fitnow.shop.application.providers.PaymentFactory;
 import com.tomkasp.fitnow.shop.application.providers.PaymentProvider;
+import com.tomkasp.fitnow.shop.application.providers.PaymentType;
 import com.tomkasp.fitnow.shop.application.providers.PriceProvider;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
@@ -28,20 +29,19 @@ public class FetchPaymentService {
     @Inject
     PaymentFactory paymentFactory;
 
-    public PaymentDetails fetchPayment() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public PaymentDetails fetchPayment(PaymentType paymentType) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User userWithAuthorities = userService.getUserWithAuthorities();
         final String firstName = getFirstName();
         final String lastName = getLastName();
         final String email = userWithAuthorities.getEmail();
         final String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
-        final String amount = PriceProvider.getPrice().toString();
+        final String amount = PriceProvider.getPrice(paymentType).toString();
         final String ip = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
             .getRequest().getRemoteAddr();
         final String currentDate = Long.toString(System.currentTimeMillis());
         PaymentProvider paymentProvider = paymentFactory.build();
-        final String description = "description";
 
-        PaymentDetails paymentDetails = new PaymentDetails(firstName, lastName, email, sessionId, amount, description, ip, currentDate);
+        PaymentDetails paymentDetails = new PaymentDetails(firstName, lastName, email, sessionId, amount, paymentType.name().toString(), ip, currentDate);
         final String paymentSignature = paymentProvider.createPaymentSignature(paymentDetails);
         paymentDetails.setPaymentSignature(paymentSignature);
         return paymentDetails;

@@ -10,8 +10,14 @@
                     controller: 'ShopController',
                     controllerAs: 'vm',
                     resolve: {
-                        loadedData: ['shopDataService', function(shopDataService){
-                            return shopDataService.getPaymentData();
+                        standardPayment: ['shopDataService', function(shopDataService){
+                            return shopDataService.getPaymentData("standard");
+                        }],
+                        superPayment: ['shopDataService', function(shopDataService){
+                            return shopDataService.getPaymentData("super");
+                        }],
+                        premiumPayment: ['shopDataService', function(shopDataService){
+                            return shopDataService.getPaymentData("premium");
                         }],
                         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                             $translatePartialLoader.addPart('shop');

@@ -1,21 +1,6 @@
 <div class="bg-light lter b-b wrapper-md hidden-print">
     <h1 class="m-n font-thin h3" translate="shop.title">Buy diet</h1>
 </div>
-<form action="https://secure.payu.com/paygw/UTF/NewPayment" method="POST" name="payform">
-    Name: <input type="text" name="first_name" ng-model="vm.paymentDetails.name"><br/>
-    Surname: <input type="text" name="last_name" ng-model="vm.paymentDetails.surname"><br/>
-    E-mail: <input type="text" name="email" ng-model="vm.paymentDetails.email"><br/>
-    <input type="hidden" name="pos_id" value="218888">
-    <input type="hidden" name="pos_auth_key" value="rPqpYXV">
-    <input type="hidden" name="session_id" value="{{vm.paymentDetails.sessionId}}">
-    <input type="hidden" name="amount" value="{{vm.paymentDetails.amount}}">
-    <input type="hidden" name="desc" value="{{vm.paymentDetails.description}}">
-    <input type="hidden" name="client_ip" value="{{vm.paymentDetails.clientIp}}">
-    <input type="hidden" name="js" value="1">
-    <input type="hidden" name="ts" value="{{vm.paymentDetails.timeStamp}}">
-    <input type="hidden" name="sig" value="{{vm.paymentDetails.paymentSignature}}">
-    <input type="submit" value="Pay via PayU">
-</form>
 <div class="wrapper-md">
     <div class="row row-sm">
         <div class="col-lg-4 col-md-3 col-sm-4">
@@ -40,19 +25,19 @@
                     </li>
                 </ul>
                 <div class="panel-footer text-center">
-                    <form method="post" action="https://secure.payu.com/api/v2_1/orders">
-                        <input type="hidden" name="continueUrl" value="http://shop.url/continue">
-                        <input type="hidden" name="currencyCode" value="PLN">
-                        <input type="hidden" name="customerIp" value="123.123.123.123">
-                        <input type="hidden" name="description" value="Order description">
-                        <input type="hidden" name="merchantPosId" value="218888">
-                        <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
-                        <input type="hidden" name="products[0].name" value="Product 1">
-                        <input type="hidden" name="products[0].quantity" value="1">
-                        <input type="hidden" name="products[0].unitPrice" value="1000">
-                        <input type="hidden" name="totalAmount" value="1000">
-                        <input type="hidden" name="OpenPayu-Signature"
-                               value="sender=145227;algorithm=SHA-256;signature=bc94a8026d6032b5e216be112a5fb7544e66e23e68d44b4283ff495bdb3983a8">
+                    <form action="https://secure.payu.com/paygw/UTF/NewPayment" method="POST" name="payform">
+                        <input type="hidden" name="first_name" value="{{vm.standardPaymentDetails.name}}"><br/>
+                        <input type="hidden" name="last_name" value="{{vm.standardPaymentDetails.surname}}"><br/>
+                        <input type="hidden" name="email" value="{{vm.standardPaymentDetails.email}}"><br/>
+                        <input type="hidden" name="pos_id" value="218888">
+                        <input type="hidden" name="pos_auth_key" value="rPqpYXV">
+                        <input type="hidden" name="session_id" value="{{vm.standardPaymentDetails.sessionId}}">
+                        <input type="hidden" name="amount" value="{{vm.standardPaymentDetails.amount}}">
+                        <input type="hidden" name="desc" value="{{vm.standardPaymentDetails.description}}">
+                        <input type="hidden" name="client_ip" value="{{vm.standardPaymentDetails.clientIp}}">
+                        <input type="hidden" name="js" value="1">
+                        <input type="hidden" name="ts" value="{{vm.standardPaymentDetails.timeStamp}}">
+                        <input type="hidden" name="sig" value="{{vm.standardPaymentDetails.paymentSignature}}">
                         <button type="submit" class="btn btn-info font-bold m" formtarget="_blank">Kup i zaplac</button>
                     </form>
                 </div>
@@ -88,19 +73,19 @@
                     </li>
                 </ul>
                 <div class="panel-footer text-center">
-                    <form method="post" action="https://secure.payu.com/api/v2_1/orders">
-                        <input type="hidden" name="continueUrl" value="http://shop.url/continue">
-                        <input type="hidden" name="currencyCode" value="PLN">
-                        <input type="hidden" name="customerIp" value="123.123.123.123">
-                        <input type="hidden" name="description" value="Order description">
-                        <input type="hidden" name="merchantPosId" value="145227">
-                        <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
-                        <input type="hidden" name="products[0].name" value="Product 1">
-                        <input type="hidden" name="products[0].quantity" value="1">
-                        <input type="hidden" name="products[0].unitPrice" value="1000">
-                        <input type="hidden" name="totalAmount" value="1000">
-                        <input type="hidden" name="OpenPayu-Signature"
-                               value="sender=145227;algorithm=SHA-256;signature=bc94a8026d6032b5e216be112a5fb7544e66e23e68d44b4283ff495bdb3983a8">
+                    <form action="https://secure.payu.com/paygw/UTF/NewPayment" method="POST" name="payform">
+                        <input type="hidden" name="first_name" value="{{vm.superPaymentDetails.name}}"><br/>
+                        <input type="hidden" name="last_name" value="{{vm.superPaymentDetails.surname}}"><br/>
+                        <input type="hidden" name="email" value="{{vm.superPaymentDetails.email}}"><br/>
+                        <input type="hidden" name="pos_id" value="218888">
+                        <input type="hidden" name="pos_auth_key" value="rPqpYXV">
+                        <input type="hidden" name="session_id" value="{{vm.superPaymentDetails.sessionId}}">
+                        <input type="hidden" name="amount" value="{{vm.superPaymentDetails.amount}}">
+                        <input type="hidden" name="desc" value="{{vm.superPaymentDetails.description}}">
+                        <input type="hidden" name="client_ip" value="{{vm.superPaymentDetails.clientIp}}">
+                        <input type="hidden" name="js" value="1">
+                        <input type="hidden" name="ts" value="{{vm.superPaymentDetails.timeStamp}}">
+                        <input type="hidden" name="sig" value="{{vm.superPaymentDetails.paymentSignature}}">
                         <button type="submit" class="btn btn-info font-bold m" formtarget="_blank">Kup i zaplac</button>
                     </form>
                 </div>
@@ -136,19 +121,19 @@
                     </li>
                 </ul>
                 <div class="panel-footer text-center">
-                    <form method="post" action="https://secure.payu.com/api/v2_1/orders">
-                        <input type="hidden" name="continueUrl" value="http://shop.url/continue">
-                        <input type="hidden" name="currencyCode" value="PLN">
-                        <input type="hidden" name="customerIp" value="123.123.123.123">
-                        <input type="hidden" name="description" value="Order description">
-                        <input type="hidden" name="merchantPosId" value="145227">
-                        <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
-                        <input type="hidden" name="products[0].name" value="Product 1">
-                        <input type="hidden" name="products[0].quantity" value="1">
-                        <input type="hidden" name="products[0].unitPrice" value="1000">
-                        <input type="hidden" name="totalAmount" value="1000">
-                        <input type="hidden" name="OpenPayu-Signature"
-                               value="sender=145227;algorithm=SHA-256;signature=bc94a8026d6032b5e216be112a5fb7544e66e23e68d44b4283ff495bdb3983a8">
+                    <form action="https://secure.payu.com/paygw/UTF/NewPayment" method="POST" name="payform">
+                        <input type="hidden" name="first_name" value="{{vm.premiumPaymentDetails.name}}"><br/>
+                        <input type="hidden" name="last_name" value="{{vm.premiumPaymentDetails.surname}}"><br/>
+                        <input type="hidden" name="email" value="{{vm.premiumPaymentDetails.email}}"><br/>
+                        <input type="hidden" name="pos_id" value="218888">
+                        <input type="hidden" name="pos_auth_key" value="rPqpYXV">
+                        <input type="hidden" name="session_id" value="{{vm.premiumPaymentDetails.sessionId}}">
+                        <input type="hidden" name="amount" value="{{vm.premiumPaymentDetails.amount}}">
+                        <input type="hidden" name="desc" value="{{vm.premiumPaymentDetails.description}}">
+                        <input type="hidden" name="client_ip" value="{{vm.premiumPaymentDetails.clientIp}}">
+                        <input type="hidden" name="js" value="1">
+                        <input type="hidden" name="ts" value="{{vm.premiumPaymentDetails.timeStamp}}">
+                        <input type="hidden" name="sig" value="{{vm.premiumPaymentDetails.paymentSignature}}">
                         <button type="submit" class="btn btn-info font-bold m" formtarget="_blank">Kup i zaplac</button>
                     </form>
                 </div>

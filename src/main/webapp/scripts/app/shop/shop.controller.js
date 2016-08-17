@@ -6,16 +6,20 @@
         .controller('ShopController', ShopController);
 
     /* @ngInject */
-    function ShopController(logger, loadedData, paymentDetailsModel) {
+    function ShopController(logger, standardPayment, superPayment, premiumPayment, paymentDetailsModel) {
         var vm = this;
 
-        vm.paymentDetails = {};
+        vm.standardPaymentDetails = {};
+        vm.superPaymentDetails = {};
+        vm.premiumPaymentDetails = {};
         activate();
 
         ////////////////
 
         function activate() {
-            vm.paymentDetails = paymentDetailsModel.build(loadedData);
+            vm.standardPaymentDetails = paymentDetailsModel.build(standardPayment);
+            vm.superPaymentDetails = paymentDetailsModel.build(superPayment);
+            vm.premiumPaymentDetails = paymentDetailsModel.build(premiumPayment);
         }
     }
 
