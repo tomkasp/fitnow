@@ -36,6 +36,8 @@
             <column name="food_intolerance_details" type="varchar(1000)"/>
             <column name="favorites" type="varchar(1000)"/>
             <column name="soup" type="BOOLEAN"/>
+            <column name="illness" type="BOOLEAN"/>
+            <column name="illness_details" type="varchar(1000)"/>
             <column name="food_exclusion" type="varchar(1000)"/>
             <column name="additional_info" type="varchar(1000)"/>
         </createTable>

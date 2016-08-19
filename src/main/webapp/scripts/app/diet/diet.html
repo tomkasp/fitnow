@@ -42,7 +42,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <p class="m-t" translate="diet.FORM.height">Height</p>
+                            <p class="m-t" ><span translate="diet.FORM.height">Height</span><span> [cm]</span>  </p>
                             <input class="form-control" ng-class="{error : vm.formStep1.height.$invalid && vm.step1.submitted}" type="number" name="height" min="10" max="400" ng-model="vm.step1.height" required>
                         </div>
 
@@ -57,7 +57,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <p class="m-t" name="wakeuphours">{{'diet.FORM.wakeuphours' | translate}} ({{vm.step1.wakeup.min}}:00 - {{vm.step1.wakeup.max}}:00)</p>
+                            <p class="m-t" name="wakeuphours">{{'diet.FORM.wakeuphours' | translate}} (min:{{vm.step1.wakeup.min}} - max:{{vm.step1.wakeup.max}})</p>
                             <slider
                                 ng-model="vm.step1.wakeup.min"
                                 ng-model-range="vm.step1.wakeup.max"
@@ -310,6 +310,24 @@
                         <a translate="diet.FORM.no">No</a>
                     </label>
                 </div>
+
+                <p class="m-t" translate="diet.FORM.illness">Ilness</p>
+
+                <div class="m-t">
+                    <label class="checkbox-inline i-checks">
+                        <input type="radio" name="illnessYes" ng-value="true" ng-model="vm.step3.isIllness">
+                        <i></i>
+                        <a translate="diet.FORM.yes">Yes</a>
+                    </label>
+                    <label class="checkbox-inline  i-checks">
+                        <input type="radio" name="illnessNo" ng-value="false" ng-model="vm.step3.isIllness">
+                        <i></i>
+                        <a translate="diet.FORM.no">No</a>
+                    </label>
+                </div>
+
+                <textarea class="form-control m-t" ng-model="vm.step3.illnessDetails" ng-show="vm.step3.isIllness==true">
+                </textarea>
 
                 <p class="m-t" translate="diet.FORM.exclusions">Exclusions</p>
 

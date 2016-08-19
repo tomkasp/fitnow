@@ -28,6 +28,8 @@ public class DietSurveyDTO {
     private String foodIntolleranceDetails;
     private String favorites;
     private Boolean isLikingSoup = false;
+    private Boolean isIllness = false;
+    private String illnessDetails;
     private String foodExclusion;
     private String additionalInfo;
 
@@ -173,6 +175,24 @@ public class DietSurveyDTO {
         return this;
     }
 
+    public String getIllnessDetails() {
+        return illnessDetails;
+    }
+
+    public DietSurveyDTO setIllnessDetails(String illnessDetails) {
+        this.illnessDetails = illnessDetails;
+        return this;
+    }
+
+    public Boolean getIsIllness() {
+        return isIllness;
+    }
+
+    public DietSurveyDTO setIsIllness(Boolean illness) {
+        isIllness = illness;
+        return this;
+    }
+
     public String getSex() {
         return sex;
     }
@@ -217,6 +237,8 @@ public class DietSurveyDTO {
         this.workMin = workMin;
         return this;
     }
+
+
 
     public com.tomkasp.fitnow.profile.domain.DailyActivity getConvertedDailyActivity() {
         final Map<String, com.tomkasp.fitnow.profile.domain.DailyActivity> dailyActivity = new HashMap<>();

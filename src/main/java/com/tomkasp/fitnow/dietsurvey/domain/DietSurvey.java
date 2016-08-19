@@ -55,6 +55,12 @@ public class DietSurvey {
     @Column(name = "favorites")
     private String favorites;
 
+    @Column(name = "illness")
+    private Boolean isIllness;
+
+    @Column(name = "illness_details")
+    private String illnessDetails;
+
     @Column(name = "soup")
     private Boolean isLikingSoup;
 
@@ -63,6 +69,7 @@ public class DietSurvey {
 
     @Column(name = "additional_info")
     private String additionalInfo;
+
 
     @OneToOne(optional = false)
     @JoinColumn(name = "USER_ID", nullable = false)
@@ -211,6 +218,24 @@ public class DietSurvey {
 
     public DietSurvey setBornDate(DateTime bornDate) {
         this.bornDate = bornDate;
+        return this;
+    }
+
+    public String getIllnessDetails() {
+        return illnessDetails;
+    }
+
+    public DietSurvey setIllnessDetails(String illnessDetails) {
+        this.illnessDetails = illnessDetails;
+        return this;
+    }
+
+    public Boolean getIsIllness() {
+        return isIllness;
+    }
+
+    public DietSurvey setIsIllness(Boolean illness) {
+        isIllness = illness;
         return this;
     }
 }

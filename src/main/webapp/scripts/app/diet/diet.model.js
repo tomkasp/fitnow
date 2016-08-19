@@ -91,6 +91,8 @@
                 foodIntolleranceDetails: '',
                 favorites: '',
                 isLikingSoup: false,
+                isIllness: false,
+                illnessDescription:'',
                 foodExclusion: '',
                 additionalInfo: ''
 
