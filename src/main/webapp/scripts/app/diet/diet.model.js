@@ -42,6 +42,8 @@
             model.foodIntolleranceDetails = dietSurvey.foodIntolleranceDetails;
             model.favorites = dietSurvey.favorites;
             model.isLikingSoup = dietSurvey.isLikingSoup;
+            model.isIllness = dietSurvey.isIllness;
+            model.illnessDetails = dietSurvey.illnessDetails;
             model.foodExclusion = dietSurvey.foodExclusion;
             model.additionalInfo = dietSurvey.additionalInfo;
             return model;
@@ -65,6 +67,8 @@
                 foodIntolleranceDetails: stepThree.foodIntolleranceDetails,
                 favorites: stepThree.favorites,
                 isLikingSoup: stepThree.isLikingSoup,
+                isIllness: stepThree.isIllness,
+                illnessDetails: stepThree.illnessDetails,
                 foodExclusion: stepThree.foodExclusion,
                 additionalInfo: stepThree.additionalInfo
             }
@@ -79,7 +83,7 @@
                 bornDate: new Date(),
                 wakeup: {min: 3, max: 8},
                 workhours: {min: 3, max: 8},
-                submitted : false
+                submitted: false
             }
         }
 
@@ -92,11 +96,9 @@
                 favorites: '',
                 isLikingSoup: false,
                 isIllness: false,
-                illnessDescription:'',
+                illnessDetails: '',
                 foodExclusion: '',
                 additionalInfo: ''
-
-
             }
         }
     }
