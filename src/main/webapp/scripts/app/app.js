@@ -14,6 +14,7 @@ angular.module('fitnowApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalp
     'toaster',
     'vr.directives.slider',
 
+    'fitnowApp.directives',
     'fitnowApp.dashboard',
     'fitnowApp.profile',
     'fitnowApp.diet',

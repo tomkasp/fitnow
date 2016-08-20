@@ -7,7 +7,7 @@
             <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 
             <div class="panel-body">
-                <form name="vm.formStep1" class="form-validation form-horizontal" novalidate>
+                <form name="vm.formStep1" class="form-validation form-horizontal" dirty-form-check novalidate>
 
                     <div class="form-group">
                         <div class="col-sm-4"><p class="m-t" translate="diet.FORM.birthdate">Birth date</p>
@@ -86,7 +86,7 @@
         </tab>
 
         <tab heading="{{'diet.FORM.step2' | translate}}" disable="vm.formStep1.$invalid" active="vm.steps.step2" select="vm.steps.percent=30">
-            <form name="step2" class="form-validation form-horizontal">
+            <form name="step2" class="form-validation form-horizontal" dirty-form-check>
                 <p class="m-b" translate="diet.FORM.mealsfrequency">how often do you want to eat meals?</p>
                 <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 
@@ -252,7 +252,7 @@
             </form>
         </tab>
         <tab heading="{{'diet.FORM.step3' | translate}}" disable="vm.formStep1.$invalid" active="vm.steps.step3" select="vm.steps.percent=60">
-            <form name="step3" class="form-validation form-horizontal">
+            <form name="step3" class="form-validation form-horizontal" dirty-form-check>
                 <progressbar value="vm.steps.percent" class="progress-xs" type="success"></progressbar>
 
                 <p class="m-t" translate="diet.FORM.allergy">Allergy</p>

@@ -53,6 +53,7 @@ module.exports = function (config) {
             'main/webapp/bower_components/flot/jquery.flot.js',
             'main/webapp/bower_components/flot-spline/js/jquery.flot.spline.js',
             'main/webapp/bower_components/flot.tooltip/js/jquery.flot.tooltip.js',
+            'main/webapp/bower_components/jquery.are-you-sure/jquery.are-you-sure.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',
