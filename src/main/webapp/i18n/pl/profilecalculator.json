@@ -18,8 +18,11 @@
             "excercise": "przed ćwiczeniam",
             "save": "Zapisz"
         },
-        "messeges": {
-            "formerror": "Złe wartości pól w formie"
+        "messages": {
+            "formerror": "Złe wartości pól w formie",
+            "updatedSuccess": "Profil uaktualniony",
+            "updatedFailure": "Błąd zapisu, spróbuj ponownie",
+            "retrieveFailure": "Błąd pobierania danych"
         }
     }
 }

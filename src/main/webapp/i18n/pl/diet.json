@@ -1,48 +1,51 @@
 {
     "diet": {
-            "FORM": {
-                "title": "Informacje dietetyczne",
-                "birthdate": "Data urodzenia",
-                "sex" : "Płeć:",
-                "male": "Mężczyzna",
-                "female": "Kobieta",
-                "height": "Wzrost:",
-                "dailyactivity": "Dzienna aktywnosc:",
-                "wakeuphours" : "Liczba godzin snu:",
-                "workhours" : "Godziny pracy:",
-                "allergy" : "Czy wystepuja u Ciebie jakies Alergie? Jeśli tak to jakie?",
-                "intolerance" : "Czy wystepuja u Ciebie jakies nietolerancje pokarmowe? Jeśli tak to jakie?",
-                "favorite" : "Mojego jadlospisu nie wyobrażam sobie bez",
-                "soup" : "Lubisz zupy?",
-                "illness": "Czy występują u pana/pani przewlekłe choroby?",
-                "exclusions": "W mojej diecie nie chce:",
-                "info": "Czy jest jeszcze cos o czym chcial bys poinformowac dietetyka?",
-                "days": {
-                    "mon" : "Poniedziałek",
-                    "tue" : "Wtorek",
-                    "wed" : "Sroda",
-                    "thu" : "Czwartek",
-                    "fri" : "Piątek",
-                    "sat" : "Sobota",
-                    "sun" : "Niedziela"
-                },
-                "meals" : {
-                    "breakfast" : "śniadanie",
-                    "sec_breakfast" : "drugie śniadanie",
-                    "lunch" : "lunch",
-                    "dinner" : "obiad",
-                    "supper" : "kolacja"
-                },
-                "mealsfrequency": "Zaznacz dzienną ilość posiłków?  (minimum 3 posiłki dziennie) ",
-                "next" : "Następny",
-                "prev" : "Poprzedni",
-                "finish" : "Zapisz",
-                "step1" : "Podstawowe informacje",
-                "step2" : "Posiki",
-                "step3" : "Preferencje",
-                "close" : "Zamknij",
-                "yes": "Tak",
-                "no": "Nie"
-            }
-        }
+        "FORM": {
+            "title": "Informacje dietetyczne",
+            "birthdate": "Data urodzenia",
+            "sex": "Płeć:",
+            "male": "Mężczyzna",
+            "female": "Kobieta",
+            "height": "Wzrost:",
+            "dailyactivity": "Dzienna aktywnosc:",
+            "wakeuphours": "Liczba godzin snu:",
+            "workhours": "Godziny pracy:",
+            "allergy": "Czy wystepuja u Ciebie jakies Alergie? Jeśli tak to jakie?",
+            "intolerance": "Czy wystepuja u Ciebie jakies nietolerancje pokarmowe? Jeśli tak to jakie?",
+            "favorite": "Mojego jadlospisu nie wyobrażam sobie bez",
+            "soup": "Lubisz zupy?",
+            "illness": "Czy występują u pana/pani przewlekłe choroby?",
+            "exclusions": "W mojej diecie nie chce:",
+            "info": "Czy jest jeszcze cos o czym chcial bys poinformowac dietetyka?",
+            "days": {
+                "mon": "Poniedziałek",
+                "tue": "Wtorek",
+                "wed": "Sroda",
+                "thu": "Czwartek",
+                "fri": "Piątek",
+                "sat": "Sobota",
+                "sun": "Niedziela"
+            },
+            "meals": {
+                "breakfast": "śniadanie",
+                "sec_breakfast": "drugie śniadanie",
+                "lunch": "lunch",
+                "dinner": "obiad",
+                "supper": "kolacja"
+            },
+            "mealsfrequency": "Zaznacz dzienną ilość posiłków?  (minimum 3 posiłki dziennie) ",
+            "next": "Następny",
+            "prev": "Poprzedni",
+            "finish": "Zapisz",
+            "step1": "Podstawowe informacje",
+            "step2": "Posiki",
+            "step3": "Preferencje",
+            "close": "Zamknij",
+            "yes": "Tak",
+            "no": "Nie"
+        },
+        "updatedSuccess": "Dieta uaktualniona",
+        "updatedFailure": "Błąd zapisu, spróbuj ponownie",
+        "retrieveFailure": "Błąd pobierania danych"
+    }
 }

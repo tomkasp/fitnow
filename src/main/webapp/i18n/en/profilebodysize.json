@@ -10,6 +10,11 @@
             "neck": "Neck",
             "history": "History",
             "save": "Save"
+        },
+        "messages": {
+            "updatedSuccess": "Body sizes updated",
+            "updatedFailure": "Error during data save",
+            "retrieveFailure": "Cannot retrieve values, try again later"
         }
     }
 }

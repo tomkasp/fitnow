@@ -6,16 +6,36 @@
         .factory('profileDataservice', profileDataservice);
 
     /* @ngInject */
-    function profileDataservice($http, $location, exception, profileModel, toaster) {
+    function profileDataservice($http, $translate, exception, profileModel, toaster) {
 
         var service = {
             getMineProfile: getMineProfile,
             createProfile: createProfile,
-            updateProfile: updateProfile,
-            deleteProfile: deleteProfile
+            updateProfile: updateProfile
         };
 
+        var messages = {
+            profileUpdatedSuccess: "Profile updated",
+            profileUpdatedFailure: "Profile update failure",
+            profileRetrieveFailure: "Profile retrieve failure"
+
+        };
+
+        activate();
+
         return service;
+
+        function activate() {
+            $translate(['profilecalculator.messages.updatedSuccess', 'profilecalculator.messages.updatedFailure', 'profilecalculator.messages.retrieveFailure'])
+                .then(successCallback);
+
+            function successCallback(translations) {
+                messages.profileUpdatedSuccess = translations['profilecalculator.messages.updatedSuccess'];
+                messages.profileUpdatedFailure = translations['profilecalculator.messages.updatedFailure'];
+                messages.profileRetrieveFailure = translations['profilecalculator.messages.retrieveFailure'];
+            }
+
+        }
 
         function getMineProfile() {
             return $http.get('/api/profilemine')
@@ -40,12 +60,12 @@
                 .catch(createProfileFailed);
 
             function createProfileComplete(response) {
-                toaster.pop('success', '', 'Profile updated');
+                toaster.pop('success', '', messages.profileUpdatedSuccess);
                 return response.data;
             }
 
-            function createProfileFailed(response){
-                exception.catcher('Update profile failed')(response);
+            function createProfileFailed(response) {
+                exception.catcher(messages.profileUpdatedFailure)(response);
             }
         }
 
@@ -55,17 +75,13 @@
                 .catch(updateProfileFailed);
 
             function updateProfileComplete(response) {
-                toaster.pop('success', '', 'Profile updated');
+                toaster.pop('success', '', messages.profileUpdatedSuccess);
                 return response.data;
             }
 
-            function updateProfileFailed(response){
-                exception.catcher('Update profile failed')(response);
+            function updateProfileFailed(response) {
+                exception.catcher(messages.profileUpdatedFailure)(response);
             }
-        }
-
-        function deleteProfile() {
-
         }
     }
 

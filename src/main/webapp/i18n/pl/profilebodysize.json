@@ -10,6 +10,11 @@
             "neck": "Szyja",
             "history": "Historia",
             "save": "Zapisz"
+        },
+        "messages": {
+            "updatedSuccess": "Wymiary uaktualnione",
+            "updatedFailure": "Błąd zapisu, spróbuj ponownie",
+            "retrieveFailure": "Błąd pobierania danych"
         }
     }
 }

@@ -6,19 +6,39 @@
         .factory('dietDataservice', dietDataservice);
 
     /* @ngInject */
-    function dietDataservice($http, exception,  toaster) {
+    function dietDataservice($http, $translate, exception, toaster) {
 
         var apiAddress = "/api/dietsurveys";
+        var messages = {
+            dietUpdatedSuccess: "Diet updated",
+            dietUpdatedFailure: "Diet update failure",
+            dietRetrieveFailure: "Diet retrieve failure"
+
+        };
         var service = {
             getMineDiet: getMineDiet,
             createDiet: createDiet,
             updateDiet: updateDiet
-            //deleteProfile: deleteProfile
         };
+
+        activate();
 
         return service;
 
+        function activate() {
+            $translate(['diet.updatedSuccess', 'diet.updatedFailure', 'diet.retrieveFailure'])
+                .then(successCallback);
+
+            function successCallback(translations) {
+                    messages.dietUpdatedSuccess = translations['diet.updatedSuccess'];
+                    messages.dietUpdatedFailure = translations['diet.updatedFailure'];
+                    messages.dietRetrieveFailure = translations['diet.retrieveFailure'];
+            }
+        }
+
+
         function getMineDiet() {
+
             return $http.get(apiAddress)
                 .then(getDietComplete)
                 .catch(getDietFailed);
@@ -27,7 +47,7 @@
                 if (response.status == '404') {
                     return null;
                 }
-                exception.catcher('XHR Failed for diet data')(message);
+                exception.catcher(messages.dietRetrieveFailure)(message);
             }
 
             function getDietComplete(response) {
@@ -41,12 +61,12 @@
                 .catch(createDietFailed);
 
             function createDietComplete(response) {
-                toaster.pop('success', '', 'Diet updated');
+                toaster.pop('success', '', messages.dietUpdatedSuccess);
                 return response.data;
             }
 
-            function createDietFailed(response){
-                exception.catcher('Update diet failed')(response);
+            function createDietFailed(response) {
+                exception.catcher(messages.dietUpdatedFailure)(response);
             }
         }
 
@@ -56,16 +76,13 @@
                 .catch(updateDietFailed);
 
             function updateDietComplete(response) {
-                toaster.pop('success', '', 'Diet updated');
+                toaster.pop('success', '', messages.dietUpdatedSuccess);
                 return response.data;
             }
 
-            function updateDietFailed(response){
-                exception.catcher('Update diet failed')(response);
+            function updateDietFailed(response) {
+                exception.catcher(messages.dietUpdatedFailure)(response);
             }
-        }
-
-        function deleteProfile() {
         }
     }
 

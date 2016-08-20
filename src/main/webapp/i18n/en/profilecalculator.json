@@ -18,8 +18,11 @@
             "excercise": "exercise is",
             "save": "Save"
         },
-        "messeges":{
-            "formerror": "Wrong values for input fields"
+        "messages":{
+            "formerror": "Wrong values for input fields",
+            "updatedSuccess": "Profile updated",
+            "updatedFailure": "Error during data save",
+            "retrieveFailure": "Cannot retrieve values, try again later"
         }
     }
 }

@@ -79,7 +79,7 @@
                     profileDataservice.updateProfile(vm.userProfile);
                 }
             } else {
-                $translate('profilecalculator.messeges.formerror').then(function (formError) {
+                $translate('profilecalculator.messages.formerror').then(function (formError) {
                     logger.error(formError)
                 });
             }

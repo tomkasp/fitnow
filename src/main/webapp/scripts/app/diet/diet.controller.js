@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function DietController(uibDatepickerPopupConfig,
-                            dietDataservice, logger, wizardStepsModel, dietModel, Utility) {
+                            dietDataservice, logger, wizardStepsModel, dietModel, Utility, $translate) {
 
         var vm = this;
         vm.open = open;

@@ -6,13 +6,12 @@
         .controller('BodySizeController', BodySizeController);
 
     /* @ngInject */
-    function BodySizeController(bodySizesDataservice, lodash, logger) {
+    function BodySizeController(bodySizesDataservice, lodash) {
         var vm = this;
         vm.saveSizes = saveSizes;
         vm.data = [];
         vm.getBodySizesHistory = getBodySizesHistory;
         vm.change = change;
-        //vm.selected = {};
 
         vm.bodyParts =
             [

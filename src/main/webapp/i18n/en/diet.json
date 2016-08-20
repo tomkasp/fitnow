@@ -43,6 +43,9 @@
             "close" : "Close",
             "yes": "Yes",
             "no": "No"
-        }
+        },
+        "updatedSuccess": "Diet updated",
+        "updatedFailure": "Error during data save",
+        "retrieveFailure": "Cannot retrieve values, try again later"
     }
 }
