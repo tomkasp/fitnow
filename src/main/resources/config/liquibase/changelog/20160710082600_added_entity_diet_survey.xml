@@ -40,6 +40,7 @@
             <column name="illness_details" type="varchar(1000)"/>
             <column name="food_exclusion" type="varchar(1000)"/>
             <column name="additional_info" type="varchar(1000)"/>
+            <column name="phone_number" type="varchar(1000)"/>
         </createTable>
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="profile"

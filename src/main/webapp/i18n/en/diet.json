@@ -16,6 +16,7 @@
             "soup": "Do you like soups?",
             "illness": "Do you have any chronic illness?",
             "exclusions": "In my diet I don't want:",
+            "phonenumber": "Phone number",
             "info": "Do you want to inform about something else our nutrition specialist?",
             "days": {
                 "mon" : "Monday",

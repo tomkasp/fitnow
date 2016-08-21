@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('fitnowApp')
@@ -10,15 +10,35 @@
                     controller: 'ShopController',
                     controllerAs: 'vm',
                     resolve: {
-                        standardPayment: ['shopDataService', function(shopDataService){
+                        standardPayment: ['shopDataService', function (shopDataService) {
                             return shopDataService.getPaymentData("standard");
                         }],
-                        superPayment: ['shopDataService', function(shopDataService){
+                        superPayment: ['shopDataService', function (shopDataService) {
                             return shopDataService.getPaymentData("super");
                         }],
-                        premiumPayment: ['shopDataService', function(shopDataService){
+                        premiumPayment: ['shopDataService', function (shopDataService) {
                             return shopDataService.getPaymentData("premium");
                         }],
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('shop');
+                            return $translate.refresh();
+                        }]
+                    }
+                })
+                .state('app.success', {
+                    url: '/shop/success',
+                    templateUrl: 'scripts/app/shop/paymentsuccess.html',
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('shop');
+                            return $translate.refresh();
+                        }]
+                    }
+                })
+                .state('app.failure', {
+                    url: '/shop/failure',
+                    templateUrl: 'scripts/app/shop/paymentfailure.html',
+                    resolve: {
                         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                             $translatePartialLoader.addPart('shop');
                             return $translate.refresh();

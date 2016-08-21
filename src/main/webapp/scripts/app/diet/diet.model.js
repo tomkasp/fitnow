@@ -27,6 +27,7 @@
                 model.wakeup.max = dietSurvey.wakeupMax;
                 model.workhours.min = dietSurvey.workMin;
                 model.workhours.max = dietSurvey.workMax;
+                model.phoneNumber = dietSurvey.phoneNumber;
             }
             model.sex = dietSurvey.sex;
             model.dailyActivity = dietSurvey.dailyActivity;
@@ -53,7 +54,8 @@
             return {
                 id: stepOne.id,
                 height: stepOne.height,
-                dailyActivity: stepOne.dailyActivity,
+                // dailyActivity: stepOne.dailyActivity,
+                phoneNumber: stepOne.phoneNumber,
                 bornDate: stepOne.bornDate.getFullYear() + '-' + (stepOne.bornDate.getMonth() + 1) + '-' + stepOne.bornDate.getDate(),
                 wakeupMin: stepOne.wakeup.min,
                 wakeupMax: stepOne.wakeup.max,
@@ -78,6 +80,7 @@
             return {
                 id: null,
                 dailyActivity: null,
+                phoneNumber: null,
                 height: null,
                 sex: 0,
                 bornDate: new Date(),

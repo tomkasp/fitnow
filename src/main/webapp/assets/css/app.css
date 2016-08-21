@@ -4173,6 +4173,11 @@ a.text-#000000:hover {
   text-shadow: 0 1px 0 #dee5e7, 0 2px 0 #fcfdfd, 0 5px 10px rgba(0, 0, 0, 0.125), 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.text-shadow-sm {
+    font-size: 80px;
+    text-shadow: 0 1px 0 #dee5e7, 0 2px 0 #fcfdfd, 0 5px 10px rgba(0, 0, 0, 0.125), 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .no-shadow {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;

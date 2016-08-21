@@ -14,7 +14,6 @@ public class DietSurveyDTO {
 
     private Long id;
     private Integer height;
-    private DailyActivity dailyActivity;
     private LocalDate bornDate;
     private String sex;
     private Integer wakeupMin;
@@ -32,6 +31,7 @@ public class DietSurveyDTO {
     private String illnessDetails;
     private String foodExclusion;
     private String additionalInfo;
+    private String phoneNumber;
 
 
 
@@ -56,15 +56,6 @@ public class DietSurveyDTO {
             this.name = name;
             return this;
         }
-    }
-
-    public DailyActivity getDailyActivity() {
-        return dailyActivity;
-    }
-
-    public DietSurveyDTO setDailyActivity(DailyActivity dailyActivity) {
-        this.dailyActivity = dailyActivity;
-        return this;
     }
 
     public String getAdditionalInfo() {
@@ -238,16 +229,15 @@ public class DietSurveyDTO {
         return this;
     }
 
-
-
-    public com.tomkasp.fitnow.profile.domain.DailyActivity getConvertedDailyActivity() {
-        final Map<String, com.tomkasp.fitnow.profile.domain.DailyActivity> dailyActivity = new HashMap<>();
-        dailyActivity.put("0", com.tomkasp.fitnow.profile.domain.DailyActivity.SMALL);
-        dailyActivity.put("1", com.tomkasp.fitnow.profile.domain.DailyActivity.MEDIUM);
-        dailyActivity.put("2", com.tomkasp.fitnow.profile.domain.DailyActivity.HIGH);
-        dailyActivity.put("3", com.tomkasp.fitnow.profile.domain.DailyActivity.VERY_HIGH);
-        return dailyActivity.get(this.dailyActivity.getId());
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
+
+    public DietSurveyDTO setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
 
     public Sex getConvertedSex(){
         Map<String, Sex> sexMap = new HashMap<>();

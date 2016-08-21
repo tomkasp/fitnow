@@ -70,6 +70,9 @@ public class DietSurvey {
     @Column(name = "additional_info")
     private String additionalInfo;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
 
     @OneToOne(optional = false)
     @JoinColumn(name = "USER_ID", nullable = false)
@@ -236,6 +239,15 @@ public class DietSurvey {
 
     public DietSurvey setIsIllness(Boolean illness) {
         isIllness = illness;
+        return this;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public DietSurvey setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
         return this;
     }
 }

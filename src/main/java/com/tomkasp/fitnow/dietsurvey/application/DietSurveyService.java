@@ -63,7 +63,7 @@ public class DietSurveyService {
         dietSurvey.setUser(userService.getUserWithAuthorities());
         final DietSurvey savedDietSurvey = dietSurveyRepository.save(dietSurvey);
         DietSurveyDTO result = dietSurveyFactory.build(savedDietSurvey, profileService.findMine());
-        eventPublisher.publish(new DietSurveyUpdatedEvent(dietSurveyDTO.getHeight(), dietSurveyDTO.getConvertedSex(), dietSurveyDTO.getConvertedDailyActivity()));
+        eventPublisher.publish(new DietSurveyUpdatedEvent(dietSurveyDTO.getHeight(), dietSurveyDTO.getConvertedSex()));
         return result;
 
     }

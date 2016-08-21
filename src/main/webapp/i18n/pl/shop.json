@@ -20,6 +20,13 @@
             "high": "High",
             "veryhigh" :"Very High"
 
+        },
+        "status": {
+            "success": "Dziekujemy za zakup",
+            "failure": "Coś poszło nie tak z płatnością :(",
+            "gotocalculator": "Idź do kalkulaora",
+            "gotodiet": "Idź do diety",
+            "gotocontact": "Skontaktuj się z nami"
         }
     }
 }

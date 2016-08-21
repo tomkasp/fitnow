@@ -12,13 +12,19 @@
         "consultation3": "3 Telephone consultation with a nutritionist",
         "reconsultation": "Two-week phone consultations",
         "profile": {
-            "goalloose" : "Loose weight",
-            "goalgain" : "Gain muscles",
-            "small" : "Small",
-            "medium" : "Medium",
+            "goalloose": "Loose weight",
+            "goalgain": "Gain muscles",
+            "small": "Small",
+            "medium": "Medium",
             "high": "High",
-            "veryhigh" :"Very High"
-
+            "veryhigh": "Very High"
+        },
+        "status": {
+            "success": "Thanks for the shopping",
+            "failure": "Something went wrong with your payment :(",
+            "gotocalculator": "Go to calculator",
+            "gotodiet": "Go to diet",
+            "gotocontact": "Contact us"
         }
     }
 }

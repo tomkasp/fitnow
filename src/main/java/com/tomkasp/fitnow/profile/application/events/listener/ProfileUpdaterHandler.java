@@ -34,6 +34,6 @@ public class ProfileUpdaterHandler {
     @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     public void handler(DietSurveyUpdatedEvent dietSurveyUpdatedEvent) {
         log.debug("Diet survey update event: {}", dietSurveyUpdatedEvent);
-        profileService.updateProfileAfterEvent(dietSurveyUpdatedEvent.getHeight(), dietSurveyUpdatedEvent.getDailyActivity(), dietSurveyUpdatedEvent.getSex());
+        profileService.updateProfileAfterEvent(dietSurveyUpdatedEvent.getHeight(), dietSurveyUpdatedEvent.getSex());
     }
 }

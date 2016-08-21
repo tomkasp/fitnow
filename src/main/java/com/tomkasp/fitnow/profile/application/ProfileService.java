@@ -80,8 +80,8 @@ public class ProfileService {
     }
 
     @Transactional(readOnly = false)
-    public void updateProfileAfterEvent(Integer height, DailyActivity dailyActivity, Sex sex){
-        profileRepository.updateProfile(height,dailyActivity, sex, userService.getUserWithAuthorities().getId());
+    public void updateProfileAfterEvent(Integer height, Sex sex){
+        profileRepository.updateProfile(height, sex, userService.getUserWithAuthorities().getId());
     }
 
     public void delete(Long id) {

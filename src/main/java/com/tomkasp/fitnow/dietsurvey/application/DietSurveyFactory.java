@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-import static java.util.Optional.ofNullable;
-
 /**
  * @author Tomasz Kasprzycki (A042191)
  */
@@ -37,6 +35,7 @@ public class DietSurveyFactory {
             .setIsLikingSoup(dietSurveyDto.getIsLikingSoup())
             .setIsIllness(dietSurveyDto.getIsIllness())
             .setIllnessDetails(dietSurveyDto.getIllnessDetails())
+            .setPhoneNumber(dietSurveyDto.getPhoneNumber())
             .setFavorites(dietSurveyDto.getFavorites())
             .setMealQuantity(json)
             .setWakeupMax(dietSurveyDto.getWakeupMax())
@@ -59,6 +58,7 @@ public class DietSurveyFactory {
             .setIsLikingSoup(dietSurvey.getIsLikingSoup())
             .setIsIllness(dietSurvey.getIsIllness())
             .setIllnessDetails(dietSurvey.getIllnessDetails())
+            .setPhoneNumber(dietSurvey.getPhoneNumber())
             .setFavorites(dietSurvey.getFavorites())
             .setMealQuantity(mealQuantityMap)
             .setWakeupMax(dietSurvey.getWakeupMax())
@@ -66,20 +66,15 @@ public class DietSurveyFactory {
             .setWorkMax(dietSurvey.getWorkMax())
             .setSex(mine.getSex())
             .setWorkMin(dietSurvey.getWorkMin());
-        ofNullable(mine.getDailyActivity()).map(result ->
-                dietSurveyDTO.setDailyActivity(new DietSurveyDTO.DailyActivity().setName(result.getName()).setId(result.getId().toString()))
-        );
 
         return dietSurveyDTO;
     }
 
-    public DietSurveyDTO emptyDietSurveyDTO(ProfileOutDTO mine) {
+    DietSurveyDTO emptyDietSurveyDTO(ProfileOutDTO mine) {
         final DietSurveyDTO dietSurveyDTO = new DietSurveyDTO()
             .setHeight(mine.getHeight())
             .setSex(mine.getSex())
             .setMealQuantity(new MealQuantity());
-        ofNullable(mine.getDailyActivity()).map(result ->
-            dietSurveyDTO.setDailyActivity(new DietSurveyDTO.DailyActivity().setName(result.getName()).setId(result.getId().toString())));
         return dietSurveyDTO;
     }
 }
