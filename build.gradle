@@ -168,6 +168,8 @@ dependencies {
     compile group: 'fr.ippon.spark.metrics', name: 'metrics-spark-reporter', version: metrics_spark_reporter_version
     compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: mapstruct_version
     compile group: 'org.jadira.usertype', name: 'usertype.core', version: jadira_user_typecore
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+
 
     testCompile group: 'com.jayway.awaitility', name: 'awaitility', version: awaility_version
     testCompile group: 'com.jayway.jsonpath', name: 'json-path'

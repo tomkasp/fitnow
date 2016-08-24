@@ -73,3 +73,6 @@ To setup this project in Jenkins, use the following configuration:
 [Karma]: http://karma-runner.github.io/
 [Jasmine]: http://jasmine.github.io/2.0/introduction.html
 [Protractor]: https://angular.github.io/protractor/
+
+
+curl -X POST --header "Content-Type: application/json" --header "Accept: */*"  -d "test" "http://localhost:8081/api/payments"

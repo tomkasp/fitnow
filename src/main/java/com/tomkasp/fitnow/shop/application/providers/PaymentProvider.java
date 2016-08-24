@@ -9,4 +9,7 @@ public interface PaymentProvider {
 
 
     String createPaymentSignature(PaymentDetails paymentDetails) throws UnsupportedEncodingException, NoSuchAlgorithmException;
+
+    String getPaymentStatus(String paymentIdentifier);
+
 }

@@ -5,6 +5,7 @@ import com.tomkasp.web.filter.CsrfCookieGeneratorFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -68,6 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/assets/**")
             .antMatchers("/swagger-ui.html")
             .antMatchers("/test/**")
+            .antMatchers("/payments")
             .antMatchers("/console/**");
     }
 
@@ -75,9 +77,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .csrf()
-            .ignoringAntMatchers("/websocket/**")
-            .and()
-            .addFilterAfter(new CsrfCookieGeneratorFilter(), CsrfFilter.class)
+            .disable()
+//            .ignoringAntMatchers("/websocket/**")
+//            .and()
+//            .addFilterAfter(new CsrfCookieGeneratorFilter(), CsrfFilter.class)
             .exceptionHandling()
             .authenticationEntryPoint(authenticationEntryPoint)
             .and()

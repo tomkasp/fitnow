@@ -5,15 +5,22 @@ import com.tomkasp.fitnow.shop.application.domain.PaymentDetails;
 import com.tomkasp.fitnow.shop.application.providers.PaymentProvider;
 import com.tomkasp.fitnow.shop.webui.PaymentsResource;
 import org.apache.commons.lang.text.StrBuilder;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.TreeMap;
+import java.util.*;
 
 import static com.tomkasp.fitnow.shop.application.providers.payu.PayUConstant.*;
 
@@ -40,6 +47,11 @@ public class PayUProvider implements PaymentProvider {
         return calculateSignature(paramMap);
     }
 
+    @Override
+    public String getPaymentStatus(String paymentIdentifier) {
+        return null;
+    }
+
     private String calculateSignature(TreeMap<String, String> paramMap) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         final StrBuilder strBuilder = new StrBuilder();
         for (String key : paramMap.keySet()) {
@@ -58,15 +70,45 @@ public class PayUProvider implements PaymentProvider {
         return format;
     }
 
+    private void sendRequest(String posId, String sessionId, String ts, String hashed) throws IOException {
+        String url = "https://secure.payu.com/paygw/UTF/Payment/get/txt";
+        HttpClient client = new DefaultHttpClient();
+        HttpPost post = new HttpPost(url);
+
+        List<NameValuePair> urlParameters = new ArrayList<>();
+        urlParameters.add(new BasicNameValuePair("pos_id", posId));
+        urlParameters.add(new BasicNameValuePair("session_id", sessionId));
 
 
+        urlParameters.add(new BasicNameValuePair("ts", ts));
 
-//    //            payUParametersMap.put(FIRST_NAME, "tom");
-////            payUParametersMap.put("last_name", "kasp");
-////            payUParametersMap.put("email", "tomkasp@gmail.com");
-////            payUParametersMap.put("session_id", "1234");
-//            payUParametersMap.put("amount", "1000");
-//            payUParametersMap.put("desc", "desc");
-//            payUParametersMap.put("client_ip", "123.123.123.123");
-//            payUParametersMap.put("ts", "124321879");
+        urlParameters.add(new BasicNameValuePair("sig", hashed));
+
+        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+        HttpResponse response = client.execute(post);
+
+        System.out.println(response);
+
+        Map<String, String> receivedData = getContentFromResponseAsMap(response.getEntity().getContent());
+        for (String s : receivedData.keySet()) {
+            log.debug("key: {}, value {}", s, receivedData.get(s));
+        }
+
+
+    }
+
+    private Map<String, String> getContentFromResponseAsMap(InputStream is) throws IOException {
+
+        BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+        Map<String, String> map = new HashMap<>();
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            int pos = line.indexOf(":");
+            map.put(line.substring(0, pos), line.substring(pos + 1, line.length()).trim());
+        }
+
+        return map;
+    }
 }
