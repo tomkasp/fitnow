@@ -18,12 +18,12 @@
             model.name = paymentDetails.name;
             model.surname = paymentDetails.surname;
             model.email = paymentDetails.email;
-            model.sessionId = paymentDetails.sessionId;
+            model.orderId = paymentDetails.orderId;
             model.amount = paymentDetails.amount;
             model.description = paymentDetails.description;
             model.clientIp = paymentDetails.clientIp;
             model.timeStamp = paymentDetails.timeStamp;
-            model.paymentSignature = paymentDetails.paymentSignature;
+            model.orderSignature = paymentDetails.orderSignature;
             return model;
         }
 
@@ -34,12 +34,12 @@
                 name: null,
                 surname: null,
                 email: null,
-                sessionId: null,
+                orderId: null,
                 amount: null,
                 description: null,
                 clientIp: null,
                 timeStamp: null,
-                paymentSignature : null
+                orderSignature : null
             }
         }
     }

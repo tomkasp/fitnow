@@ -1,6 +1,6 @@
 package com.tomkasp.fitnow.shop.application.providers;
 
-public enum PaymentType {
+public enum OrderType {
 
 
     STANDARD("standard"),
@@ -9,7 +9,7 @@ public enum PaymentType {
 
     private final String type;
 
-    PaymentType(String type) {
+    OrderType(String type) {
         this.type = type;
     }
 

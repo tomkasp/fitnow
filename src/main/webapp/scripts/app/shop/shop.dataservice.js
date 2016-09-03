@@ -7,17 +7,17 @@
 
     /* @ngInject */
     function shopDataService($http, exception) {
-        var shopPaymentsTypesApi = '/api/payments/types/';
+        var shopOrdersApi = '/api/shop/orders/';
         var service = {
-            getPaymentData: getPaymentData
+            getOrderTypeData: getOrderTypeData
 
         };
         return service;
 
         ////////////////
 
-        function getPaymentData(type) {
-            return $http.get(shopPaymentsTypesApi + type)
+        function getOrderTypeData(type) {
+            return $http.get(shopOrdersApi + type)
                 .then(getPaymentsCompleted)
                 .catch(getPaymentsFailed);
 

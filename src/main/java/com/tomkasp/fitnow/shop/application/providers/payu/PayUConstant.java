@@ -18,8 +18,11 @@ public class PayUConstant {
     public static final String CLIENT_IP = "client_ip";
     public static final String JS = "js";
     public static final String TS = "ts";
+    public static final String SIGNATURE = "sig";
+    public static final String TRANS_STATUS = "trans_status";
 
     public static final String SEC_MD5_KEY_VALUE = "41d00404e751dab605c618d61109807d";
+    public static final String FIRST_MD5_KEY_VALUE = "ed7e332114fe5e71c43cb3745ce3bcc6";
     public static final String POS_ID_VALUE = "218888";
     public static final String POS_AUT_KEY_VALUE = "rPqpYXV";
 

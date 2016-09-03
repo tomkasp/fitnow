@@ -11,13 +11,13 @@
                     controllerAs: 'vm',
                     resolve: {
                         standardPayment: ['shopDataService', function (shopDataService) {
-                            return shopDataService.getPaymentData("standard");
+                            return shopDataService.getOrderTypeData("standard");
                         }],
                         superPayment: ['shopDataService', function (shopDataService) {
-                            return shopDataService.getPaymentData("super");
+                            return shopDataService.getOrderTypeData("super");
                         }],
                         premiumPayment: ['shopDataService', function (shopDataService) {
-                            return shopDataService.getPaymentData("premium");
+                            return shopDataService.getOrderTypeData("premium");
                         }],
                         translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                             $translatePartialLoader.addPart('shop');

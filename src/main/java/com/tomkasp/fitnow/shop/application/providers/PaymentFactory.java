@@ -11,14 +11,20 @@ public class PaymentFactory {
 
     private final Logger log = LoggerFactory.getLogger(PaymentFactory.class);
 
+    private PaymentProvider paymentProvider = null;
+
     @Value("${fitnow.payments.provider}")
     String provider;
 
-    public PaymentProvider build(){
+    public PaymentProvider build() {
         log.debug("USED payment provider: {}", provider);
-        if(PaymentProvidersEnum.PAYU.toString().equalsIgnoreCase(provider)){
-            return new PayUProvider();
+        if (PaymentProvidersEnum.PAYU.toString().equalsIgnoreCase(provider)) {
+            if (paymentProvider == null) {
+                paymentProvider = new PayUProvider();
+            } else {
+                return paymentProvider;
+            }
         }
-        return null;
+        return paymentProvider;
     }
 }

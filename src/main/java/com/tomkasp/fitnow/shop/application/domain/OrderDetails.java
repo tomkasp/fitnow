@@ -1,22 +1,24 @@
 package com.tomkasp.fitnow.shop.application.domain;
 
-public class PaymentDetails {
+public class OrderDetails {
 
     private final String name;
     private final String surname;
     private final String email;
-    private final String sessionId;
+    private final String orderId;
     private final String amount;
     private final String description;
     private final String clientIp;
     private final String timeStamp;
-    private String paymentSignature;
+    private String orderSignature;
 
-    public PaymentDetails(String name, String surname, String email, String sessionId, String amount, String description, String clientIp, String timeStamp) {
+    Payment payment;
+
+    public OrderDetails(String name, String surname, String email, String orderId, String amount, String description, String clientIp, String timeStamp) {
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.sessionId = sessionId;
+        this.orderId = orderId;
         this.amount = amount;
         this.description = description;
         this.clientIp = clientIp;
@@ -35,8 +37,8 @@ public class PaymentDetails {
         return email;
     }
 
-    public String getSessionId() {
-        return sessionId;
+    public String getOrderId() {
+        return orderId;
     }
 
     public String getAmount() {
@@ -55,12 +57,12 @@ public class PaymentDetails {
         return timeStamp;
     }
 
-    public String getPaymentSignature() {
-        return paymentSignature;
+    public String getOrderSignature() {
+        return orderSignature;
     }
 
-    public PaymentDetails setPaymentSignature(String paymentSignature) {
-        this.paymentSignature = paymentSignature;
+    public OrderDetails setOrderSignature(String orderSignature) {
+        this.orderSignature = orderSignature;
         return this;
     }
 }

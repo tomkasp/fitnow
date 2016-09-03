@@ -1,10 +1,10 @@
 package com.tomkasp.fitnow.shop.application.service;
 
 import com.tomkasp.domain.User;
-import com.tomkasp.fitnow.shop.application.domain.PaymentDetails;
+import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
 import com.tomkasp.fitnow.shop.application.providers.PaymentFactory;
 import com.tomkasp.fitnow.shop.application.providers.PaymentProvider;
-import com.tomkasp.fitnow.shop.application.providers.PaymentType;
+import com.tomkasp.fitnow.shop.application.providers.OrderType;
 import com.tomkasp.fitnow.shop.application.providers.PriceProvider;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
@@ -19,9 +19,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
 @Service
-public class FetchPaymentService {
+public class FetchOrderService {
 
-    private final Logger log = LoggerFactory.getLogger(FetchPaymentService.class);
+    private final Logger log = LoggerFactory.getLogger(FetchOrderService.class);
 
     @Inject
     UserService userService;
@@ -29,22 +29,22 @@ public class FetchPaymentService {
     @Inject
     PaymentFactory paymentFactory;
 
-    public PaymentDetails fetchPayment(PaymentType paymentType) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public OrderDetails fetchOrder(OrderType orderType) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User userWithAuthorities = userService.getUserWithAuthorities();
         final String firstName = getFirstName();
         final String lastName = getLastName();
         final String email = userWithAuthorities.getEmail();
         final String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
-        final String amount = PriceProvider.getPrice(paymentType).toString();
+        final String amount = PriceProvider.getPrice(orderType).toString();
         final String ip = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
             .getRequest().getRemoteAddr();
         final String currentDate = Long.toString(System.currentTimeMillis());
         PaymentProvider paymentProvider = paymentFactory.build();
 
-        PaymentDetails paymentDetails = new PaymentDetails(firstName, lastName, email, sessionId, amount, paymentType.name().toString(), ip, currentDate);
-        final String paymentSignature = paymentProvider.createPaymentSignature(paymentDetails);
-        paymentDetails.setPaymentSignature(paymentSignature);
-        return paymentDetails;
+        OrderDetails orderDetails = new OrderDetails(firstName, lastName, email, sessionId, amount, orderType.name().toString(), ip, currentDate);
+        final String paymentSignature = paymentProvider.createPaymentSignature(orderDetails);
+        orderDetails.setOrderSignature(paymentSignature);
+        return orderDetails;
     }
 
     private String getFirstName() {
