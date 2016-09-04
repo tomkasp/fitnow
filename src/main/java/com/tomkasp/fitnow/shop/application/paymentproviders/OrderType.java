@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.shop.application.providers;
+package com.tomkasp.fitnow.shop.application.paymentproviders;
 
 public enum OrderType {
 

@@ -69,7 +69,7 @@ public class BodySizeResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<BodySizeDTO> createMineProfileDetails(@RequestBody BodySizeDTO bodySizeDTO) throws URISyntaxException {
-        log.debug("REST request to create body size : {}", bodySizeDTO);
+        log.debug("REST request to createNew body size : {}", bodySizeDTO);
         if (bodySizeDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("body size", "idexists", "A new body size cannot already have an ID")).body(null);
         }

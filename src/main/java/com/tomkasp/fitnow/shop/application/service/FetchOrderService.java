@@ -1,19 +1,19 @@
 package com.tomkasp.fitnow.shop.application.service;
 
 import com.tomkasp.domain.User;
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.providers.PaymentFactory;
-import com.tomkasp.fitnow.shop.application.providers.PaymentProvider;
-import com.tomkasp.fitnow.shop.application.providers.OrderType;
-import com.tomkasp.fitnow.shop.application.providers.PriceProvider;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
+import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentFactory;
+import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentProvider;
+import com.tomkasp.fitnow.shop.application.paymentproviders.OrderType;
+import com.tomkasp.fitnow.shop.application.paymentproviders.PriceProvider;
 import com.tomkasp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.inject.Inject;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
@@ -23,11 +23,15 @@ public class FetchOrderService {
 
     private final Logger log = LoggerFactory.getLogger(FetchOrderService.class);
 
-    @Inject
-    UserService userService;
+    private final UserService userService;
 
-    @Inject
-    PaymentFactory paymentFactory;
+    private final PaymentFactory paymentFactory;
+
+    @Autowired
+    public FetchOrderService(UserService userService, PaymentFactory paymentFactory) {
+        this.userService = userService;
+        this.paymentFactory = paymentFactory;
+    }
 
     public OrderDetails fetchOrder(OrderType orderType) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User userWithAuthorities = userService.getUserWithAuthorities();

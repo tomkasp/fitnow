@@ -1,9 +1,9 @@
-package com.tomkasp.fitnow.shop.application.readmodel.impl;
+package com.tomkasp.fitnow.shop.readmodel.impl;
 
 
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.providers.OrderType;
-import com.tomkasp.fitnow.shop.application.readmodel.OrderDetailsFinder;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
+import com.tomkasp.fitnow.shop.application.paymentproviders.OrderType;
+import com.tomkasp.fitnow.shop.readmodel.OrderDetailsFinder;
 import com.tomkasp.fitnow.shop.application.service.FetchOrderService;
 import org.springframework.stereotype.Service;
 

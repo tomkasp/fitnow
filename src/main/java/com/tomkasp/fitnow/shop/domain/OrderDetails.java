@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.shop.application.domain;
+package com.tomkasp.fitnow.shop.domain;
 
 public class OrderDetails {
 
@@ -11,8 +11,6 @@ public class OrderDetails {
     private final String clientIp;
     private final String timeStamp;
     private String orderSignature;
-
-    Payment payment;
 
     public OrderDetails(String name, String surname, String email, String orderId, String amount, String description, String clientIp, String timeStamp) {
         this.name = name;

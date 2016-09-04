@@ -64,7 +64,7 @@ public class DietSurveyResource {
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<DietSurveyDTO> createDietSurvey(@Valid @RequestBody DietSurveyDTO dietSurveyDto) throws URISyntaxException, IOException {
-        log.debug("REST request to create survey : {}", dietSurveyDto);
+        log.debug("REST request to createNew survey : {}", dietSurveyDto);
         if (dietSurveyDto.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("dietsurveys", "idexists", "A new dietsurveys cannot already have an ID")).body(null);
         }

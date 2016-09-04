@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.shop.application.providers.payu;
+package com.tomkasp.fitnow.shop.application.paymentproviders.payu;
 
 public class PayUSearchCriteria {
 

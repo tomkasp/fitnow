@@ -6,4 +6,8 @@ import java.io.Serializable;
 
 @Command
 public class PaymentsCommand  implements Serializable {
+
+
+
+
 }

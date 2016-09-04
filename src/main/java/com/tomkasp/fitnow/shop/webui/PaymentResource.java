@@ -16,7 +16,7 @@ public class PaymentResource {
 
     @RequestMapping(method = RequestMethod.POST)
     public void createPayment() {
-            //command to create payment and then event
+            //command to createNew payment and then event
     }
 
     @RequestMapping(method = RequestMethod.PUT)

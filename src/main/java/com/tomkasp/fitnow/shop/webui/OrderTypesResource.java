@@ -1,9 +1,9 @@
 package com.tomkasp.fitnow.shop.webui;
 
 import com.codahale.metrics.annotation.Timed;
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.providers.OrderType;
-import com.tomkasp.fitnow.shop.application.readmodel.OrderDetailsFinder;
+import com.tomkasp.fitnow.shop.application.paymentproviders.OrderType;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
+import com.tomkasp.fitnow.shop.readmodel.OrderDetailsFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 

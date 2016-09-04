@@ -1,9 +1,8 @@
-package com.tomkasp.fitnow.shop.application.readmodel;
+package com.tomkasp.fitnow.shop.readmodel;
 
 
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.providers.OrderType;
-
+import com.tomkasp.fitnow.shop.application.paymentproviders.OrderType;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 

@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.shop.application.readmodel;
+package com.tomkasp.fitnow.shop.readmodel;
 
 public class PaymentDetailsDto {
 

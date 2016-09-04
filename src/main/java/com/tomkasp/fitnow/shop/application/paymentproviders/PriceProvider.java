@@ -1,9 +1,9 @@
-package com.tomkasp.fitnow.shop.application.providers;
+package com.tomkasp.fitnow.shop.application.paymentproviders;
 
 import java.math.BigDecimal;
 
-import static com.tomkasp.fitnow.shop.application.providers.OrderType.*;
-import static com.tomkasp.fitnow.shop.application.providers.OrderType.PREMIUM;
+import static com.tomkasp.fitnow.shop.application.paymentproviders.OrderType.*;
+import static com.tomkasp.fitnow.shop.application.paymentproviders.OrderType.PREMIUM;
 
 public class PriceProvider {
 

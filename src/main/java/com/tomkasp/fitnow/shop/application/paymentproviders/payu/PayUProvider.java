@@ -1,10 +1,10 @@
-package com.tomkasp.fitnow.shop.application.providers.payu;
+package com.tomkasp.fitnow.shop.application.paymentproviders.payu;
 
 
 import com.tomkasp.fitnow.sharedkernel.Security;
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.providers.PaymentProvider;
-import com.tomkasp.fitnow.shop.application.domain.PaymentStatus;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
+import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentProvider;
+import com.tomkasp.fitnow.shop.domain.PaymentStatus;
 import org.apache.commons.lang.text.StrBuilder;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

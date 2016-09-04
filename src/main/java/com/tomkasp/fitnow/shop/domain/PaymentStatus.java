@@ -1,4 +1,4 @@
-package com.tomkasp.fitnow.shop.application.domain;
+package com.tomkasp.fitnow.shop.domain;
 
 public enum PaymentStatus {
 

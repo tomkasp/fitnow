@@ -1,7 +1,7 @@
-package com.tomkasp.fitnow.shop.application.providers;
+package com.tomkasp.fitnow.shop.application.paymentproviders;
 
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.domain.PaymentStatus;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
+import com.tomkasp.fitnow.shop.domain.PaymentStatus;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

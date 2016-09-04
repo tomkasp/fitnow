@@ -2,9 +2,9 @@ package com.tomkasp.fitnow.shop.webui.payu;
 
 import com.codahale.metrics.annotation.Timed;
 import com.tomkasp.fitnow.cqrs.command.Gate;
-import com.tomkasp.fitnow.shop.application.providers.PaymentFactory;
-import com.tomkasp.fitnow.shop.application.providers.PaymentProvider;
-import com.tomkasp.fitnow.shop.application.providers.payu.PayUSearchCriteria;
+import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentFactory;
+import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentProvider;
+import com.tomkasp.fitnow.shop.application.paymentproviders.payu.PayUSearchCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

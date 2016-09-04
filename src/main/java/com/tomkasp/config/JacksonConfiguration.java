@@ -34,7 +34,8 @@ public class JacksonConfiguration {
             @Override
             public void configure(ObjectMapper objectMapper) {
                 super.configure(objectMapper);
-                objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+                objectMapper
+                    .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             }
 
         };

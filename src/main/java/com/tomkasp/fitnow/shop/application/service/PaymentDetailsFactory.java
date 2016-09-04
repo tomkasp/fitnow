@@ -1,8 +1,8 @@
 package com.tomkasp.fitnow.shop.application.service;
 
 import com.tomkasp.fitnow.infrastructure.factory.DtoFactory;
-import com.tomkasp.fitnow.shop.application.domain.OrderDetails;
-import com.tomkasp.fitnow.shop.application.readmodel.PaymentDetailsDto;
+import com.tomkasp.fitnow.shop.domain.OrderDetails;
+import com.tomkasp.fitnow.shop.readmodel.PaymentDetailsDto;
 
 public class PaymentDetailsFactory implements DtoFactory<PaymentDetailsDto, OrderDetails> {
 

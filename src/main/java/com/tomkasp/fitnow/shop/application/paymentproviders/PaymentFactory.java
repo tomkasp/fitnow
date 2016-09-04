@@ -1,6 +1,6 @@
-package com.tomkasp.fitnow.shop.application.providers;
+package com.tomkasp.fitnow.shop.application.paymentproviders;
 
-import com.tomkasp.fitnow.shop.application.providers.payu.PayUProvider;
+import com.tomkasp.fitnow.shop.application.paymentproviders.payu.PayUProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
