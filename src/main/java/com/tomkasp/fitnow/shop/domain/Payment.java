@@ -44,4 +44,8 @@ public class Payment {
         payment.order = order;
         return payment;
     }
+
+    public void changePaymentStatus(PaymentStatus newStatus){
+        this.paymentStatus = newStatus;
+    }
 }

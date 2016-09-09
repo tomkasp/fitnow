@@ -12,6 +12,6 @@ public interface PaymentProvider<T> {
 
     String createPaymentSignature(OrderDetails orderDetails) throws UnsupportedEncodingException, NoSuchAlgorithmException;
 
-    PaymentStatus getPaymentStatus(T paymentIdentifier) throws IOException;
+    PaymentStatus retrivePaymentStatus(T paymentIdentifier) throws IOException;
 
 }

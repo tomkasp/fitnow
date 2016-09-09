@@ -48,7 +48,7 @@ public class PayUProvider implements PaymentProvider<PayUSearchCriteria> {
 
 
     @Override
-    public PaymentStatus getPaymentStatus(PayUSearchCriteria payUSearchCriteria) throws IOException {
+    public PaymentStatus retrivePaymentStatus(PayUSearchCriteria payUSearchCriteria) throws IOException {
         return mapPayUStatusToAppStatus(sendRequest(payUSearchCriteria));
     }
 

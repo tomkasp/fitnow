@@ -2,9 +2,11 @@ package com.tomkasp.fitnow.shop.webui.payu;
 
 import com.codahale.metrics.annotation.Timed;
 import com.tomkasp.fitnow.cqrs.command.Gate;
+import com.tomkasp.fitnow.shop.application.commands.UpdatePaymentStatusCommand;
 import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentFactory;
 import com.tomkasp.fitnow.shop.application.paymentproviders.PaymentProvider;
 import com.tomkasp.fitnow.shop.application.paymentproviders.payu.PayUSearchCriteria;
+import com.tomkasp.fitnow.shop.domain.PaymentStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -43,7 +45,8 @@ public class PayUPaymentsResource {
 
         log.info("Payment posid: {}, sessionId: {}, ts: {}, sig: {}", posId, sessionId, ts, sig);
         final PaymentProvider<PayUSearchCriteria> paymentProvider = paymentFactory.build();
-        paymentProvider.getPaymentStatus(new PayUSearchCriteria(posId, sessionId, ts, sig));
+        final PaymentStatus paymentStatus = paymentProvider.retrivePaymentStatus(new PayUSearchCriteria(posId, sessionId, ts, sig));
+        gate.dispatch(new UpdatePaymentStatusCommand(paymentStatus, sessionId));
         return "OK";
     }
 
