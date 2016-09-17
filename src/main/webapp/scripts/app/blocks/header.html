@@ -29,17 +29,17 @@
                         <!--</ul>-->
                     <!--</li>-->
                     <li>
-                        <a ui-sref="app.profile.calculator" class=" btn no-shadow navbar-btn">
+                        <a ui-sref="app.profile.calculator" data-toggle="collapse" data-target=".navbar-collapse.in" class=" btn no-shadow navbar-btn">
                             <span translate="header.navbar.PROFILE.calculator" class="text-lg" style="font-weight: 500">Calculator</span>
                         </a>
                     </li>
                     <li>
-                        <a ui-sref="app.diet" class=" btn no-shadow navbar-btn">
+                        <a ui-sref="app.diet" data-toggle="collapse" data-target=".navbar-collapse.in" class="dropdown-toggle btn no-shadow navbar-btn">
                             <span translate="header.navbar.PROFILE.diet" class="text-lg" style="font-weight: 500">Diet</span>
                         </a>
                     </li>
                     <li>
-                        <a ui-sref="app.shop" class="btn navbar-btn btn-info">
+                        <a ui-sref="app.shop" data-toggle="collapse" data-target=".navbar-collapse.in" class="btn navbar-btn btn-info">
                             <span translate="header.navbar.PROFILE.buydiet" class="text-lg" style="font-weight: 500">buydiet</span>
                         </a>
                     </li>
@@ -55,7 +55,7 @@
                         <!-- dropdown -->
                         <ul class="dropdown-menu animated fadeInRight w">
                             <li ng-repeat="(langKey, label) in langs">
-                                <a ng-click="setLang(langKey, $event)" href>{{label}}</a>
+                                <a data-toggle="collapse" data-target=".navbar-collapse.in" ng-click="setLang(langKey, $event)" href>{{label}}</a>
                             </li>
                         </ul>
                         <!-- / dropdown -->

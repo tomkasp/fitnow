@@ -204,7 +204,7 @@ public class JHipsterProperties {
 
     public static class Mail {
 
-        private String from = "tomkasp@gmail.com";
+        private String from = "info@fitnowcloud.com";
 
         public String getFrom() {
             return from;

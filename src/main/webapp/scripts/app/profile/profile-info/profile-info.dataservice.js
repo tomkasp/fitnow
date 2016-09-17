@@ -21,7 +21,6 @@
                 if(response.status == '404'){
                     return {}
                 }
-                //exception.catcher('XHR Failed for profile info data')
             }
 
             function getProfileInfoCompleted(response) {

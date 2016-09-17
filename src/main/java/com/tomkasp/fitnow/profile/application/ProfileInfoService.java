@@ -12,6 +12,8 @@ import org.springframework.social.connect.NotConnectedException;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author Tomasz Kasprzycki
  */
@@ -29,20 +31,25 @@ public class ProfileInfoService {
         this.userService = userService;
     }
 
-    public ProfileInfoOutDTO fetchProfileInfoService(){
+    public ProfileInfoOutDTO fetchProfileInfoService() {
+        String fullName = null;
         String imageUrl = "assets/img/b11.jpg";
-        String location = "London";
-        String fullName = "John Smith";
+        String location = "";
         String facebookProfileUrl = "";
         try {
             final User userWithAuthorities = userService.getUserWithAuthorities();
-            final Connection<Facebook> primaryConnection = connectionRepository.getPrimaryConnection(Facebook.class);
-            location = primaryConnection.getApi().userOperations().getUserProfile().getLocation().getName();
-            imageUrl = primaryConnection.getImageUrl();
-            facebookProfileUrl = primaryConnection.getProfileUrl();
-            fullName = userWithAuthorities.getFirstName() + " " + userWithAuthorities.getLastName();
-        }catch (NotConnectedException ex){
-            log.warn("not assigned facebook conection");
+            if (userWithAuthorities.getFirstName() == null && userWithAuthorities.getLastName() == null) {
+                fullName = userWithAuthorities.getLogin();
+            } else {
+                fullName = userWithAuthorities.getFirstName() + " " + userWithAuthorities.getLastName();
+            }
+            final Connection<Facebook> facebookConnection = connectionRepository.getPrimaryConnection(Facebook.class);
+            location = facebookConnection.getApi().userOperations().getUserProfile().getLocation().getName();
+            imageUrl = facebookConnection.getImageUrl();
+            facebookProfileUrl = facebookConnection.getProfileUrl();
+
+        } catch (NotConnectedException ex) {
+            log.warn("Not assigned facebook connection");
         }
         final ProfileInfoOutDTO profileInfoOutDTO = new ProfileInfoOutDTO()
             .setFacebookImgUrl(imageUrl)

@@ -56,6 +56,8 @@ public class MailService {
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.socketFactory.class",
+            "javax.net.ssl.SSLSocketFactory");
         javaMailSender.setJavaMailProperties(props);
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={} and from={}",
             isMultipart, isHtml, to, subject, content, jHipsterProperties.getMail().getFrom());
@@ -65,7 +67,7 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-            message.setFrom(new InternetAddress("tomkasp@gmail.com"));
+            message.setFrom(new InternetAddress("info@fitnowcloud.com"));
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);

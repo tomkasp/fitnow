@@ -2,7 +2,10 @@
 
     <div class="col">
         <div class="row">
-            <div class="col-sm-4">
+            <!--////////////////BMR CALCULATION FORM//////////////////////////-->
+            <div class="col-sm-8 col-sm-push-4" ui-view="profile">
+            </div>
+            <div class="col-sm-4 col-sm-pull-8">
                 <!--////////////////Profile Info panel///////////-->
                 <div class="panel panel-default">
                     <div ui-view="profileinfo"></div>
@@ -27,9 +30,6 @@
                 <div ui-view="bodysizes"></div>
                 <!--///////////////END SIZEZ///////////////// -->
 
-            </div>
-            <!--////////////////BMR CALCULATION FORM//////////////////////////-->
-            <div class="col-sm-8" ui-view="profile">
             </div>
             <!--//////////////////////END OF BMR CALCULATION FORM//////////////////////////////-->
         </div>
