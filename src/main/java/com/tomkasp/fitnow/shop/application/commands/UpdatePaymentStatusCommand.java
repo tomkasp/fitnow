@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Command
 public class UpdatePaymentStatusCommand implements Serializable {
 
-
     private final PaymentStatus newPaymentStatus;
     private final String paymentIntegrationId;
 

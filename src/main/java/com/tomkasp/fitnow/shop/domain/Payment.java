@@ -23,6 +23,7 @@ public class Payment {
     private String integrationId;
 
     @Column(name = "payment_status")
+    @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 
     @Column(name = "time_stamp")
@@ -48,4 +49,5 @@ public class Payment {
     public void changePaymentStatus(PaymentStatus newStatus){
         this.paymentStatus = newStatus;
     }
+
 }

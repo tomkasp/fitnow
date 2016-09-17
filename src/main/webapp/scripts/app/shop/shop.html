@@ -38,7 +38,7 @@
                         <input type="hidden" name="js" value="1">
                         <input type="hidden" name="ts" value="{{vm.standardPaymentDetails.timeStamp}}">
                         <input type="hidden" name="sig" value="{{vm.standardPaymentDetails.orderSignature}}">
-                        <button type="submit" class="btn btn-info font-bold m" formtarget="_blank">Kup i zaplac</button>
+                        <button type="submit" ng-click="vm.test()" class="btn btn-info font-bold m" formtarget="_blank">Kup i zaplac</button>
                     </form>
                 </div>
             </div>

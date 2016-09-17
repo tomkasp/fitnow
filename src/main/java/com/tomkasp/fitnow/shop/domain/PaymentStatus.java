@@ -9,5 +9,5 @@ public enum PaymentStatus {
     WAITING,
     REFUND,
     PAID,
-    UNKNOWN,
+    UNKNOWN
 }

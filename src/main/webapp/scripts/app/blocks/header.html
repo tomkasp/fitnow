@@ -1,9 +1,11 @@
-<div ng-controller="NavbarController" ng-switch="isAuthenticated()" class="navbar box-shadow {{app.settings.navbarCollapseColor}}">
+<div ng-controller="NavbarController" ng-switch="isAuthenticated()"
+     class="navbar box-shadow {{app.settings.navbarCollapseColor}}">
 
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -14,15 +16,27 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown" dropdown>
-                        <a href class="dropdown-toggle btn no-shadow navbar-btn" dropdown-toggle>
-                            <span translate="header.navbar.PROFILE.profile" class="text-lg" style="font-weight: 500">Profile</span> <span class="caret"></span>
+                    <!--<li class="dropdown" dropdown>-->
+                        <!--<a href class="dropdown-toggle btn no-shadow navbar-btn" dropdown-toggle>-->
+                            <!--<span translate="header.navbar.PROFILE.profile" class="text-lg" style="font-weight: 500">Profile</span>-->
+                            <!--<span class="caret"></span>-->
+                        <!--</a>-->
+                        <!--<ul class="dropdown-menu" role="menu">-->
+                            <!--<li><a ui-sref="app.profile.calculator" translate="header.navbar.PROFILE.calculator">Calculator</a>-->
+                            <!--</li>-->
+                            <!--&lt;!&ndash;<li><a ui-sref="app.profile.progress" translate="header.navbar.PROFILE.progress">Progress</a></li>&ndash;&gt;-->
+                            <!--<li><a ui-sref="app.diet" translate="header.navbar.PROFILE.diet">Diet</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <li>
+                        <a ui-sref="app.profile.calculator" class=" btn no-shadow navbar-btn">
+                            <span translate="header.navbar.PROFILE.calculator" class="text-lg" style="font-weight: 500">Calculator</span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a ui-sref="app.profile.calculator" translate="header.navbar.PROFILE.calculator">Calculator</a></li>
-                            <!--<li><a ui-sref="app.profile.progress" translate="header.navbar.PROFILE.progress">Progress</a></li>-->
-                            <li><a ui-sref="app.diet" translate="header.navbar.PROFILE.diet">Diet</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a ui-sref="app.diet" class=" btn no-shadow navbar-btn">
+                            <span translate="header.navbar.PROFILE.diet" class="text-lg" style="font-weight: 500">Diet</span>
+                        </a>
                     </li>
                     <li>
                         <a ui-sref="app.shop" class="btn navbar-btn btn-info">
@@ -34,10 +48,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
 
-                            <a href class="dropdown-toggle" dropdown-toggle>
-                                <span class="glyphicon glyphicon-flag"></span>
-                                {{selectLang}} <b class="caret"></b>
-                            </a>
+                        <a href class="dropdown-toggle" dropdown-toggle>
+                            <span class="glyphicon glyphicon-flag"></span>
+                            {{selectLang}} <b class="caret"></b>
+                        </a>
                         <!-- dropdown -->
                         <ul class="dropdown-menu animated fadeInRight w">
                             <li ng-repeat="(langKey, label) in langs">
@@ -52,22 +66,39 @@
                             <span class="hidden-sm hidden-md">Administration</span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
-                                &#xA0;<span translate="global.menu.admin.user-management">User management</span></a></li>
-                            <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
+                            <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse"
+                                                           data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-user"></span>
+                                &#xA0;<span translate="global.menu.admin.user-management">User management</span></a>
+                            </li>
+                            <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse"
+                                                           data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-dashboard"></span>
                                 &#xA0;<span translate="global.menu.admin.metrics">Metrics</span></a></li>
-                            <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
+                            <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse"
+                                                           data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-heart"></span>
                                 &#xA0;<span translate="global.menu.admin.health">Health</span></a></li>
-                            <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
+                            <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse"
+                                                           data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-list-alt"></span>
                                 &#xA0;<span translate="global.menu.admin.configuration">Configuration</span></a></li>
-                            <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
+                            <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse"
+                                                           data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-bell"></span>
                                 &#xA0;<span translate="global.menu.admin.audits">Audits</span></a></li>
-                            <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
+                            <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse"
+                                                           data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-tasks"></span>
                                 &#xA0;<span translate="global.menu.admin.logs">Logs</span></a></li>
-                            <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
+                            <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse"
+                                                                                  data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-book"></span>
                                 &#xA0;<span translate="global.menu.admin.apidocs">API</span></a></li>
                             <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
-                            <li ng-hide="inProduction"><a href='/h2-console' target="_tab" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-hdd"></span>
+                            <li ng-hide="inProduction"><a href='/h2-console' target="_tab" data-toggle="collapse"
+                                                          data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-hdd"></span>
                                 &#xA0;<span translate="global.menu.admin.database">Database</span></a></li>
                         </ul>
                     </li>
@@ -80,22 +111,28 @@
                 <i class="on md b-white bottom"></i>
                 </span>
                             <span class="glyphicon glyphicon-user"></span>
-                            <span class="hidden-sm hidden-md" translate="global.menu.account.main">Account</span> <b class="caret"></b>
+                            <span class="hidden-sm hidden-md" translate="global.menu.account.main">Account</span> <b
+                            class="caret"></b>
                         </a>
 
                         <ul class="dropdown-menu">
                             <li class="divider"></li>
 
-                            <li ui-sref="app.login" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                            <li ui-sref="app.login" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse"
+                                                                              data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-log-in"></span>
                                 &#xA0;<span translate="global.menu.account.login">Sign in</span></a>
                             </li>
 
-                            <li ui-sref="app.logout" ng-switch-when="true"><a href="" id="logout" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                            <li ui-sref="app.logout" ng-switch-when="true"><a href="" id="logout" data-toggle="collapse"
+                                                                              data-target=".navbar-collapse.in"><span
+                                class="glyphicon glyphicon-log-out"></span>
                                 &#xA0;<span translate="global.menu.account.logout">Sign out</span></a>
                             </li>
 
                             <li ui-sref="app.register" ng-switch-when="false">
-                                <a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                                <a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span
+                                    class="glyphicon glyphicon-plus-sign"></span>
                                     &#xA0;<span translate="global.menu.account.register">Register</span></a>
                             </li>
                             <!-- / dropdown -->

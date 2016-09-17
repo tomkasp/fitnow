@@ -70,7 +70,7 @@ public class PayUProvider implements PaymentProvider<PayUSearchCriteria> {
         return format;
     }
 
-    private PayUTranStatus sendRequest(PayUSearchCriteria payUSearchCriteria) throws IOException {
+    private PayUTransactionStatus sendRequest(PayUSearchCriteria payUSearchCriteria) throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
         String payUPaymentStatusUrl = "https://secure.payu.com/paygw/UTF/Payment/get/txt";
         String sig = Security.calculateMD5(payUSearchCriteria.getPosId() + payUSearchCriteria.getSessionId() + payUSearchCriteria.getTs() + PayUConstant.FIRST_MD5_KEY_VALUE);
@@ -90,14 +90,14 @@ public class PayUProvider implements PaymentProvider<PayUSearchCriteria> {
             log.debug("key: {}, value {}", s, receivedData.get(s));
             if (PayUConstant.TRANS_STATUS.equals(s)) {
                 final String transaction_status = receivedData.get(s);
-                return PayUTranStatus.valueOf(transaction_status);
+                return PayUTransactionStatus.findByString(transaction_status);
             }
         }
-        return PayUTranStatus.UNKNOWN;
+        return PayUTransactionStatus.UNKNOWN;
     }
 
-    private PaymentStatus mapPayUStatusToAppStatus(PayUTranStatus payUTranStatus) {
-        switch (payUTranStatus) {
+    private PaymentStatus mapPayUStatusToAppStatus(PayUTransactionStatus payUTransactionStatus) {
+        switch (payUTransactionStatus) {
             case NEW:
                 return PaymentStatus.NEW;
             case CANCELED:

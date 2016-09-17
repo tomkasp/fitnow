@@ -9,7 +9,8 @@
     function shopDataService($http, exception) {
         var shopOrdersApi = '/api/shop/orders/';
         var service = {
-            getOrderTypeData: getOrderTypeData
+            getOrderTypeData: getOrderTypeData,
+            createOrder: createOrder
 
         };
         return service;
@@ -30,6 +31,30 @@
 
             function getPaymentsCompleted(response) {
                 return response.data;
+            }
+        }
+
+        function createOrder(orderType, paymentIntegrationId, amount) {
+            return $http.post(shopOrdersApi, buildOrder(orderType, paymentIntegrationId, amount))
+                .then(getPaymentsCompleted)
+                .catch(getPaymentsFailed);
+
+            function getPaymentsFailed(response) {
+                exception.catcher('Failed to save data')
+            }
+
+            function getPaymentsCompleted(response) {
+                return response.data;
+            }
+        }
+
+        ///////////
+
+        function buildOrder(orderType, paymentIntegrationId, amount) {
+            return {
+                orderType: orderType,
+                paymentIntegrationId: paymentIntegrationId,
+                amount: amount
             }
         }
     }

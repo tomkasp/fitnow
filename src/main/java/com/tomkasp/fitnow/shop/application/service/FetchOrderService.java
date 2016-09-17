@@ -17,6 +17,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class FetchOrderService {
@@ -38,14 +39,14 @@ public class FetchOrderService {
         final String firstName = getFirstName();
         final String lastName = getLastName();
         final String email = userWithAuthorities.getEmail();
-        final String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        final String orderIntegrationId = UUID.randomUUID().toString();
         final String amount = PriceProvider.getPrice(orderType).toString();
         final String ip = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
             .getRequest().getRemoteAddr();
         final String currentDate = Long.toString(System.currentTimeMillis());
         PaymentProvider paymentProvider = paymentFactory.build();
 
-        OrderDetails orderDetails = new OrderDetails(firstName, lastName, email, sessionId, amount, orderType.name().toString(), ip, currentDate);
+        OrderDetails orderDetails = new OrderDetails(firstName, lastName, email, orderIntegrationId, amount, orderType.name().toString(), ip, currentDate);
         final String paymentSignature = paymentProvider.createPaymentSignature(orderDetails);
         orderDetails.setOrderSignature(paymentSignature);
         return orderDetails;

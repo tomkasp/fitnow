@@ -33,9 +33,12 @@ public class CreateOrderCommandHandler implements CommandHandler<CreateOrderComm
     public Void handle(CreateOrderCommand command) {
         final User userWithAuthorities = userService.getUserWithAuthorities();
         final Order newOrder = Order.createNew(userWithAuthorities, command.getOrderType(), command.getPaymentIntegrationId(), command.getAmount());
+        //validate if order exists
+        log.debug("Creating new order" );
         jpaOrderRepository.save(newOrder);
         return null;
     }
 
 }
+
 

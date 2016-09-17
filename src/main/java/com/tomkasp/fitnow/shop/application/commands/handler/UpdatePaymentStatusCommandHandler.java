@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @CommandHandlerAnnotation
 public class UpdatePaymentStatusCommandHandler implements CommandHandler<UpdatePaymentStatusCommand, Void> {
 
@@ -28,10 +30,13 @@ public class UpdatePaymentStatusCommandHandler implements CommandHandler<UpdateP
     @Override
     @Transactional
     public Void handle(UpdatePaymentStatusCommand command) {
-        log.info("HANDDDDLER!!!!!!!!");
         final Payment paymentToUpdate = jpaPaymentRepository.findByIntegrationId(command.getPaymentIntegrationId());
-        paymentToUpdate.changePaymentStatus(command.getNewPaymentStatus());
-        jpaPaymentRepository.save(paymentToUpdate);
+        Optional.ofNullable(paymentToUpdate).map(result -> {
+            result.changePaymentStatus(command.getNewPaymentStatus());
+            log.debug("updating payment status with status: {}", command.getNewPaymentStatus());
+            return jpaPaymentRepository.save(result);
+
+        });
         return null;
     }
 }
