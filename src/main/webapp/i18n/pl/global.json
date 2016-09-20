@@ -60,18 +60,18 @@
                     "required": "Hasło jest wymagane",
                     "minlength": "Minimalna długość hasła to 5 znaków",
                     "maxlength": "Hasło nie może być dłuższe niż 50 znaków",
-                    "strength": "Password strength:"
+                    "strength": "Siła hasła:"
                 },
                 "confirmpassword": {
-                    "required": "Your confirmation password is required.",
+                    "required": "Potwierdzenie hasła jest wymagane.",
                     "minlength": "Your confirmation password is required to be at least 5 characters.",
                     "maxlength": "Your confirmation password cannot be longer than 50 characters."
                 },
                 "email": {
-                    "required": "Your e-mail is required.",
-                    "invalid": "Your e-mail is invalid.",
-                    "minlength": "Your e-mail is required to be at least 5 characters.",
-                    "maxlength": "Your e-mail cannot be longer than 50 characters."
+                    "required": "Twój email jest wymagany.",
+                    "invalid": "Format e-maila jest niepoprawny.",
+                    "minlength": "Twój email wymaga conajmniej 5 znaków.",
+                    "maxlength": "Twój email nie może być dłuższy niż 50 znaków"
                 }
             }
         },

@@ -78,6 +78,9 @@
             }
             else {
                 vm.steps.step2 = false;
+                $translate('profilecalculator.messages.formerror').then(function (formError) {
+                    logger.error(formError)
+                });
             }
         }
 
