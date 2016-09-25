@@ -56,6 +56,7 @@
                 "dontmatch": "Hasło i jego potwierdzenie nie pasują!"
             },
             "validate": {
+                "required": "Pole wymagane",
                 "newpassword": {
                     "required": "Hasło jest wymagane",
                     "minlength": "Minimalna długość hasła to 5 znaków",

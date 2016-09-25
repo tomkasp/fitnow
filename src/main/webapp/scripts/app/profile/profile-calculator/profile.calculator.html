@@ -7,7 +7,8 @@
 
     <div class="panel-body">
         <div class="panel-body">
-            <form name="vm.userProfileForm" class="bs-example form-horizontal form-validation" dirty-form-check novalidate
+            <form name="vm.userProfileForm" class="bs-example form-horizontal form-validation" dirty-form-check
+                  novalidate
                   ng-submit="vm.submit()">
                 <div class="form-group">
                     <label class="col-lg-5 control-label" style="font-size: 20px"
@@ -41,15 +42,22 @@
                 </div>
                 <div class="form-group">
                     <label class="col-lg-5 control-label" style="font-size: 20px"
-                        ><span translate="profilecalculator.FORM.weight">Body weight</span> [kg]</label>
+                    ><span translate="profilecalculator.FORM.weight">Body weight</span> [kg]</label>
 
                     <div class="col-lg-7">
                         <div class="col-lg-5">
                             <input name="weight" ng-model="vm.userProfile.weight"
                                    ng-class="{error: vm.userProfileForm.weight.$invalid && vm.userProfileFormSubmitted}"
                                    min="20" max="500"
-                                   type="number" class="form-control" required></div>
-
+                                   type="number" class="form-control" required>
+                            <div ng-show="vm.userProfileForm.weight.$invalid && vm.userProfileFormSubmitted"
+                                 class="has-error">
+                                <p class="help-block "
+                                   translate="global.messages.validate.required">
+                                    Required field
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -61,18 +69,33 @@
                             <input value="30" min="10" max="80" ng-model="vm.userProfile.age" name="age" type="number"
                                    ng-class="{error: vm.userProfileForm.age.$invalid && vm.userProfileFormSubmitted}"
                                    required class="form-control">
+                            <div ng-show="vm.userProfileForm.age.$invalid && vm.userProfileFormSubmitted"
+                                 class="has-error">
+                                <p class="help-block "
+                                   translate="global.messages.validate.required">
+                                    Required field
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-5 control-label" style="font-size: 20px"
-                           ><span translate="profilecalculator.FORM.height">Height</span> [cm]</label>
+                    ><span translate="profilecalculator.FORM.height">Height</span> [cm]</label>
 
                     <div class="col-lg-7">
                         <div class="col-lg-5">
-                            <input type="number" name="height" min="10" max="300" ng-model="vm.userProfile.height" required
+                            <input type="number" name="height" min="10" max="300" ng-model="vm.userProfile.height"
+                                   required
                                    ng-class="{error: vm.userProfileForm.height.$invalid && vm.userProfileFormSubmitted}"
                                    class="form-control">
+                            <div ng-show="vm.userProfileForm.height.$invalid && vm.userProfileFormSubmitted"
+                                 class="has-error">
+                                <p class="help-block "
+                                   translate="global.messages.validate.required">
+                                    Required field
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
